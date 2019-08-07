@@ -1,0 +1,6 @@
+﻿找到RedisServer安装目录，进入cmd
+redis-server.exe redis.windows.conf启动服务
+redis-cli -h 127.0.0.1 -p 6379进入客户端
+config get requirepass获取密码
+config set requirepass设置密码
+在redis.windows.conf配置文件中可设置永久密码 requirepass

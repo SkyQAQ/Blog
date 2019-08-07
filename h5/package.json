@@ -1,0 +1,66 @@
+{
+  "name": "wu-yao-hehehe",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Blog",
+  "author": "titanchen",
+  "scripts": {
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "dev": "vue-cli-service serve"
+  },
+  "dependencies": {
+    "@aspnet/signalr": "^1.1.0",
+    "axios": "^0.18.0",
+    "crypto-js": "^3.1.9-1",
+    "element": "^0.1.4",
+    "element-ui": "^2.4.11",
+    "http-proxy-middleware": "^0.19.1",
+    "jsencrypt": "^3.0.0-rc.1",
+    "qs": "^6.6.0",
+    "router": "^1.3.3",
+    "vue": "^2.5.21",
+    "vue-image-crop-upload": "^2.5.0",
+    "vue-loader": "^15.4.2",
+    "vue-router": "^3.0.2",
+    "vue-template-compiler": "^2.5.21",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.2.0",
+    "@vue/cli-plugin-eslint": "^3.2.0",
+    "@vue/cli-service": "^3.2.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0-0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {
+      "no-unused-vars": "off",
+      "no-debugger": "off",
+      "no-console": "off",
+      "no-undef": "off"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}

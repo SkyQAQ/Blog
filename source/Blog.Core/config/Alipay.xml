@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <!-- 支付宝网关（固定）http为沙盒环境 -->
+  <set name="ALIPAY_URL">
+    <![CDATA[http://openapi.alipay.com/gateway.do]]>
+  </set>
+  <!-- APPID 创建应用后生成 -->
+  <set name="ALIPAY_APPID" value="2019040863807290"></set>
+  <!-- Rsa256私钥 -->
+  <set name="ALIPAY_APP_PRIVATE_KEY" value="MIIEpAIBAAKCAQEAw+IHm/hlzpeBLDd2GghwwFF/kYZSOvGQZ/NdPCpMlzCxpkAKdF8Nf44DmeGRwxLYZ8QyYVWgzs4fWDbZ5ebftE7ijb0CVmlocTbSmbgDroiu4qmQYdHo+RRraFdTu82gvXkIxP4MddD+FzQJYkWRFF3yU9QlU7S1f1eCIZRSIHCnUr2pR7BCV772f+4a1Bz9uk6sbCDWyGrzkXJZ9SGoBEb7k4Qy39+1mIj7rG1sDX66zQRFmlAL7MS/SCNY0U16DtR3egSzo1Ah/Oc/TCGzj0gscjd+LePu4XjcYAVmIcrjWGkLqsIrpRMYKGiBSsPs3nxMoKuQdywKvaFcTmRLCwIDAQABAoIBABSH205QsbL+lC5jPcCqw86UfC9viazd5snOayZENLTgCK6pJa9eyxZkdyIoz1NH5WCy4qjrBajHV+eyEBKVqTrHzd0XQ2h1Mdoz6czsyY4Ai3v8U8K88pMwvbU4+fDEM6XIStAC5KFwn0ElVhpzuioNUrnQkXz9gsxvCpekaRs3JFeM50VzjGkWFjy+/HOPeS+HajY+omjcH7qFb0QXSHa1cT7/B8awgc1EWvRCfPZ7VHXjqh9MtwF5afYKetuT2Yk5Z8T8cdM6OPlJ6DkE+VmuKsVSPE8+E5OYg8GjqgNKZvxvzHy/Rw1mP+S2/fGBVOaaxlzKNHln4ZrYI334iDkCgYEA9v5Sd8qeUKXvmpOtXY6K/WGyyt0szdeaVlgP2n1Ox2U1hqtGf9wpAFHt4VjGIOHXXVF8GH5OJgHEU4N3KHljpJ0hpcUvK+QeNaPQBH9UpfWhFW4TH2MFHzigCvXnEkXyn0ys/o5/4XbXi7tL4TflmU8u85cH3AvZABsvnuCmn5UCgYEAywaXllMvw65c22OBSB2CUhOjmvvb0rIu63b78R5bojI/HNyaUinBMxqfavQnc/sn8eqWrGJNd9GRkStU+8E/BrX6MHdxuzCtUCKSH5ixFnIg3im1eMnP/CIw6JcMkDLjsnE5zJ1nh2Nd5khn/ueNQF5hUz1sDW6Ns87qZ3H9GB8CgYEAgfZIBmhC7USi0r8p1bSPRcwGe9/tF1J/Dze+/8Q3k4uZooa0zcpWeKijdpNzjRHIdH3PwkOTc0QyvY7LQCy/VXqoncUnkPyzOJ49cmBddgXNAK2uujEsHMV60MmbEG5lv5Rk4nywpT4XJJskzhjPYt/bYKjzpcFGKVwkroCerBECgYAdKQw6viX9IB0cMbWO6xYdvc5g403WfFs63LMhFbAporfn6FON+4tRUMCW9wx3nxpEp+IOTmw8CnCy/htNsZrg1uBhd7ZxIXOzL9P3D9JXm/rWjf0PpUTnPO3zakaWq4iCx7p6hh0pl/8TpVCyjwV9ulCWSRss7rURn2WRiBDHFwKBgQCgvWuYKDPHjVj9EyYI/Fwbt5ZaRccaOXCKKhwbh8qdb4qIChCGfnohd/uPYjSIZg4KQJY5Dmdu2wFxDkeFMz/ijlC3W735hMYejJNJk2GOVz4WYbfQjnHw6fdyw2jnLVGBunCmRe8Kod98N+P5F9HukBtgTI7wZMLA4zVjrKl9xA=="></set>
+  <!-- Rsa256公钥 -->
+  <set name="ALIPAY_APP_ALIPAY_PUBLIC_KEY" value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAw+IHm/hlzpeBLDd2GghwwFF/kYZSOvGQZ/NdPCpMlzCxpkAKdF8Nf44DmeGRwxLYZ8QyYVWgzs4fWDbZ5ebftE7ijb0CVmlocTbSmbgDroiu4qmQYdHo+RRraFdTu82gvXkIxP4MddD+FzQJYkWRFF3yU9QlU7S1f1eCIZRSIHCnUr2pR7BCV772f+4a1Bz9uk6sbCDWyGrzkXJZ9SGoBEb7k4Qy39+1mIj7rG1sDX66zQRFmlAL7MS/SCNY0U16DtR3egSzo1Ah/Oc/TCGzj0gscjd+LePu4XjcYAVmIcrjWGkLqsIrpRMYKGiBSsPs3nxMoKuQdywKvaFcTmRLCwIDAQAB"></set>
+  <!-- 商户生成签名字符串所使用的签名算法类型 -->
+  <set name="ALIPAY_SIGN_TYPE" value="RSA2"></set>
+  <!-- 参数返回格式，只支持json -->
+  <set name="ALIPAY_FORMAT" value="json"></set>
+  <!-- 编码集，支持GBK/UTF-8 -->
+  <set name="ALIPAY_CHARSET" value="UTF-8"></set>
+</configuration>

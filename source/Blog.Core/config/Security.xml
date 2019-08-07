@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <!-- 生成Token的Key -->
+  <set name="Token_Key" value="sdf@jl~234kjlJJ#kJWLjwperlk#7sjdflkj2"></set>
+  <!-- 密码规则：是否开启验证 -->
+  <set name="Password_Rule_IsOn" value="false"></set>
+  <!-- 密码规则：最小长度 -->
+  <set name="Password_Rule_MinLength" value="8"></set>
+  <!-- 密码规则：最大长度 -->
+  <set name="Password_Rule_MaxLength" value="16"></set>
+  <!-- 密码规则：是否需要大小写 -->
+  <set name="Password_Rule_UpperAndLower" value="true"></set>
+</configuration>

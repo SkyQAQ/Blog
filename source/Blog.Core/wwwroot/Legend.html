@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+<script src="/js/crypto-js-3.1.9-1/core.js" type="text/javascript"></script>
+<script src="/js/crypto-js-3.1.9-1/crypto-js.js" type="text/javascript"></script>
+<script src="/js/crypto-js-3.1.9-1/aes.js" type="text/javascript"></script>
+<script src="/js/crypto-js-3.1.9-1/enc-base64.js" type="text/javascript"></script>
+<html>
+<head>
+    <title>Legend</title>
+    <meta charset="utf-8" />
+</head>
+<body onload="onLoad()">
+    <div style="text-align: left;margin-left: 40%;margin-top: 10%">
+        <table>
+            <tr>
+                <td>Worker Account:</td>
+                <td><input type="text" name="txtname" id="txtname" onkeyup="keyup1()"><button onclick="getlegendinfobyaccount()">Search</button></td>
+            </tr>
+            <tr>
+                <td>Worker Role:</td>
+                <td><input type="text" name="txtrole" id="txtrole" onkeyup="keyup2()"><button onclick="getlegendinfobyrole()">Search</button></td>
+            </tr>
+            <tr>
+                <td>明文:</td>
+                <td><input type="text" name="txtdecrypt" id="txtdecrypt"><button onclick="encrypt1()">ECB加密</button></td>
+            </tr>
+            <tr>
+                <td>密文:</td>
+                <td><input type="text" name="txtencrypt" id="txtencrypt"><button onclick="decrypt1()">ECB解密</button></td>
+            </tr>
+            <tr>
+                <td>明文:</td>
+                <td><input type="text" name="txtdecryptaes" id="txtdecryptaes"><button onclick="encrypt2()">官网AES加密</button></td>
+            </tr>
+            <tr>
+                <td>密文:</td>
+                <td><input type="text" name="txtencryptaes" id="txtencryptaes"><button onclick="decrypt2()">官网AES解密</button></td>
+            </tr>
+            <tr>
+                <td>根据IMEI号查询电子保卡信息:</td>
+                <td><input type="text" name="txtimei" id="txtimei"><button onclick="getEcardInfo()">查询</button></td>
+            </tr>
+        </table>
+        <form enctype="multipart/form-data" action="http://localhost:64661/api/love/importrole" method="post">
+            <input type="file" name="role" multiple>
+            <input type="submit" name="">
+        </form>
+        <p style="color: red" id="mssg">&nbsp;</p>
+    </div>
+    <div style="text-align: left;margin-left: 25%;">
+        <table id="tabledata">
+            <tr>
+                <td width="200px">Account</td>
+                <td width="200px">Name</td>
+                <td width="200px">Site</td>
+                <td width="400px">Role</td>
+                <td width="400px">Password</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    function onLoad() {
+        console.log('hello world');
+    }
+    function keyup1() {
+        if (event.keyCode == "13") {
+            //Enter键
+            getlegendinfobyaccount();
+        }
+    }
+    function keyup2() {
+        if (event.keyCode == "13") {
+            //Enter键
+            getlegendinfobyrole();
+        }
+    }
+    function getlegendinfobyaccount() {
+        var name = document.getElementById('txtname').value;
+        var table = document.getElementById('tabledata');
+        if (name == '') {
+            alert('Please enter Worker Name!');
+            return;
+        }
+        var apiUrl = 'http://10.16.0.126:1002/lol/legend/getlegendinfobyname?name=' + name;
+        var mssg = Get(apiUrl, null);
+        var key = getKey();
+        if (mssg != '') {
+            try {
+                var obj = JSON.parse(mssg);
+                for (var i = table.rows.length - 1; i >= 1; i--) {
+                    table.deleteRow(i);
+                }
+                if (obj != null && obj.length > 　0) {
+                    for (var i = 0; i <= obj.length - 1; i++) {
+                        var tr = document.createElement("tr");
+                        var td1 = document.createElement("td");
+                        td1.innerHTML = obj[i].Account;
+                        tr.appendChild(td1);
+                        var td2 = document.createElement("td");
+                        td2.innerHTML = obj[i].Name;
+                        tr.appendChild(td2);
+                        var td3 = document.createElement("td");
+                        td3.innerHTML = obj[i].Site;
+                        tr.appendChild(td3);
+                        var td4 = document.createElement("td");
+                        td4.innerHTML = obj[i].Role;
+                        tr.appendChild(td4);
+                        var td5 = document.createElement("td");
+                        td5.innerHTML = obj[i].PWD;
+                        tr.appendChild(td5);
+                        table.appendChild(tr);
+                    }
+                }
+            }
+            catch (e) {
+                for (var i = table.rows.length - 1; i >= 1; i--) {
+                    table.deleteRow(i);
+                }
+                document.getElementById('mssg').innerText = mssg;
+                console.log(e);
+            }
+        }
+    }
+    function getlegendinfobyrole() {
+        var role = document.getElementById('txtrole').value;
+        var table = document.getElementById('tabledata');
+        if (role == '') {
+            alert('Please enter Worker Role!');
+            return;
+        }
+        var apiUrl = 'http://10.16.0.126:1002/lol/legend/getlegendinfobyrole?role=' + role;
+        var mssg = Get(apiUrl, null);
+        if (mssg != '') {
+            try {
+                var obj = JSON.parse(mssg);
+                for (var i = table.rows.length - 1; i >= 1; i--) {
+                    table.deleteRow(i);
+                }
+                if (obj != null && obj.length > 　0) {
+                    for (var i = 0; i <= obj.length - 1; i++) {
+                        var tr = document.createElement("tr");
+                        var td1 = document.createElement("td");
+                        td1.innerHTML = obj[i].Account;
+                        tr.appendChild(td1);
+                        var td2 = document.createElement("td");
+                        td2.innerHTML = obj[i].Name;
+                        tr.appendChild(td2);
+                        var td3 = document.createElement("td");
+                        td3.innerHTML = obj[i].Site;
+                        tr.appendChild(td3);
+                        var td4 = document.createElement("td");
+                        td4.innerHTML = obj[i].Role;
+                        tr.appendChild(td4);
+                        table.appendChild(tr);
+                    }
+                }
+                document.getElementById('mssg').innerText = 'success';
+            }
+            catch (e) {
+                for (var i = table.rows.length - 1; i >= 1; i--) {
+                    table.deleteRow(i);
+                }
+                document.getElementById('mssg').innerText = mssg;
+                console.log(e);
+            }
+        }
+    }
+    function encrypt1() {
+        // 加密
+        var decryptStr = document.getElementById('txtdecrypt').value;
+        if (decryptStr == '') {
+            alert('请输入明文！');
+            return;
+        }
+        var encryptStr = encrypt(decryptStr, getKey());
+        document.getElementById('txtencrypt').value = encryptStr;
+    }
+
+    function decrypt1() {
+        // 解密
+        var encryptStr = document.getElementById('txtencrypt').value;// 密文
+        if (encryptStr == '') {
+            alert('请输入密文！');
+            return;
+        }
+        var decryptStr = decrypt(encryptStr, getKey());
+        document.getElementById('txtdecrypt').value = decryptStr;
+    }
+    function encrypt2() {
+        // 加密
+        var decryptStr = document.getElementById('txtdecryptaes').value;
+        if (decryptStr == '') {
+            alert('请输入明文！');
+            return;
+        }
+        var api = 'http://10.16.0.126:8090/api/esb/aesencrypt?info=' + decryptStr;
+        var mssg = Get(api, null);
+        var obj = JSON.parse(mssg);
+        var encryptStr = obj.Data;
+        document.getElementById('txtencryptaes').value = encryptStr;
+    }
+    function getEcardInfo() {
+        var value = document.getElementById('txtimei').value;
+        if (value == '') {
+            alert('请输入IMEI号！');
+            return;
+        }
+        var api = 'http://10.16.0.126:8090/api/esb/getecardinfo?imei=' + value + '&sign=&timestamp=';
+        var mssg = Get(api, null);
+        var obj = JSON.parse(mssg);
+        var result = obj.Data;
+        alert(result);
+    }
+    function decrypt2() {
+        // 解密
+        var encryptStr = document.getElementById('txtencryptaes').value;// 密文
+        if (encryptStr == '') {
+            alert('请输入密文！');
+            return;
+        }
+        var decryptStr = decrypt(encryptStr, getKey());
+        document.getElementById('txtdecryptaes').value = decryptStr;
+    }
+    function Get(url, data) {
+        //先声明一个异步请求对象
+        var xmlHttpReg = null;
+        var response = '';
+        if (window.ActiveXObject) {//如果是IE
+            xmlHttpReg = new ActiveXObject("Microsoft.XMLHTTP");
+
+        } else if (window.XMLHttpRequest) {
+
+            xmlHttpReg = new XMLHttpRequest(); //实例化一个xmlHttpReg
+        }
+        //如果实例化成功,就调用open()方法,就开始准备向服务器发送请求
+        if (xmlHttpReg != null) {
+            xmlHttpReg.open("get", url, false);
+            xmlHttpReg.send(data);
+            response = xmlHttpReg.responseText;
+        }
+        return response;
+    }
+    function syncGet(url, data) {
+        //先声明一个异步请求对象
+        var xmlHttpReg = null;
+        var response = '';
+        if (window.ActiveXObject) {//如果是IE
+            xmlHttpReg = new ActiveXObject("Microsoft.XMLHTTP");
+
+        } else if (window.XMLHttpRequest) {
+
+            xmlHttpReg = new XMLHttpRequest(); //实例化一个xmlHttpReg
+        }
+        //如果实例化成功,就调用open()方法,就开始准备向服务器发送请求
+        if (xmlHttpReg != null) {
+            xmlHttpReg.open("get", url, true);
+            if (data != null) {
+                xmlHttpReg.send(data);
+            }
+            xmlHttpReg.onreadystatechange = function () {
+                if (xmlHttpReg.readyState == 4 && xmlHttpReg.status == 200) {//4代表执行完成 200代表执行成功
+                    response = xmlHttpReg.responseText;
+                }
+            }; //设置回调函数
+        }
+        return response;
+    }
+    function syncPost(url, data) {
+        //先声明一个异步请求对象
+        var xmlHttpReg = null;
+        var response;
+        if (window.ActiveXObject) {//如果是IE
+            xmlHttpReg = new ActiveXObject("Microsoft.XMLHTTP");
+
+        } else if (window.XMLHttpRequest) {
+
+            xmlHttpReg = new XMLHttpRequest(); //实例化一个xmlHttpReg
+        }
+        //如果实例化成功,就调用open()方法,就开始准备向服务器发送请求
+        if (xmlHttpReg != null) {
+            xmlHttpReg.open("post", url, true);
+            xmlHttpReg.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;");//缺少这句，后台无法获取参数
+            if (data != null) {
+                xmlHttpReg.send(data);
+            }
+            xmlHttpReg.onreadystatechange = doResult; //设置回调函数
+        }
+        //回调函数
+        //一旦readyState的值改变,将会调用这个函数,readyState=4表示完成相应
+        //设定函数doResult()
+        function doResult() {
+            if (xmlHttpReg.readyState == 4 && xmlHttpReg.status == 200) {//4代表执行完成 200代表执行成功
+                response = xmlHttpReg.responseText;
+            }
+            response = '';
+        }
+        return response;
+    }
+    function getKey() {
+        var apiUrlKey = 'http://10.16.0.126:8090/api/PortalPassword/GetCryptoPublicKey';
+        var keyJson = JSON.parse(Get(apiUrlKey, null));
+        var publicKey = keyJson.Data;
+        return CryptoJS.enc.Utf8.parse(publicKey);
+    }
+    function encrypt(data, publicKey) {
+        // 加密
+        var options = {
+            mode: CryptoJS.mode.ECB,
+            padding: CryptoJS.pad.Pkcs7
+        }
+        var encryptedData = CryptoJS.AES.encrypt(data, publicKey, options);
+        var encryptedBase64Str = encryptedData.toString();
+        var encryptedStr = encryptedData.ciphertext.toString();
+        return encryptedStr;
+    }
+
+    function decrypt(data, publicKey) {
+        // 解密
+        var options = {
+            mode: CryptoJS.mode.ECB,
+            padding: CryptoJS.pad.Pkcs7
+        }
+        var encryptedHexStr = CryptoJS.enc.Hex.parse(data);
+        var encryptedBase64Str = CryptoJS.enc.Base64.stringify(encryptedHexStr);
+        var decryptedData = CryptoJS.AES.decrypt(encryptedBase64Str, publicKey, options);
+        var decryptedStr = decryptedData.toString(CryptoJS.enc.Utf8);
+        return decryptedStr;
+    }
+</script>

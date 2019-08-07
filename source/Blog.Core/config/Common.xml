@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <!-- 缓存服务器地址、密码 -->
+  <set name="RS_ConnectString" value="47.101.137.248:6379,password=1qaz@WSX"></set>
+  
+  <!-- AES加密 -->
+  <set name="AES_Key" value="9aks@k30*!sjidgl@iemvnx12(1923)a"></set>
+  <set name="AES_Iv" value="hu$#@k23_9sd2sew"></set>
+
+  <!-- 登录密码加密 -->
+  <set name="Public_Key" value="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCofFd3v2MR5MNdVXyy5FnmpgAq
++F444T34jPuYq6lA/qZzStxQ0WUVAIOR0byGEd8J46zPxGQ9euJpcsasvWpxWG91
+6+DMl6d+bzyFIqSl8gcVOBPUtAdxnsAnapjBwTL6/XfjErMiFjXlxkuYE2lF/i7s
+hWYrdW/MhAW5jmmKXwIDAQAB"></set>
+  <set name="Private_Key" value="MIICXAIBAAKBgQCofFd3v2MR5MNdVXyy5FnmpgAq+F444T34jPuYq6lA/qZzStxQ
+0WUVAIOR0byGEd8J46zPxGQ9euJpcsasvWpxWG916+DMl6d+bzyFIqSl8gcVOBPU
+tAdxnsAnapjBwTL6/XfjErMiFjXlxkuYE2lF/i7shWYrdW/MhAW5jmmKXwIDAQAB
+AoGBAIJt75Bl+p2piIvCWAxstiPVsh+Rse86fyzghwzDJv2HpPdvpmpyD1xYz4Gc
+6eKoBw+yzt7wW+E0Nf4HukGTSMhAbpJjCpSKyFShCb4wmoO1u/9Wbs2gTnbarzg7
+BoeX3uo8Rm7VRUeeV4KNZA+VNDN5DNVtABg4jrUyC1YDMYxhAkEAz20xm52coVUj
+EhrK6U3bX262p0MCVzg+85uz1ncGQFaFXB6WgL8WBBbEkqugsakFTnFlRy9x/arm
+PAH1nQqm+QJBAM/wuRvFFOi+ZzmThuzjw0ZkohaNXhQgnPXPxrbNtF3MrOCM++W5
+prXLr42CiJjiRNaIKQGTAiA6TJ51db0JWhcCQCaMAUMNCDWHD8xmhDzVBiZ2+aSd
+tEqnHjPBRKtfVR8RtRjIammkmR/LZ15mXKeHZIAOXKbc708Xuk9+gblcaGkCQFlQ
+9tG8x4xpLIGIoq3h7yCvXQf+1OgkUgcrphkjJlQb9C3HoPM92SPBR7iq1u2EUzkq
+5yIr+P/KytpNbbMy7yUCQBFrnl4f+fsGx8om3f1sh1qcCSOnn1T6WbPz5POn7ikp
+2bWAMPNiH0D14WUMqqwVUZXBchmABrYa6engC1aiJNs="></set>
+  
+  <!-- 数据库连接字符串 -->
+  <set name="MSSQL" value="Data Source=47.101.137.248;Initial Catalog=WY_IMS;User Id=sa;Password=P@ssw0rd888;MultipleActiveResultSets=true"></set>
+  <set name="MSSQL_Readonly" value="Data Source=47.101.137.248;Initial Catalog=WY_IMS;User Id=sa;Password=P@ssw0rd888;MultipleActiveResultSets=true"></set>
+  <set name="MYSQL" value="Data Source=47.101.137.248;Database=WY_IMS;User Id=sa;Password=P@ssw0rd"></set>
+  <set name="ORICLE" value="User ID=IFSAPP;Password=IFSAPP;Data Source=RACE;"></set>
+  
+  <!-- 系统账号 -->
+  <set name="SystemAccount" value="965929770"></set>
+  <!-- 跨域代理 多个用英文分号隔开 -->
+  <set name="OriginServer" value="http://localhost:8888"></set>
+  
+  <!-- 邮件发送 -->
+  <set name="Email_QQ_Host" value="smtp.qq.com"></set>
+  <set name="Email_QQ_Account" value="965929770@qq.com"></set>
+  <!-- POP3/SMTP 授权码 ceqjpwuayjdjbejc -->
+  <!-- IMAP/SMTP 授权码 foqpqmwsaukvbcjb -->
+  <set name="Email_QQ_Password" value="foqpqmwsaukvbcjb"></set>
+
+  <!-- 定时任务命名空间 -->
+  <set name="Job_Assembly" value="Blog.Core.Job.dll"/>
+
+  <!-- 附件上传 请求地址 -->
+  <set name="Upload_Url" value="http://47.101.137.248/"></set>
+  <!-- 附件上传 类型 -->
+  <set name="Upload_Type" value="*"></set>
+  <!-- 附件上传 每次最多上传数量 -->
+  <set name="Upload_MaxCount" value="5"></set>
+  <!-- 附件上传 每个文件最大（M） -->
+  <set name="Upload_MaxLength" value="50"></set>
+</configuration>
