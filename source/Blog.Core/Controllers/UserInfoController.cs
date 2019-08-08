@@ -18,9 +18,9 @@ namespace Blog.Core.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet, Route("getuserinfo")]
-        public UserIdentity GetUserInfo()
+        public UserInfoModel GetUserInfo()
         {
-            return UserIdentity;
+            return new UserInfoCommand(UserIdentity).GetUserInfo();
         }
 
         /// <summary>

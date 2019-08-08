@@ -1,0 +1,735 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Blog.Core.Biz</name>
+    </assembly>
+    <members>
+        <member name="T:Blog.Core.Biz.Attachments.AttachmentCommand">
+            <summary>
+            附件Command
+            </summary>
+        </member>
+        <member name="M:Blog.Core.Biz.Attachments.AttachmentCommand.#ctor(Blog.Core.Model.UserIdentity)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="identity"></param>
+        </member>
+        <member name="M:Blog.Core.Biz.Attachments.AttachmentCommand.GetAttachment(System.String)">
+            <summary>
+            获取附件信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Attachments.AttachmentCommand.GetAttachmentList(System.Collections.Generic.List{Blog.Core.Model.SearchCondition},System.Int32,System.Int32)">
+            <summary>
+            获取附件列表信息
+            </summary>
+            <param name="searchList"></param>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Attachments.AttachmentCommand.UploadFile(System.String,System.String,Microsoft.AspNetCore.Http.IFormFile,System.String)">
+            <summary>
+            上传附件
+            </summary>
+            <param name="moduleType">模块类型</param>
+            <param name="moduleId">模块Id</param>
+            <param name="file">文件</param>
+            <param name="fileDir">文件目录</param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Attachments.AttachmentCommand.UploadFile(System.String,System.String,System.Collections.Generic.List{Microsoft.AspNetCore.Http.IFormFile},System.String)">
+            <summary>
+            上传多个附件
+            </summary>
+            <param name="moduleType">模块类型</param>
+            <param name="moduleId">模块Id</param>
+            <param name="files">文件</param>
+            <param name="fileDir">文件目录</param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Attachments.AttachmentCommand.DeleteFile(System.String[])">
+            <summary>
+            删除附件
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Attachments.AttachmentCommand.DownloadFile(System.String,System.String@,System.String@)">
+            <summary>
+            下载附件
+            </summary>
+            <param name="id"></param>
+            <param name="mimeType"></param>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Attachments.AttachmentCommand.DownloadZip(System.String[])">
+            <summary>
+            打包附件下载
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Attachments.AttachmentCommand.GetFileUploadLimit">
+            <summary>
+            获取文件上传限制
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Blog.Core.Biz.Attachments.FileInfo">
+            <summary>
+            附件信息
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Attachments.FileInfo.ModuleType">
+            <summary>
+            模块名称
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Attachments.FileInfo.ModuleId">
+            <summary>
+            模块Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Attachments.FileInfo.FileDir">
+            <summary>
+            附件目录
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Biz.Attachments.FileUploadLimit">
+            <summary>
+            附件上传限制
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Attachments.FileUploadLimit.Url">
+            <summary>
+            请求地址
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Attachments.FileUploadLimit.MaxCount">
+            <summary>
+            每次最多上传条数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Attachments.FileUploadLimit.MaxLength">
+            <summary>
+            单个文件最大长度 (M)
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Attachments.FileUploadLimit.Type">
+            <summary>
+            限制类型
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Biz.Home.OnlineUserModel">
+            <summary>
+            在线用户信息模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Home.OnlineUserModel.UserId">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Home.OnlineUserModel.UserAccount">
+            <summary>
+            用户账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Home.OnlineUserModel.UserName">
+            <summary>
+            用户名称
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Biz.LoveCommand">
+            <summary>
+            LoveCommand
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Biz.Menu.MenuInfoCommand">
+            <summary>
+            菜单Command
+            </summary>
+        </member>
+        <member name="M:Blog.Core.Biz.Menu.MenuInfoCommand.#ctor(Blog.Core.Model.UserIdentity)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="identity"></param>
+        </member>
+        <member name="M:Blog.Core.Biz.Menu.MenuInfoCommand.GetMenuTreeData">
+            <summary>
+            获取菜单树形结果数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Menu.MenuInfoCommand.GetMenuTreeDataByUserId">
+            <summary>
+            根据用户Id获取菜单树形结果数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Menu.MenuInfoCommand.CreateOrUpdateMenuInfo(Blog.Core.Biz.Menu.MenuInfoEditModel)">
+            <summary>
+            创建或更新菜单信息
+            </summary>
+            <param name="info">菜单编辑信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Menu.MenuInfoCommand.GetMenuInfoById(System.String)">
+            <summary>
+            根据菜单Id获取菜单编辑信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Menu.MenuInfoCommand.DeleteMenuInfoById(System.String)">
+            <summary>
+            根据菜单Id删除菜单信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Menu.MenuInfoCommand.GetAccessMenuRoute">
+            <summary>
+            获取当前账号角色可访问的路由
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Blog.Core.Biz.Menu.MenuInfoEditModel">
+            <summary>
+            菜单信息编辑Model
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Menu.MenuInfoEditModel.MenuInfoId">
+            <summary>
+            菜单Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Menu.MenuInfoEditModel.MenuName">
+            <summary>
+            菜单名称
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Menu.MenuInfoEditModel.MenuCode">
+            <summary>
+            菜单编码
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Menu.MenuInfoEditModel.MenuPath">
+            <summary>
+            菜单路径
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Menu.MenuInfoEditModel.MenuSeq">
+            <summary>
+            菜单排序
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Menu.MenuInfoEditModel.PMenuId">
+            <summary>
+            上级菜单Id
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Biz.Quartz.QuartzCommand">
+            <summary>
+            定时任务Command
+            </summary>
+        </member>
+        <member name="F:Blog.Core.Biz.Quartz.QuartzCommand.quartz">
+            <summary>
+            Quartz帮助类
+            </summary>
+        </member>
+        <member name="M:Blog.Core.Biz.Quartz.QuartzCommand.#ctor(Blog.Core.Model.UserIdentity)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="identity"></param>
+        </member>
+        <member name="M:Blog.Core.Biz.Quartz.QuartzCommand.Stop">
+            <summary>
+            停止调度作业
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Quartz.QuartzCommand.Start">
+            <summary>
+            启动调度作业
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Quartz.QuartzCommand.Status">
+            <summary>
+            获取调度作业状态，开始为true 其他为false
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Quartz.QuartzCommand.GetQuartzList(System.Collections.Generic.List{Blog.Core.Model.SearchCondition})">
+            <summary>
+            获取定时任务列表数据
+            </summary>
+            <param name="searchList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Quartz.QuartzCommand.GetLogInfoList(System.String,System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            获取定时任务运行日志列表数据
+            </summary>
+            <param name="group"></param>
+            <param name="name"></param>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="onlyError"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Quartz.QuartzCommand.EditQuartz(System.String)">
+            <summary>
+            根据JobId获取Job编辑信息
+            </summary>
+            <param name="JobId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Quartz.QuartzCommand.CreateOrUpdateQuartz(Blog.Core.Common.Quartz.QuartzEditModel)">
+            <summary>
+            创建Quartz
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Quartz.QuartzCommand.DeleteQuartz(System.String[])">
+            <summary>
+            删除Job
+            </summary>
+            <param name="ids">Job Ids</param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Quartz.QuartzCommand.HandleJobAsync(System.String,System.String)">
+            <summary>
+            处理Job
+            </summary>
+            <param name="jobId"></param>
+            <param name="operate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Quartz.QuartzCommand.GetJobClass">
+            <summary>
+            获取Job类
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Blog.Core.Biz.Quartz.LogInfoListData">
+            <summary>
+            Job运行日志列表数据
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Quartz.LogInfoListData.RecordCount">
+            <summary>
+            总记录数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Quartz.LogInfoListData.RecordList">
+            <summary>
+            数据列表
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Quartz.LogInfoListData.ExportBuffString">
+            <summary>
+            导出数据
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Biz.Quartz.LogInfoListModel">
+            <summary>
+            Job运行日志列表数据模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Quartz.LogInfoListModel.JobLogId">
+            <summary>
+            日志Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Quartz.LogInfoListModel.StartTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Quartz.LogInfoListModel.EndTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Quartz.LogInfoListModel.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Quartz.LogInfoListModel.Result">
+            <summary>
+            结果
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Quartz.LogInfoListModel.Host">
+            <summary>
+            Host
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Biz.Role.RoleInfoCommand">
+            <summary>
+            角色Command
+            </summary>
+        </member>
+        <member name="M:Blog.Core.Biz.Role.RoleInfoCommand.#ctor(Blog.Core.Model.UserIdentity)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="identity"></param>
+        </member>
+        <member name="M:Blog.Core.Biz.Role.RoleInfoCommand.GetRoleInfoList(System.Collections.Generic.List{Blog.Core.Model.SearchCondition},System.Int32,System.Int32,System.String)">
+            <summary>
+            获取角色信息List
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Role.RoleInfoCommand.GetRoleInfoById(System.String)">
+            <summary>
+            根据角色Id获取角色编辑信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Role.RoleInfoCommand.CreateOrUpdateRoleInfo(Blog.Core.Biz.Role.RoleInfoEditModel)">
+            <summary>
+            创建或更新角色信息
+            </summary>
+            <param name="info">角色编辑信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Role.RoleInfoCommand.DeleteRoleInfo(System.String[])">
+            <summary>
+            删除角色信息
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Role.RoleInfoCommand.GetMenuInfoList(System.String)">
+            <summary>
+            根据角色Id获取菜单信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Role.RoleInfoCommand.CreateMIR(Blog.Core.Biz.Role.MIREditModel)">
+            <summary>
+            创建角色与菜单对应关系信息
+            </summary>
+            <param name="info"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Role.RoleInfoCommand.UploadRole(System.Data.DataTable)">
+            <summary>
+            导入角色
+            </summary>
+            <param name="importData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Role.RoleInfoCommand.GetRoleTransferData">
+            <summary>
+            获取角色穿梭框数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Blog.Core.Biz.Role.RoleInfoEditModel">
+            <summary>
+            角色编信息辑模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Role.RoleInfoEditModel.RoleInfoId">
+            <summary>
+            角色ID
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Role.RoleInfoEditModel.RoleName">
+            <summary>
+            角色名称
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Role.RoleInfoEditModel.RoleCode">
+            <summary>
+            角色编码
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Biz.Role.MIREditModel">
+            <summary>
+            角色对应菜单关系编辑模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Role.MIREditModel.roleInfoId">
+            <summary>
+            角色Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Role.MIREditModel.menuInfoIds">
+            <summary>
+            菜单Ids
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Biz.User.UserInfoCommand">
+            <summary>
+            用户Command
+            </summary>
+        </member>
+        <member name="M:Blog.Core.Biz.User.UserInfoCommand.#ctor(Blog.Core.Model.UserIdentity)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="identity"></param>
+        </member>
+        <member name="M:Blog.Core.Biz.User.UserInfoCommand.GetUserInfo">
+            <summary>
+            获取用户信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.User.UserInfoCommand.GetUserList(System.Collections.Generic.List{Blog.Core.Model.SearchCondition},System.Int32,System.Int32,System.String)">
+            <summary>
+            获取角色信息List
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.User.UserInfoCommand.EnableUser(System.String[])">
+            <summary>
+            启用用户
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.User.UserInfoCommand.DisableUser(System.String[])">
+            <summary>
+            禁用用户
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.User.UserInfoCommand.GetUserRolesByUserId(System.String)">
+            <summary>
+            根据用户信息获取用户角色
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.User.UserInfoCommand.GetRoleInfoList(System.String)">
+            <summary>
+            根据用户Id获取角色Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.User.UserInfoCommand.CreateUIR(Blog.Core.Biz.User.UIREditModel)">
+            <summary>
+            创建用户与角色对应关系信息
+            </summary>
+            <param name="info"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.User.UserInfoCommand.DeleteUserRole(System.String,System.String)">
+            <summary>
+            删除用户角色
+            </summary>
+            <param name="userId"></param>
+            <param name="roleId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.User.UserInfoCommand.Save(System.String,System.String)">
+            <summary>
+            更新用户信息
+            </summary>
+            <param name="name">用户名称</param>
+            <param name="pwd">用户密码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.User.UserInfoCommand.ChangeEmail(System.String,System.String)">
+            <summary>
+            更换邮箱
+            </summary>
+            <param name="receive"></param>
+            <param name="verifycode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.User.UserInfoCommand.ChangeAvatar(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            更换头像
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Blog.Core.Biz.User.UserInfoRegisterModel">
+            <summary>
+            注册账号Model
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UserInfoRegisterModel.Name">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UserInfoRegisterModel.Account">
+            <summary>
+            账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UserInfoRegisterModel.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UserInfoRegisterModel.Email">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Biz.User.UserListData">
+            <summary>
+            用户列表数据
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UserListData.RecordCount">
+            <summary>
+            总记录数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UserListData.RecordList">
+            <summary>
+            数据列表
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UserListData.ExportBuffString">
+            <summary>
+            导出数据
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Biz.User.UserListModel">
+            <summary>
+            用户列表模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UserListModel.UserInfoId">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UserListModel.UserName">
+            <summary>
+            用户名称
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UserListModel.UserAccount">
+            <summary>
+            用户账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UserListModel.UserEmail">
+            <summary>
+            用户邮箱
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UserListModel.UserRoles">
+            <summary>
+            用户角色
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UserListModel.LoginStatus">
+            <summary>
+            登录状态
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UserListModel.LoginOn">
+            <summary>
+            上次登录时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UserListModel.LoginClientIp">
+            <summary>
+            上次登录IP
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UserListModel.UserStatus">
+            <summary>
+            启用状态
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Biz.User.UserRoleModel">
+            <summary>
+            用户角色模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UserRoleModel.RoleInfoId">
+            <summary>
+            角色Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UserRoleModel.RoleName">
+            <summary>
+            角色名称
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UserRoleModel.RoleCode">
+            <summary>
+            角色编码
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Biz.User.UIREditModel">
+            <summary>
+            用户对应角色关系编辑模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UIREditModel.userInfoId">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UIREditModel.roleInfoIds">
+            <summary>
+            角色Ids
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Biz.User.UserInfoModel">
+            <summary>
+            用户信息
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UserInfoModel.UserId">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UserInfoModel.UserAccount">
+            <summary>
+            账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UserInfoModel.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UserInfoModel.UserEmail">
+            <summary>
+            用户邮箱
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UserInfoModel.UserAvatar">
+            <summary>
+            用户头像
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.User.UserInfoModel.UserRoles">
+            <summary>
+            用户角色
+            </summary>
+        </member>
+    </members>
+</doc>

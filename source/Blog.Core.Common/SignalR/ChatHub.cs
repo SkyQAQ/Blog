@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Blog.Core.Common.SignalR
 {
+    [Authorize]
     public class ChatHub : Hub
     {
         /// <summary>
@@ -13,30 +15,15 @@ namespace Blog.Core.Common.SignalR
         /// <returns></returns>
         public override Task OnConnectedAsync()
         {
-            #region 原来的
-            //string authorization = string.Empty;
-            //if (Context.GetHttpContext().Request.Query.ContainsKey("access_token"))
-            //{
-            //    authorization = Context.GetHttpContext().Request.Query["access_token"];
-            //}
-            //if (string.IsNullOrWhiteSpace(authorization))
-            //{
-            //    throw new UnauthorizedAccessException("Unauthenticated");
-            //}
-            //string token = WuYao.RsaDecrypt(authorization);
-            //string[] tokeninfo = token.Split('$');
-            //if (tokeninfo == null || tokeninfo.Length == 0)
-            //{
-            //    throw new UnauthorizedAccessException("Invalid token");
-            //}
-            //string cacheKey = Constants.Redis_Chat_Prefix + tokeninfo[1].ToUpper();
-            #endregion
-
             if (!Context.User.Identity.IsAuthenticated)
                 throw new UnauthorizedAccessException("Unauthenticated");
             string connectId = Context.ConnectionId;
             var claims = Context.User.Claims.ToArray();
             string cacheKey = Constants.Redis_Chat_Prefix + claims[0].Value.ToUpper();
+            if (CacheHelper.Exists(cacheKey))
+            {
+                CacheHelper.Remove(cacheKey);
+            }
             CacheHelper.Insert(cacheKey, connectId);
             return base.OnConnectedAsync();
         }
@@ -48,25 +35,6 @@ namespace Blog.Core.Common.SignalR
         /// <returns></returns>
         public override Task OnDisconnectedAsync(Exception exception)
         {
-            #region 原来的
-            //string authorization = string.Empty;
-            //if (Context.GetHttpContext().Request.Query.ContainsKey("access_token"))
-            //{
-            //    authorization = Context.GetHttpContext().Request.Query["access_token"];
-            //}
-            //if (string.IsNullOrWhiteSpace(authorization))
-            //{
-            //    throw new UnauthorizedAccessException("Unauthenticated");
-            //}
-            //string token = WuYao.RsaDecrypt(authorization);
-            //string[] tokeninfo = token.Split('$');
-            //if (tokeninfo == null || tokeninfo.Length == 0)
-            //{
-            //    throw new UnauthorizedAccessException("Invalid token");
-            //}
-            //string cacheKey = Constants.Redis_Chat_Prefix + tokeninfo[1].ToUpper();
-            #endregion
-
             if (!Context.User.Identity.IsAuthenticated)
                 throw new UnauthorizedAccessException("Unauthenticated");
             var claims = Context.User.Claims.ToArray();

@@ -138,4 +138,40 @@ namespace Blog.Core.Biz.User
         /// </summary>
         public string[] roleInfoIds { get; set; }
     }
+
+    /// <summary>
+    /// 用户信息
+    /// </summary>
+    public class UserInfoModel
+    {
+        /// <summary>
+        /// 用户Id
+        /// </summary>
+        public string UserId { get; set; }
+
+        /// <summary>
+        /// 账号
+        /// </summary>
+        public string UserAccount { get; set; }
+        
+        /// <summary>
+        /// 用户名
+        /// </summary>
+        public string UserName { get; set; }
+
+        /// <summary>
+        /// 用户邮箱
+        /// </summary>
+        public string UserEmail { get; set; }
+
+        /// <summary>
+        /// 用户头像
+        /// </summary>
+        public string UserAvatar { get; set; }
+
+        /// <summary>
+        /// 用户角色
+        /// </summary>
+        public string[] UserRoles { get; set; }
+    }
 }

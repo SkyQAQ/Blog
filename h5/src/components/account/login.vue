@@ -122,7 +122,7 @@ export default {
         accessToken: function (credit) {
             this.loading = true;
             let data = 'grant_type=password' + '&username=' + credit.username + '&password=' + credit.password + '&verifycode1=' + credit.verifycode1 + '&verifycode2=' + credit.verifycode2 + '&mac=' + credit.mac;
-            wy.post('api/auth/tokenjwt', data).then((res) => {
+            wy.post('api/auth/token', data).then((res) => {
                 this.$auth.storeToken(res);
                 this.getUserInfo();
                 this.getUploadLimit();

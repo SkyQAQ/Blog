@@ -109,7 +109,6 @@
                 this.$refs.upload.submit();
             },
             handleDownload: function(){
-                console.log(this.templateUrl)
                 window.open(this.templateUrl);
             },
             close: function(){

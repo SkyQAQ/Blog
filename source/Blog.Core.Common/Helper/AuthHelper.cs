@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using Blog.Core.Model;
@@ -15,14 +16,21 @@ namespace Blog.Core.Common
     /// </summary>
     public class AuthHelper
     {
+        #region 常量
+        /// <summary>
+        /// Token过期时间（小时）
+        /// </summary>
+        private const int _token_expire_in = 1;
+        /// <summary>
+        /// Refresh Token过期时间（小时）
+        /// </summary>
+        private const int _refresh_token_expire_in = 24;
+        #endregion
+
         /// <summary>
         /// 客户端Ip
         /// </summary>
         private string _clientIp = "";
-        /// <summary>
-        /// Token过期时间（小时）
-        /// </summary>
-        private const int _token_expire_in = 2;
         /// <summary>
         /// 日志
         /// </summary>
@@ -80,115 +88,94 @@ namespace Blog.Core.Common
         /// 获取授权Token
         /// </summary>
         /// <param name="credit">登录信息</param>
-        /// <param name="clientIp">客户端Ip</param>
         /// <returns></returns>
         public AuthToken GetAuthToken(LoginCredit credit)
         {
             try
             {
-                if (credit.grant_type == "password")
-                {
-                    string clientId = ValidVerifyCode(credit.verifycode1, credit.verifycode2);
-                    Login(clientId, credit.username, credit.password);
-                    string userId = GetUserIdByAccount(credit.username);
-                    AuthToken token = new AuthToken();
-                    token.expires_in = 60 * 60 * 1;
-                    token.access_token = WuYao.RsaEncrypt("grant_type=password" + credit.verifycode1 + "$" + userId + "$" + DateTime.UtcNow.AddSeconds(token.expires_in).Ticks + "$" + _clientIp);
-                    token.refresh_token = WuYao.RsaEncrypt("grant_type=refresh$" + userId + "$" + DateTime.UtcNow.AddDays(1).Ticks + "$" + DateTime.UtcNow.Ticks);
-                    token.token_type = "Bearer";
-                    return token;
-                }
-                else if (credit.grant_type == "refresh")
-                {
-                    string[] rtoken = WuYao.RsaDecrypt(credit.refresh_token.Replace(' ', '+')).Split('$');
-                    if (long.Parse(rtoken[2]) < DateTime.UtcNow.Ticks)
-                    {
-                        if (CacheHelper.Exists(rtoken[1].ToUpper()))
-                        {
-                            CacheHelper.Remove(rtoken[1].ToUpper());
-                        }
-                        throw new UnauthorizedAccessException("当前账号已过期，请重新登录！");
-                    }
-                    UserIdentity identity = GetUserIdentity(rtoken[1]);
-                    AuthToken token = new AuthToken();
-                    token.expires_in = 60 * 60 * 1;
-                    token.access_token = WuYao.RsaEncrypt("grant_type=password$" + identity.UserId + "$" + DateTime.UtcNow.AddSeconds(token.expires_in).Ticks + "$" + identity.IpAddress);
-                    token.refresh_token = WuYao.RsaEncrypt("grant_type=refresh$" + identity.UserId + "$" + rtoken[2] + "$" + DateTime.UtcNow.Ticks);
-                    token.token_type = "Bearer";
-                    return token;
-                }
-                else
-                {
-                    throw new Exception("Invalid grant_type !");
-                }
-            }
-            catch (Exception ex)
-            {
-                _log.Error(ex);
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public AuthToken GetAuthTokenJWT(LoginCredit credit)
-        {
-            try
-            {
+                ConfigHelper _s_config = new ConfigHelper(Constants.SecurityCfgPath);
                 AuthToken result = new AuthToken();
                 if (credit.grant_type == "password")
                 {
-                    ConfigHelper _s_config = new ConfigHelper(Constants.SecurityCfgPath);
                     string clientId = ValidVerifyCode(credit.verifycode1, credit.verifycode2);
                     Login(clientId, credit.username, credit.password);
-                    string userId = GetUserIdByAccount(credit.username);
-                    var tokenHandler = new JwtSecurityTokenHandler();
-                    var tokenDescriptor = new SecurityTokenDescriptor
+                    ClaimsIdentity refresh_identity = new ClaimsIdentity(new Claim[]
                     {
-                        Issuer = "Blog",
-                        Audience = "API",
-                        Subject = new ClaimsIdentity(new Claim[]
-                        {
-                            new Claim(ClaimTypes.NameIdentifier, userId),
-                            new Claim(ClaimTypes.Name, credit.username),
-                            new Claim(ClaimTypes.Role, GetUserRoles(userId)),
-                        }),
-                        Expires = DateTime.UtcNow.AddDays(1),
-                        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_s_config.Token_Key)), SecurityAlgorithms.HmacSha256Signature)
-                    };
-                    var token = tokenHandler.CreateToken(tokenDescriptor);
-                    result.access_token = tokenHandler.WriteToken(token);
-                    result.expires_in = 60 * 60 * 24;
-                    result.token_type = "Bearer";
+                        new Claim(ClaimTypes.Name, credit.username),
+                        new Claim(ClaimTypes.AuthenticationMethod, "refresh")
+                    });
+                    result.refresh_token = GenerateJwtToken(refresh_identity, _refresh_token_expire_in, _s_config.Token_Key);
                 }
-                //else if (credit.grant_type == "refresh")
-                //{
-                //    string[] rtoken = WuYao.RsaDecrypt(credit.refresh_token.Replace(' ', '+')).Split('$');
-                //    if (long.Parse(rtoken[2]) < DateTime.UtcNow.Ticks)
-                //    {
-                //        if (CacheHelper.Exists(rtoken[1].ToUpper()))
-                //        {
-                //            CacheHelper.Remove(rtoken[1].ToUpper());
-                //        }
-                //        throw new UnauthorizedAccessException("当前账号已过期，请重新登录！");
-                //    }
-                //    UserIdentity identity = GetUserIdentity(rtoken[1]);
-                //    AuthToken token = new AuthToken();
-                //    token.expires_in = 60 * 60 * 1;
-                //    token.access_token = WuYao.RsaEncrypt("grant_type=password$" + identity.UserId + "$" + DateTime.UtcNow.AddSeconds(token.expires_in).Ticks + "$" + identity.IpAddress);
-                //    token.refresh_token = WuYao.RsaEncrypt("grant_type=refresh$" + identity.UserId + "$" + rtoken[2] + "$" + DateTime.UtcNow.Ticks);
-                //    token.token_type = "Bearer";
-                //    return token;
-                //}
+                else if (credit.grant_type == "refresh_token")
+                {
+                    credit.username = CheckRefreshToken(credit.refresh_token);
+                    result.refresh_token = credit.refresh_token;
+                }
                 else
                 {
                     throw new Exception("Invalid grant_type !");
                 }
+                string userId = GetUserIdByAccount(credit.username);
+                ClaimsIdentity access_identity = new ClaimsIdentity(new Claim[]
+                    {
+                        new Claim(ClaimTypes.NameIdentifier, userId),
+                        new Claim(ClaimTypes.Name, credit.username),
+                        new Claim(ClaimTypes.Role, GetUserRoles(userId)),
+                        new Claim(ClaimTypes.AuthenticationMethod, "access")
+                    });
+                result.access_token = GenerateJwtToken(access_identity, _token_expire_in, _s_config.Token_Key);
+                result.token_type = "Bearer";
+                result.expires_in = WuYao.ConvertTimeStamp(DateTime.Now.AddMinutes(_token_expire_in));
                 return result;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            
+        }
+
+        /// <summary>
+        /// 生成Jwt Token
+        /// </summary>
+        /// <param name="identity">用户身份</param>
+        /// <param name="hours">有效期（小时）</param>
+        /// <param name="key">加密Key</param>
+        /// <returns></returns>
+        public string GenerateJwtToken(ClaimsIdentity identity, int hours, string key)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var subject = new ClaimsIdentity();
+            var issuedAt = DateTime.Now;
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Issuer = "Blog",
+                Audience = "API",
+                Subject = identity,
+                Expires = issuedAt.AddHours(hours),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key)), SecurityAlgorithms.HmacSha256Signature)
+            };
+            var token = tokenHandler.CreateJwtSecurityToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
+        }
+
+        /// <summary>
+        /// 验证Refresh Token是否有效，如有效返回当前用户账号
+        /// </summary>
+        /// <param name="refreshToken"></param>
+        /// <returns></returns>
+        public string CheckRefreshToken(string refreshToken)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            JwtSecurityToken token = tokenHandler.ReadJwtToken(refreshToken);
+            if (!tokenHandler.CanValidateToken)
+                throw new UnauthorizedAccessException("Invalid refresh_token");
+            var claims = token.Claims.ToArray();
+            var authMethod = claims.Where<Claim>(claim => claim.Type == "authmethod").FirstOrDefault().Value;
+            if (string.IsNullOrEmpty(authMethod) || authMethod != "refresh")
+                throw new UnauthorizedAccessException("Invalid refresh_token type");
+            if (token.ValidTo < DateTime.Now)
+                throw new UnauthorizedAccessException("The refresh_token is expired");
+            return claims.Where<Claim>(claim => claim.Type == JwtRegisteredClaimNames.UniqueName).FirstOrDefault().Value;
         }
 
         /// <summary>
@@ -315,52 +302,6 @@ namespace Blog.Core.Common
             {
                 _sql.CloseDb();
             }
-        }
-
-        /// <summary>
-        /// 获取当前用户身份信息
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <returns></returns>
-        public UserIdentity GetUserIdentity(string userId)
-        {
-            UserIdentity identity = null;
-            try
-            {
-                if (CacheHelper.Exists(userId.ToUpper()))
-                {
-                    identity = CacheHelper.Get<UserIdentity>(userId.ToUpper());
-                }
-                else
-                {
-                    DataTable dtUser = _sql.Query(@"SELECT UserInfoId AS UserId,
-                                                           Account    AS UserAccount,
-                                                           Name       AS UserName,
-                                                           Email      AS UserEmail,
-                                                           Avatar     AS UserAvatar
-                                                    FROM   UserInfo WITH(nolock)
-                                                    WHERE  IsDeleted = 0
-                                                           AND UserInfoId = @userId 
-                                                    ", new Dictionary<string, object> { { "@userId", userId } });
-                    if (dtUser != null && dtUser.Rows.Count > 0)
-                    {
-                        identity = dtUser.ToModelList<UserIdentity>()[0];
-                    }
-                    else
-                    {
-                        throw new UnauthorizedAccessException("Disabled Account !");
-                    }
-                    identity.UserRoles = GetUserRoles(userId).Split(',');
-                    identity.IpAddress = _clientIp;
-                    CacheHelper.Insert(identity.UserId.ToUpper(), identity, 3660);
-                }
-            }
-            catch (Exception ex)
-            {
-                _log.Error(ex);
-                throw ex;
-            }
-            return identity;
         }
 
         /// <summary>

@@ -112,7 +112,7 @@ namespace Blog.Core.Model
         /// <summary>
         /// 有效期
         /// </summary>
-        public long expires_in { get; set; }
+        public string expires_in { get; set; }
     }
     #endregion
 
@@ -136,11 +136,6 @@ namespace Blog.Core.Model
         /// 用户角色
         /// </summary>
         public string[] UserRoles { get; set; }
-
-        /// <summary>
-        /// IP地址
-        /// </summary>
-        public string IpAddress { get; set; }
     }
     #endregion
 

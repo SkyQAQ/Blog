@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using System.IO;
 using System.Data;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace Blog.Core.Common
 {
@@ -43,51 +44,16 @@ namespace Blog.Core.Common
         {
             httpContext = context.HttpContext;
             UserIdentity identity = new UserIdentity();
-            string authorization = string.Empty;
-            if (context.HttpContext.Request.Headers.ContainsKey("Authorization"))
-            {
-                authorization = context.HttpContext.Request.Headers["Authorization"];
-            }
-            if (string.IsNullOrWhiteSpace(authorization))
-            {
+            if (!httpContext.User.Identity.IsAuthenticated)
                 throw new UnauthorizedAccessException("Unauthenticated");
-            }
-
-            #region 1.0
-            //string[] tokenA = authorization.Split(' ');
-            //if (tokenA[0].ToLower() != "bearer")
-            //{
-            //    throw new UnauthorizedAccessException("Invalid token type");
-            //}
-            //string token = WuYao.RsaDecrypt(tokenA[1]);
-            //string[] tokeninfo = token.Split('$');
-            //if (tokeninfo == null || tokeninfo.Length == 0)
-            //{
-            //    throw new UnauthorizedAccessException("Invalid token");
-            //}
-            //string userId = tokeninfo[1];
-            //string ticks = tokeninfo[2];
-            //if (!httpContext.Request.Path.Value.Contains("attachment"))
-            //{
-            //    if (Cast.ConToLong(ticks) < DateTime.UtcNow.Ticks)
-            //    {
-            //        throw new UnauthorizedAccessException("Expired token");
-            //    }
-            //}
-            //identity = new AuthHelper().GetUserIdentity(userId);
-            #endregion
-
-            if (httpContext.User.Identity.IsAuthenticated)
-            {
-                var claims = httpContext.User.Claims.ToArray();
-                identity.UserId = claims[0].Value;
-                identity.UserAccount = claims[1].Value;
-                identity.UserRoles = claims[2].Value == string.Empty ? null : claims[2].Value.Split(',');
-            }
-            else
-            {
-                throw new UnauthorizedAccessException("Unauthenticated");
-            }
+            identity.UserAccount = httpContext.User.Identity.Name;
+            var claims = httpContext.User.Claims.ToArray();
+            var authMethod = claims.Where<Claim>(claim => claim.Type == ClaimTypes.AuthenticationMethod).FirstOrDefault().Value;
+            if (string.IsNullOrEmpty(authMethod) || authMethod != "access")
+                throw new UnauthorizedAccessException("Invalid access_token type");
+            identity.UserId = claims.Where<Claim>(claim => claim.Type == ClaimTypes.NameIdentifier).FirstOrDefault().Value;
+            var roles = claims.Where<Claim>(claim => claim.Type == ClaimTypes.Role).FirstOrDefault().Value;
+            identity.UserRoles = string.IsNullOrEmpty(roles) ? null : roles.Split(',');
             this.UserIdentity = identity;
         }
 

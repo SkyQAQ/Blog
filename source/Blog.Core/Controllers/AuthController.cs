@@ -50,22 +50,6 @@ namespace Blog.Core.Controllers
         }
 
         /// <summary>
-        /// 获取Token
-        /// </summary>
-        /// <returns></returns>
-        [HttpPost, Route("tokenjwt")]
-        public AuthToken GetAuthTokenJwt(LoginCredit credit)
-        {
-            string[] ipArr = HttpContext.Connection.RemoteIpAddress.ToString().Split(':');
-            string clientIp = "localhost";
-            if (ipArr.Length >= 4)
-            {
-                clientIp = ipArr[3];
-            }
-            return new AuthHelper(clientIp).GetAuthTokenJWT(credit);
-        }
-
-        /// <summary>
         /// 登出
         /// </summary>
         [HttpGet, Route("logout")]

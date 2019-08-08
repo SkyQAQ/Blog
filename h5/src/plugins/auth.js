@@ -6,12 +6,12 @@ export default {
     install(Vue, options) {
         var that = this;
         // Add a response interceptor
-        Vue.http.interceptors.response.use(function (response) {
+        Vue.http.interceptors.response.use(function(response) {
             // Do something with response data
             return response;
-        }, function (error) {
+        }, function(error) {
             // Do something with response error
-            if (error.response.status === 401 && (error.response.data.mssg === 'Expired token' || error.response.data.mssg === 'Invalid token' )) {
+            if (error.response.status === 401 && error.response.data.mssg === 'The token is expired') {
                 return that.refreshToken(error.config);
             }
             return Promise.reject(error.response);
@@ -19,22 +19,22 @@ export default {
         Vue.prototype.$auth = Vue.auth = this;
         // Vue.prototype.$store = Vue.store = store;
     },
-    refreshToken: function(config){
-        const data = 'grant_type=refresh' + '&refresh_token=' + store.state.auth.refresh_token + '&mac=00000000';
-        return Vue.http.post('api/auth/token', data).then((res)=>{
+    refreshToken: function(config) {
+        const data = 'grant_type=refresh_token' + '&refresh_token=' + store.state.auth.refresh_token + '&mac=00000000';
+        return Vue.http.post('api/auth/token', data).then((res) => {
             this.storeToken(res.data.data);
             return Vue.http.request(config);
-        }).catch((error) =>{
+        }).catch((error) => {
             return Promise.reject(error);
-        }); 
+        });
     },
-    storeToken: function(token){
+    storeToken: function(token) {
         store.commit('update_auth', token);
     },
-    storeUser: function(user){
+    storeUser: function(user) {
         store.commit('update_user', user);
     },
-    clearToken: function(){
+    clearToken: function() {
         store.commit('reset_auth_user');
         localStorage.removeItem(_const.Key_AccessRoute);
         localStorage.removeItem(_const.Key_UploadLimit);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using Blog.Core.Common;
 using Blog.Core.Common.MiddleWare;
 using Blog.Core.Common.Quartz;
@@ -73,17 +74,50 @@ namespace Blog.Core
                 options.ValueLengthLimit = _config.Upload_MaxLength * 1000000;
                 options.MultipartBodyLengthLimit = _config.Upload_MaxLength * 1000000;
             });
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options => {
+            services.AddAuthentication(options =>
+            {
+                // Identity made Cookie authentication the default.
+                // However, we want JWT Bearer Auth to be the default.
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options => {
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuer = true,//是否验证Issuer
                         ValidateAudience = true,//是否验证Audience
                         ValidateLifetime = true,//是否验证失效时间
+                        ClockSkew = TimeSpan.FromSeconds(0),//缓冲过期时间，总的有效时间等于这个时间加上jwt的过期时间，如果不配置，默认是5分钟
                         ValidateIssuerSigningKey = true,//是否验证SecurityKey
                         ValidAudience = "API",//Audience
                         ValidIssuer = "Blog",//Issuer，这两项和前面签发jwt的设置一致
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_s_config.Token_Key))//拿到SecurityKey
+                    };
+                    options.Events = new JwtBearerEvents
+                    {
+                        //此处为权限验证失败后触发的事件
+                        OnChallenge = context =>
+                        {
+                            //此处代码为终止.Net Core默认的返回类型和数据结果
+                            context.HandleResponse();
+                            throw new UnauthorizedAccessException(context.ErrorDescription);
+                        },
+                        // We have to hook the OnMessageReceived event in order to
+                        // allow the JWT authentication handler to read the access
+                        // token from the query string when a WebSocket or 
+                        // Server-Sent Events request comes in.
+                        OnMessageReceived = context =>
+                        {
+                            var accessToken = context.Request.Query["access_token"];
+                            // If the request is for our hub...
+                            var path = context.HttpContext.Request.Path;
+                            if (!string.IsNullOrEmpty(accessToken) &&
+                                (path.StartsWithSegments("/chatHub")))
+                            {
+                                // Read the token out of the query string
+                                context.Token = accessToken;
+                            }
+                            return Task.CompletedTask;
+                        }
                     };
                 });
             services.AddMvc(options => {

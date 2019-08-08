@@ -24,6 +24,31 @@ namespace Blog.Core.Biz.User
         }
 
         /// <summary>
+        /// 获取用户信息
+        /// </summary>
+        /// <returns></returns>
+        public UserInfoModel GetUserInfo()
+        {
+            try
+            {
+                UserInfoModel result = new UserInfoModel();
+                UserInfo user = _sql.Search<UserInfo>(_identity.UserId);
+                result.UserId = user.UserInfoId.ToString();
+                result.UserAccount = user.Account;
+                result.UserName = user.Name;
+                result.UserEmail = user.Email;
+                result.UserAvatar = user.Avatar;
+                result.UserRoles = _identity.UserRoles;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex);
+                throw ex;
+            }
+        }
+
+        /// <summary>
         /// 获取角色信息List
         /// </summary>
         /// <returns></returns>
