@@ -22,9 +22,8 @@ export default {
         }
     },
     mounted: function () {
-        // var limit = JSON.parse(localStorage.getItem(_const.Key_CommonConfig)) || { Url: ''};
-        // var url = limit.Url === '' ? wy.getBaseUrl() : limit.Url + 'chatHub';
-        var url = wy.getBaseUrl()+ 'chatHub';
+        var limit = JSON.parse(localStorage.getItem(_const.Key_CommonConfig)) || { Url: ''};
+        var url = limit.Url === '' ? wy.getBaseUrl() : limit.Url + 'chatHub';
         this.openConnect(url);
     },
     components: {

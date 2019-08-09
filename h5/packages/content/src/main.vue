@@ -16,10 +16,6 @@ export default {
     },
     data() {
         return{
-            IsQueryShow: true,
-            IsMoreQueryShow: false,
-            pageIndex: 1,
-            pageSize: 20,
             mainHeight: '',
             mainWidth: '',
         }
@@ -36,7 +32,7 @@ export default {
     methods: {
         initialContentSize: function(){
             var height =  window.innerHeight - 1;//可见区域高度包括滚动条
-            this.mainHeight = height - 210 + 'px';
+            this.mainHeight = height - 197 + 'px';
         },
     }
 }

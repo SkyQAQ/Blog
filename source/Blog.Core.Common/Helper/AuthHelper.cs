@@ -115,11 +115,12 @@ namespace Blog.Core.Common
                 {
                     throw new Exception("Invalid grant_type !");
                 }
-                string userId = GetUserIdByAccount(credit.username);
+                string account = "";
+                string userId = GetUserIdByAccount(credit.username, out account);
                 ClaimsIdentity access_identity = new ClaimsIdentity(new Claim[]
                     {
                         new Claim(ClaimTypes.NameIdentifier, userId),
-                        new Claim(ClaimTypes.Name, credit.username),
+                        new Claim(ClaimTypes.Name, account),
                         new Claim(ClaimTypes.Role, GetUserRoles(userId)),
                         new Claim(ClaimTypes.AuthenticationMethod, "access")
                     });
@@ -329,14 +330,15 @@ namespace Blog.Core.Common
         /// </summary>
         /// <param name="account"></param>
         /// <returns></returns>
-        private string GetUserIdByAccount(string account)
+        private string GetUserIdByAccount(string username, out string account)
         {
             try
             {
-                string sql = account.Contains("@") ? "SELECT UserInfoId FROM UserInfo WHERE Email = @account" : "SELECT UserInfoId FROM UserInfo WHERE Account = @account";
-                DataTable dt = _sql.Query(sql, new Dictionary<string, object> { { "@account", account } });
+                string sql = username.Contains("@") ? "SELECT UserInfoId,Account FROM UserInfo WHERE Email = @account" : "SELECT UserInfoId,Account FROM UserInfo WHERE Account = @account";
+                DataTable dt = _sql.Query(sql, new Dictionary<string, object> { { "@account", username } });
                 if (dt == null || dt.Rows.Count == 0)
                     throw new Exception("当前登录账号在系统不存在");
+                account = Cast.ConToString(dt.Rows[0]["Account"]);
                 return Cast.ConToString(dt.Rows[0]["UserInfoId"]);
             }
             catch (Exception ex)

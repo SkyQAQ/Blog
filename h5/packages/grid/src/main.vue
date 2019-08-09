@@ -1,6 +1,6 @@
 <template>
     <div id="wy_grid" class="wy-grid">
-        <el-card :body-style="{ padding: '10px 30px' }">
+        <el-card :body-style="{ padding: '5px 20px' }">
             <div class="wy-grid-header">
                 <slot name="button"></slot>
                 <el-button v-if="$slots.query" style="float:right;padding: 5px 30px 5px 10px" type="primary" @click="hideClick" :icon="IsQueryShow?'el-icon-arrow-down':'el-icon-arrow-up'">{{IsQueryShow?'  收起':'  展开'}}</el-button>
@@ -94,12 +94,12 @@ export default {
         handleCollapse: function(){
             let that = this;
             this.$nextTick(() => {
-                var divHeight = document.getElementById("wy_grid_query").clientHeight;
+                var divHeight = document.getElementById('wy_grid_query').clientHeight;
                 if(divHeight === 0){
                     divHeight = divHeight - 1;
                 }
                 var tableHeight = document.body.clientHeight - this.$store.state.top_height;
-                that.$store.commit("update_table_height", tableHeight - divHeight);
+                that.$store.commit('update_table_height', tableHeight - divHeight);
             });
         },
         handleSizeChange: function(val){

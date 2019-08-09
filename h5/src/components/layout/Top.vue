@@ -3,9 +3,7 @@
     <div class="title">
         <div style="float:right;margin-right:60px">
             <el-dropdown trigger="click" @command="handleCommand">
-                <span class="el-dropdown-link">
-                    <img alt="" :src="avatarUrl" class="round-icon"/>
-                </span>
+                <el-avatar shape="circle" :size="40" :src="avatarUrl"></el-avatar>
                 <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item command="changeinfo">个人信息</el-dropdown-item>
                     <el-dropdown-item command="chageavatar">更换头像</el-dropdown-item>

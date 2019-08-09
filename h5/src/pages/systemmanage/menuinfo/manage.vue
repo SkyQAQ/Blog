@@ -5,12 +5,10 @@
     <wy-content>
         <el-container>
             <el-aside>
-                <div style="height:600px">
-                    <div style="height:80%;overflow-y:auto;overflow-x:auto;">
-                        <el-input v-model="filterText"></el-input>
-                        <el-tree ref="menutree" :data="menutreedata" :expand-on-click-node="false" :filter-node-method="filterNode" node-key="id" :check-strictly="true" @node-click="load" default-expand-all :highlight-current="true">
-                        </el-tree>
-                    </div>
+                <div style="overflow-y:auto;height:-webkit-fill-available;">
+                    <el-input v-model="filterText"></el-input>
+                    <el-tree ref="menutree" :data="menutreedata" :expand-on-click-node="false" :filter-node-method="filterNode" node-key="id" :check-strictly="true" @node-click="load" default-expand-all :highlight-current="true">
+                    </el-tree>
                 </div>
             </el-aside>
             <el-container>
@@ -47,7 +45,7 @@
                             </el-col>
                         </el-row>
                         <el-row :gutter="40">
-                            <el-col :span="8">
+                            <el-col :span="16">
                                 <el-form-item label="上级菜单" prop="PMenuId">
                                     <wy-input-tree type="text" v-model="model.PMenuId" :disabled-node="model.MenuInfoId" :treedata="menutreedata"></wy-input-tree>
                                 </el-form-item>

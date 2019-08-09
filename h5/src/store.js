@@ -45,7 +45,7 @@ export default new Vuex.Store({
             UserRoles: [],
         },
         table_height: 0,
-        top_height: 280,
+        top_height: 250,
     },
     // 更改store中state状态的唯一方法就是提交mutation，就很类似事件。
     // 每个mutation都有一个字符串类型的事件类型和一个回调函数，我们需要改变state的值就要在回调函数中改变。

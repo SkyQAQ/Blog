@@ -130,11 +130,11 @@ namespace Blog.Core.Common
         /// <returns>DataTable</returns>
         public DataTable Query(string sqlString, Dictionary<string, object> paramList)
         {
+            string parameters = string.Empty;
             try
             {
                 DataTable dt = new DataTable();
                 DateTime start = DateTimeUtils.NowBeijing();
-                string parameters = string.Empty;
                 using (SqlCommand command = connection.CreateCommand())
                 {
                     if (paramList != null && paramList.Count > 0)
@@ -174,7 +174,8 @@ namespace Blog.Core.Common
                 if (_log != null)
                 {
                     _log.Error(ex.Message, ex);
-                    _log.Error(sqlString);
+                    _log.Error("[SQL] " + sqlString);
+                    _log.Error("[PARAMS] " + parameters);
                 }
                 throw ex;
             }
@@ -226,11 +227,11 @@ namespace Blog.Core.Common
         /// <returns>int</returns>
         public int Execute(string sql, Dictionary<string, object> paramList)
         {
+            string parameters = string.Empty;
             try
             {
                 int result = 0;
                 DateTime start = DateTimeUtils.NowBeijing();
-                string parameters = string.Empty;
                 using (SqlCommand command = connection.CreateCommand())
                 {
                     if (paramList != null && paramList.Count > 0)
@@ -268,7 +269,8 @@ namespace Blog.Core.Common
                 if (_log != null)
                 {
                     _log.Error(ex.Message, ex);
-                    _log.Error(sql);
+                    _log.Error("[SQL] " + sql);
+                    _log.Error("[PARAMS] " + parameters);
                 }
                 throw ex;
             }

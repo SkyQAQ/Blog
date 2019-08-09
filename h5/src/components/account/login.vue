@@ -113,7 +113,7 @@ export default {
                     let credit = {
                         grant_type: 'password',
                         username: this.identity.username,
-                        password: wy.rsa(this.identity.password, loginKey),
+                        password: wy.rsa(this.identity.password, this.passwordKey),
                         verifycode1: this.identity.verifycode,
                         verifycode2: encodeURIComponent(this.captch.VerifyCodeString),
                         mac: '',

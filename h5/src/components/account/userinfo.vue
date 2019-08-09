@@ -95,7 +95,7 @@ export default {
             this.model.Name = user.UserName;
         },
         save: function (callback) {
-            var apiUrl = 'api/userinfo/save?name=' + this.model.Name + '&pwd=' + wy.rsa(this.model.Password, passwordKey);
+            var apiUrl = 'api/userinfo/save?name=' + this.model.Name + '&pwd=' + wy.rsa(this.model.Password, this.passwordKey);
             this.loading = true;
             wy.get(apiUrl).then((res) => {
                 callback();

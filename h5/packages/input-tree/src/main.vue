@@ -102,11 +102,11 @@
 <style>
     .wy-input-tree .treedata {
         min-height: 150px;
-        max-height: 300px;
+        max-height: 180px;
         width:100%;
         overflow: auto;
         position: absolute;
-        top: 35px;
+        top: 37px;
         padding: 5px 0 0;
         z-index: 999;
         border: 1px solid #e4e7ed;
@@ -129,7 +129,7 @@
         content: " ";
         position: absolute;
         left: 21%;
-        top: 30px;
+        top: 32px;
         width: 10px;
         height: 10px;
         border: #e4e7ed solid 1px;

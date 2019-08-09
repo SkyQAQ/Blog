@@ -41,9 +41,9 @@
                 </el-table-column>
                 <el-table-column prop="UserAccount" label="用户账号">
                 </el-table-column>
-                <el-table-column prop="UserEmail" label="用户邮箱">
+                <el-table-column prop="UserEmail" label="用户邮箱" show-overflow-tooltip>
                 </el-table-column>
-                <el-table-column label="用户角色">
+                <el-table-column label="用户角色"  show-overflow-tooltip>
                     <template slot-scope="scope">
                         <el-tag v-for="tag in scope.row.UserRoles" :key="tag.RoleInfoId" closable size="small" type="success" @close="handleTagClose(scope, tag.RoleInfoId)">
                             {{tag.RoleName}}

@@ -5,7 +5,7 @@ let conn = null;
 let USERACCOUNT = store.state.user.UserAccount;
 let USERNAME = store.state.user.UserName;
 let USERID = store.state.user.UserId;
-let ACCESSTOKEN = store.state.auth.access_token;
+let ACCESSTOKEN = store.state.auth.refresh_token;
 export default {
     install(Vue, options) {
         Vue.prototype.$signalr = Vue.signalr = this;

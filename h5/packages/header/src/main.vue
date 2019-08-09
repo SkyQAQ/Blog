@@ -1,6 +1,6 @@
 <template>
    <div id="wy_header" class="wy-header">
-       <el-card :body-style="{ padding: '15px' }">
+       <el-card :body-style="{ padding: '10px' }">
             <el-breadcrumb separator-class="el-icon-arrow-right" >
                 <el-breadcrumb-item v-for="title in titles" :key="title">{{title}}</el-breadcrumb-item>
                 <div class="wy-header-button"> 
