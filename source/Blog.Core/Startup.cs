@@ -70,9 +70,8 @@ namespace Blog.Core
         {
             services.Configure<FormOptions>(options =>
             {
-                // 50000000
-                options.ValueLengthLimit = _config.Upload_MaxLength * 1000000;
-                options.MultipartBodyLengthLimit = _config.Upload_MaxLength * 1000000;
+                options.ValueLengthLimit = _config.Upload_MaxLength * 1000 * 1024;
+                options.MultipartBodyLengthLimit = _config.Upload_MaxLength * 1000 * 1024;
             });
             services.AddAuthentication(options =>
             {

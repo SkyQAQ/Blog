@@ -72,16 +72,6 @@ namespace Blog.Core.Controllers
         {
             var fileContents = new AttachmentCommand(UserIdentity).DownloadZip(ids);
             return File(fileContents, System.Net.Mime.MediaTypeNames.Application.Zip);
-        }
-
-        /// <summary>
-        /// 下载附件
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet, Route("uploadlimit")]
-        public FileUploadLimit GetFileUploadLimit()
-        {
-            return new AttachmentCommand(UserIdentity).GetFileUploadLimit();
-        }
+        }        
     }
 }

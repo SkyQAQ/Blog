@@ -48,7 +48,7 @@ export default {
                 FileDir: '',
             }
             this.loadHeader();
-            this.limit = JSON.parse(localStorage.getItem(_const.Key_UploadLimit)) || { Url: ''};
+            this.limit = JSON.parse(localStorage.getItem(_const.Key_CommonConfig)) || { Url: ''};
             this.uploadUrl = this.limit.Url === '' ? wy.getBaseUrl() + 'api/attachment/upload' : this.limit.Url + 'api/attachment/upload';
         },
         loadHeader: function () {

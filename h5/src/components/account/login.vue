@@ -72,10 +72,13 @@ export default {
             registerVisible: false,
             forgetpwdVisible: false,
             loading: false,
+            passwordKey: '',// 密码加密Key
         }
     },
     mounted: function () {
         this.getVerifyCode();
+        this.getCommonConfig();
+        this.getPublicKey();
     },
     components: {
         Register,
@@ -110,7 +113,7 @@ export default {
                     let credit = {
                         grant_type: 'password',
                         username: this.identity.username,
-                        password: wy.rsa(this.identity.password),
+                        password: wy.rsa(this.identity.password, loginKey),
                         verifycode1: this.identity.verifycode,
                         verifycode2: encodeURIComponent(this.captch.VerifyCodeString),
                         mac: '',
@@ -125,7 +128,6 @@ export default {
             wy.post('api/auth/token', data).then((res) => {
                 this.$auth.storeToken(res);
                 this.getUserInfo();
-                this.getUploadLimit();
                 this.getAccessRoute();
             }).catch((error) => {
                 this.loading = false;
@@ -153,9 +155,16 @@ export default {
                 wy.showErrorMssg(error);
             });
         },
-        getUploadLimit: function() {
-            wy.get('api/attachment/uploadlimit').then((res) => {
-                localStorage.setItem(_const.Key_UploadLimit, JSON.stringify(res));
+        getCommonConfig: function() {
+            wy.get('api/auth/config').then((res) => {
+                localStorage.setItem(_const.Key_CommonConfig, JSON.stringify(res));
+            }).catch((error) => {
+                wy.showErrorMssg(error);
+            });
+        },
+        getPublicKey: function() {
+            wy.get('api/auth/publickey').then((res) => {
+                this.passwordKey = res;
             }).catch((error) => {
                 wy.showErrorMssg(error);
             });

@@ -296,4 +296,32 @@ namespace Blog.Core.Model
         public string Text { get; set; }
     }
     #endregion
+
+    #region 公共配置
+    /// <summary>
+    /// 公共配置
+    /// </summary>
+    public class CommanCoinfg
+    {
+        /// <summary>
+        /// 请求地址
+        /// </summary>
+        public string Url { get; set; }
+
+        /// <summary>
+        /// 每次最多上传条数
+        /// </summary>
+        public int MaxCount { get; set; }
+
+        /// <summary>
+        /// 单个文件最大长度 (M)
+        /// </summary>
+        public int MaxLength { get; set; }
+
+        /// <summary>
+        /// 限制类型
+        /// </summary>
+        public string Type { get; set; }
+    }
+    #endregion
 }

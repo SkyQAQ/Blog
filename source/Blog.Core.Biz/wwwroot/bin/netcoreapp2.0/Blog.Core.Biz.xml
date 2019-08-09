@@ -74,12 +74,6 @@
             <param name="ids"></param>
             <returns></returns>
         </member>
-        <member name="M:Blog.Core.Biz.Attachments.AttachmentCommand.GetFileUploadLimit">
-            <summary>
-            获取文件上传限制
-            </summary>
-            <returns></returns>
-        </member>
         <member name="T:Blog.Core.Biz.Attachments.FileInfo">
             <summary>
             附件信息
@@ -98,31 +92,6 @@
         <member name="P:Blog.Core.Biz.Attachments.FileInfo.FileDir">
             <summary>
             附件目录
-            </summary>
-        </member>
-        <member name="T:Blog.Core.Biz.Attachments.FileUploadLimit">
-            <summary>
-            附件上传限制
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Biz.Attachments.FileUploadLimit.Url">
-            <summary>
-            请求地址
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Biz.Attachments.FileUploadLimit.MaxCount">
-            <summary>
-            每次最多上传条数
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Biz.Attachments.FileUploadLimit.MaxLength">
-            <summary>
-            单个文件最大长度 (M)
-            </summary>
-        </member>
-        <member name="P:Blog.Core.Biz.Attachments.FileUploadLimit.Type">
-            <summary>
-            限制类型
             </summary>
         </member>
         <member name="T:Blog.Core.Biz.Home.OnlineUserModel">

@@ -294,19 +294,5 @@ namespace Blog.Core.Biz.Attachments
                 throw ex;
             }
         }
-
-        /// <summary>
-        /// 获取文件上传限制
-        /// </summary>
-        /// <returns></returns>
-        public FileUploadLimit GetFileUploadLimit()
-        {
-            FileUploadLimit limit = new FileUploadLimit();
-            limit.Url = _config.Upload_Url;
-            limit.MaxCount = _config.Upload_MaxCount;
-            limit.MaxLength = _config.Upload_MaxLength;
-            limit.Type = _config.Upload_Type;
-            return limit;
-        }
     }
 }

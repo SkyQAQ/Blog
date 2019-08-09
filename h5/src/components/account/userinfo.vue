@@ -70,6 +70,7 @@ export default {
                     trigger: 'blur'
                 }],
             },
+            passwordKey: '',// 密码加密Key
         }
     },
     props: {
@@ -84,6 +85,7 @@ export default {
     },
     mounted: function () {
         this.load();
+        this.this.getPublicKey();
     },
     methods: {
         load: function () {
@@ -93,7 +95,7 @@ export default {
             this.model.Name = user.UserName;
         },
         save: function (callback) {
-            var apiUrl = 'api/userinfo/save?name=' + this.model.Name + '&pwd=' + wy.rsa(this.model.Password);
+            var apiUrl = 'api/userinfo/save?name=' + this.model.Name + '&pwd=' + wy.rsa(this.model.Password, passwordKey);
             this.loading = true;
             wy.get(apiUrl).then((res) => {
                 callback();
@@ -106,6 +108,13 @@ export default {
         },
         saveSuccess: function () {
             this.$store.commit('update_user_name', this.model.Name);
+        },
+        getPublicKey: function() {
+            wy.get('api/auth/publickey').then((res) => {
+                this.passwordKey = res;
+            }).catch((error) => {
+                wy.showErrorMssg(error);
+            });
         },
         close: function () {
             this.loading = false;

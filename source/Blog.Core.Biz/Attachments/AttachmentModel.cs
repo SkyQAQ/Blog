@@ -25,31 +25,5 @@ namespace Blog.Core.Biz.Attachments
         /// </summary>
         public string FileDir { get; set; }
     }
-
-    /// <summary>
-    /// 附件上传限制
-    /// </summary>
-    public class FileUploadLimit
-    {
-        /// <summary>
-        /// 请求地址
-        /// </summary>
-        public string Url { get; set; }
-
-        /// <summary>
-        /// 每次最多上传条数
-        /// </summary>
-        public int MaxCount { get; set; }
-
-        /// <summary>
-        /// 单个文件最大长度 (M)
-        /// </summary>
-        public int MaxLength { get; set; }
-
-        /// <summary>
-        /// 限制类型
-        /// </summary>
-        public string Type { get; set; }
-    }
     #endregion
 }

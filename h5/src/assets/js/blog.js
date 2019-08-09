@@ -80,7 +80,6 @@ import config from '../../../vue.config';
             }
             return response.data;
         }, function(error) {
-            debugger
             if (error.status === 401) {
                 Vue.prototype.$auth.clearToken();
             }
@@ -114,7 +113,7 @@ import config from '../../../vue.config';
                     return;
                 }
             } else {
-                if (xmlHttpReg.status == 401 || xmlHttpReg.statusText == 'Unauthorized') {
+                if (xmlHttpReg.status == 401) {
                     Vue.auth.clearToken();
                 }
                 return null;
@@ -158,12 +157,11 @@ import config from '../../../vue.config';
             }
         }
     };
-    wy.rsa = function(val) {
+    wy.rsa = function(val, key) {
         if (!val) {
             return '';
         }
         var rsa = new RsaHelper(null);
-        var key = wy.getSync(wy.getBaseUrl() + 'api/auth/publickey');
         rsa.setPublicKey(key);
         return encodeURIComponent(rsa.encrypt(val));
     };

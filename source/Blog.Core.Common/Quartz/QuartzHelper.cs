@@ -241,6 +241,11 @@ namespace Blog.Core.Common.Quartz
         {
             return CronExpression.IsValidExpression(cron);
         }
+
+        public void Register<IJob>(IJob job)
+        {
+            
+        }
     }
 
     #region Quartz Model

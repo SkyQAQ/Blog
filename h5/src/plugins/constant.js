@@ -3,7 +3,7 @@ export default {
     install(Vue, options) {
         this.onLoadConst();
     },
-    bindToGlobal: function (obj, key = '_const') {
+    bindToGlobal: function(obj, key = '_const') {
         if (typeof window[key] === 'undefined') {
             window[key] = {};
         }
@@ -25,7 +25,7 @@ export default {
             CodeTypeForgetPwd: 'ForgetPwd',
             CodeTypeChangeEmail: 'ChangeEmail',
             Key_AccessRoute: 'access_route',
-            Key_UploadLimit: 'upload_limit',
+            Key_CommonConfig: 'common_config',
         };
         this.bindToGlobal(obj);
     }

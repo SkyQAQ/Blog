@@ -47,7 +47,7 @@ export default {
     },
     methods: {
         onLoad: function () {
-            var limit = JSON.parse(localStorage.getItem(_const.Key_UploadLimit)) || { Url: ''};
+            var limit = JSON.parse(localStorage.getItem(_const.Key_CommonConfig)) || { Url: ''};
             if (this.$store.state.user.UserAvatar) {
                 this.avatarUrl = limit.Url === '' ? wy.getBaseUrl() + 'api/userinfo/changeavatar' : limit.Url + 'api/auth/avatar?id=' + this.$store.state.user.UserAvatar;
             }

@@ -22,7 +22,7 @@ export default {
         }
     },
     mounted: function () {
-        // var limit = JSON.parse(localStorage.getItem(_const.Key_UploadLimit)) || { Url: ''};
+        // var limit = JSON.parse(localStorage.getItem(_const.Key_CommonConfig)) || { Url: ''};
         // var url = limit.Url === '' ? wy.getBaseUrl() : limit.Url + 'chatHub';
         var url = wy.getBaseUrl()+ 'chatHub';
         this.openConnect(url);

@@ -37,7 +37,7 @@ export default {
     clearToken: function() {
         store.commit('reset_auth_user');
         localStorage.removeItem(_const.Key_AccessRoute);
-        localStorage.removeItem(_const.Key_UploadLimit);
+        localStorage.removeItem(_const.Key_CommonConfig);
         router.push({ name: 'login' });
     }
 }

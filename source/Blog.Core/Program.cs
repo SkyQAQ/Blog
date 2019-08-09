@@ -29,7 +29,11 @@ namespace Blog.Core
                .Build();
             
             var host = new WebHostBuilder()
-                .UseKestrel()
+                .UseKestrel(
+                    options => {
+                        options.Limits.MaxRequestBodySize = 209715200;
+                    }
+                )
                 .UseConfiguration(config)
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()

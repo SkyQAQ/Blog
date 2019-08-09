@@ -78,7 +78,7 @@ export default {
         UploadDialog
     },
     mounted: function () {
-        var limit = JSON.parse(localStorage.getItem(_const.Key_UploadLimit)) || { Url: ''};
+        var limit = JSON.parse(localStorage.getItem(_const.Key_CommonConfig)) || { Url: ''};
         this.urlPrefix = limit.Url === '' ? wy.getBaseUrl() : limit.Url;
         this.searchData();
     },

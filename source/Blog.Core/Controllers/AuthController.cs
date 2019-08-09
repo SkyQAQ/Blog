@@ -100,5 +100,21 @@ namespace Blog.Core.Controllers
             var stream = System.IO.File.OpenRead(attachment.FilePath);
             return File(stream, attachment.MimeType, attachment.FileName);
         }
+
+        /// <summary>
+        /// 获取公共配置
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet, Route("config")]
+        public CommanCoinfg GetCommanCoinfg()
+        {
+            ConfigHelper _config = new ConfigHelper();
+            CommanCoinfg result = new CommanCoinfg();
+            result.Url = _config.Upload_Url;
+            result.MaxCount = _config.Upload_MaxCount;
+            result.MaxLength = _config.Upload_MaxLength;
+            result.Type = _config.Upload_Type;
+            return result;
+        }
     }
 }
