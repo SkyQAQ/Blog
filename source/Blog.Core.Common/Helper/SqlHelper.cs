@@ -343,7 +343,6 @@ namespace Blog.Core.Common
         /// <returns>int</returns>
         public int Delete(string id, string tableName)
         {
-            string account = _identity == null ? "WUWUYAOYAO" : _identity.UserAccount;
             return Execute(string.Format(@"DELETE FROM {0} WHERE {0}Id = @Id", tableName), 
                 new Dictionary<string, object> { { "@Id", id } });
         }    

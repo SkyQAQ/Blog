@@ -1,6 +1,6 @@
 <template>
 <div id="quartzedit">
-    <el-dialog title="任务信息" :visible.sync="visible" :before-close="close" width="30%">
+    <el-dialog title="任务信息" :visible.sync="visible" :before-close="close" :close-on-click-modal="false" width="30%">
         <el-form ref="editForm" :rules="rules" :model="model" label-width="100px">
             <el-form-item label="任务分组" prop="JobGroup">
                 <el-input type="text" v-model="model.JobGroup" :disabled="JobId!==''" auto-complete="off">

@@ -89,14 +89,9 @@ namespace Blog.Core.Common.Quartz
         {
             try
             {
-                if (scheduler == null)
-                {
-                    InitSchedulerAsync();
-                }
+                InitSchedulerAsync();
                 if (!scheduler.IsStarted)
-                {
                     throw new Exception("请先启动定时任务程序");
-                }
                 if (!CronExpression.IsValidExpression(model.Cron))
                     throw new Exception(string.Format("Cron表达式[{0}]格式不正确！", model.Cron));
                 Assembly assembly = Assembly.LoadFrom(Constants.ServerMapPath() + assemblyName);
@@ -137,14 +132,9 @@ namespace Blog.Core.Common.Quartz
         {
             try
             {
-                if (scheduler == null)
-                {
-                    InitSchedulerAsync();
-                }
+                InitSchedulerAsync();
                 if (!scheduler.IsStarted)
-                {
                     throw new Exception("请先启动定时任务程序");
-                }
                 JobKey jobKey = new JobKey(model.JobName, model.JobGroup);
                 TriggerKey triggerKey = new TriggerKey(model.JobName, model.JobGroup);
                 Assembly assembly = Assembly.LoadFrom(Constants.ServerMapPath() + assemblyName);
@@ -189,8 +179,7 @@ namespace Blog.Core.Common.Quartz
         /// <returns></returns>
         public bool Stop()
         {
-            if (scheduler == null)
-                InitSchedulerAsync();
+            InitSchedulerAsync();
             if (!scheduler.IsShutdown)
                 scheduler.Shutdown();
             return scheduler.IsShutdown;
@@ -204,8 +193,7 @@ namespace Blog.Core.Common.Quartz
         {
             try
             {
-                if (scheduler == null)
-                    InitSchedulerAsync();
+                InitSchedulerAsync();
                 if (!scheduler.IsStarted)
                     scheduler.Start();
                 return scheduler.IsStarted;
@@ -222,10 +210,7 @@ namespace Blog.Core.Common.Quartz
         /// <returns></returns>
         public bool Status()
         {
-            if(scheduler == null)
-            {
-                InitSchedulerAsync();
-            }
+            InitSchedulerAsync();
             if (!scheduler.IsStarted)
                 return false;
             else
@@ -248,7 +233,6 @@ namespace Blog.Core.Common.Quartz
         }
     }
 
-    #region Quartz Model
     /// <summary>
     /// Quartz编辑模型
     /// </summary>
@@ -289,5 +273,4 @@ namespace Blog.Core.Common.Quartz
         /// </summary>
         public string JobClass { get; set; }
     }
-    #endregion
 }

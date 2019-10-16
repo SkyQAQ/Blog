@@ -1,6 +1,6 @@
 <template>
 <div id="rolemenuedit">
-    <el-dialog title="配置菜单" :visible.sync="visible" :before-close="close" width="30%">
+    <el-dialog title="配置菜单" :visible.sync="visible" :before-close="close" :close-on-click-modal="false" width="30%">
         <div style="height:60%;overflow-y:auto; overflow-x:auto;margin-bottom:20px">
             <el-input v-model="filterText"></el-input>
             <el-tree ref="menutree" :data="menutreedata" :filter-node-method="filterNode" show-checkbox node-key="id" :default-checked-keys="checkedid" :check-strictly="true">

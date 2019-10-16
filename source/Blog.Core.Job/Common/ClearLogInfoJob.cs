@@ -10,31 +10,10 @@ namespace Blog.Core.Job.Common
     /// </summary>
     public class ClearLogInfoJob : BaseJob
     {
-        #region 初始化
-        /// <summary>
-        /// Sql帮助类
-        /// </summary>
-        private SqlHelper sql;
-        /// <summary>
-        /// 日志帮助类
-        /// </summary>
-        private LogHelper log;
         /// <summary>
         /// JobRun
         /// </summary>
-        public override void JobRun()
-        {
-            sql = new SqlHelper();
-            log = new LogHelper();
-            JobMethod();
-        }
-        #endregion
-
-        #region 执行方法
-        /// <summary>
-        /// Job方法
-        /// </summary>
-        private void JobMethod()
+        protected override void JobRun()
         {
             try
             {
@@ -52,6 +31,5 @@ namespace Blog.Core.Job.Common
                 sql.CloseDb();
             }
         }
-        #endregion
     }
 }

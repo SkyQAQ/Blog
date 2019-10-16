@@ -8,90 +8,82 @@ const userinfolist = resolve => require(['@/pages/systemmanage/userinfo/list.vue
 const menuinfomanage = resolve => require(['@/pages/systemmanage/menuinfo/manage.vue'], resolve);
 const quartzlist = resolve => require(['@/pages/systemmanage/quartz/list.vue'], resolve);
 const attachmentlist = resolve => require(['@/pages/systemmanage/attachment/list.vue'], resolve);
-export default [
-    {
+const dreaminfolist = resolve => require(['@/pages/dreaminfo/list.vue'], resolve);
+export default [{
         path: '/test',
         component: Layout,
-        children: [
-            {
+        children: [{
                 path: 'page1',
                 name: 'page1',
                 component: testpage1,
-                meta: {
-                }
+                meta: {}
             },
             {
                 path: 'page2',
                 name: 'page2',
                 component: testpage2,
-                meta: {
-                }
+                meta: {}
             },
         ]
     },
     {
         path: '/roleinfo',
         component: Layout,
-        children: [
-            {
-                path: 'list',
-                name: 'roleinfolist',
-                component: roleinfolist,
-                meta: {
-                }
-            },
-        ]
+        children: [{
+            path: 'list',
+            name: 'roleinfolist',
+            component: roleinfolist,
+            meta: {}
+        }, ]
     },
     {
         path: '/userinfo',
         component: Layout,
-        children: [
-            {
-                path: 'list',
-                name: 'userinfolist',
-                component: userinfolist,
-                meta: {
-                }
-            },
-        ]
+        children: [{
+            path: 'list',
+            name: 'userinfolist',
+            component: userinfolist,
+            meta: {}
+        }, ]
     },
     {
         path: '/menuinfo',
         component: Layout,
-        children: [
-            {
-                path: 'manage',
-                name: 'menuinfomanage',
-                component: menuinfomanage,
-                meta: {
-                }
-            },
-        ]
+        children: [{
+            path: 'manage',
+            name: 'menuinfomanage',
+            component: menuinfomanage,
+            meta: {}
+        }, ]
     },
     {
         path: '/quartz',
         component: Layout,
-        children: [
-            {
-                path: 'list',
-                name: 'quartzlist',
-                component: quartzlist,
-                meta: {
-                }
-            },
-        ]
+        children: [{
+            path: 'list',
+            name: 'quartzlist',
+            component: quartzlist,
+            meta: {}
+        }, ]
     },
     {
         path: '/attachment',
         component: Layout,
-        children: [
-            {
-                path: 'list',
-                name: 'attachmentlist',
-                component: attachmentlist,
-                meta: {
-                }
-            },
-        ]
+        children: [{
+            path: 'list',
+            name: 'attachmentlist',
+            component: attachmentlist,
+            meta: {}
+        }, ]
+    },
+    {
+        path: '/dreaminfo',
+        component: Layout,
+        children: [{
+            path: 'list',
+            name: 'dreaminfolist',
+            component: dreaminfolist,
+            meta: {}
+        }, ]
     }
 ]

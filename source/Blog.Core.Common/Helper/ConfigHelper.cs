@@ -2,6 +2,9 @@
 
 namespace Blog.Core.Common
 {
+    /// <summary>
+    /// 配置文件读取Helper
+    /// </summary>
     public class ConfigHelper
     {
         #region 构造函数

@@ -242,8 +242,6 @@ namespace Blog.Core.Biz.Attachments
                 Attachment attachment = _sql.Search<Attachment>(id);
                 mimeType = attachment.MimeType;
                 fileName = attachment.FileName;
-                if (attachment.FileSize > 10 * 1024 * 1024)
-                    throw new Exception("文件大小超过10M，请打包下载");
                 return File.ReadAllBytes(attachment.FilePath);
             }
             catch (Exception ex)

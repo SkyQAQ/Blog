@@ -19,6 +19,7 @@ export default {
             testid: 'ddd',
             testname: '淮安市三轮车',
             Messages: [],
+            user_acc: '',
         }
     },
     mounted: function () {
@@ -36,9 +37,11 @@ export default {
             this.receiveMessage();
         },
         receiveMessage: function(){
+            let that = this;
+            that.user_acc = that.$store.state.user.UserAccount;
             this.$signalr.getConnect().on("ReceiveMessage", function (useraccount, username, message) {
-                if (this.$store.state.user.UserAccount === useraccount) {
-                    this.Messages.push({
+                if (that.user_acc === useraccount) {
+                    that.Messages.push({
                         senduser: username,
                         avatar: '',
                         content: message,
@@ -46,15 +49,15 @@ export default {
                         time: wy.GetLongTimeString(new Date())
                     });
                 } else {
-                    this.Messages.push({
+                    that.Messages.push({
                         senduser: username,
                         avatar: '',
                         content: message,
                         source: 'receive',
                         time: wy.GetLongTimeString(new Date())
                     });
-                    if (!this.sendVisible) {
-                        this.mssgCount = this.mssgCount + 1;
+                    if (!that.sendVisible) {
+                        that.mssgCount = this.mssgCount + 1;
                     }
                 }
             });

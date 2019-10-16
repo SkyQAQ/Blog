@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
+using System.Xml;
 
 namespace Blog.Core.Common
 {
@@ -92,8 +93,13 @@ namespace Blog.Core.Common
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception(ex.Message, ex);
             }
+        }
+
+        public static void ToXml(this object model)
+        {
+            
         }
     }
 }

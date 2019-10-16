@@ -131,6 +131,7 @@ namespace Blog.Core.Common
             }
             catch (Exception ex)
             {
+                _log.Error(ex);
                 throw ex;
             }
         }
@@ -142,7 +143,7 @@ namespace Blog.Core.Common
         /// <param name="hours">有效期（小时）</param>
         /// <param name="key">加密Key</param>
         /// <returns></returns>
-        public string GenerateJwtToken(ClaimsIdentity identity, int hours, string key)
+        private string GenerateJwtToken(ClaimsIdentity identity, int hours, string key)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var subject = new ClaimsIdentity();
@@ -164,7 +165,7 @@ namespace Blog.Core.Common
         /// </summary>
         /// <param name="refreshToken"></param>
         /// <returns></returns>
-        public string CheckRefreshToken(string refreshToken)
+        private string CheckRefreshToken(string refreshToken)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             JwtSecurityToken token = tokenHandler.ReadJwtToken(refreshToken);
@@ -190,8 +191,7 @@ namespace Blog.Core.Common
             {
                 _sql.OpenDb();
                 _sql.Execute("UPDATE UserInfo SET IsLogin = 0 WHERE UserInfoId = @Id", new Dictionary<string, object> { { "@Id", userId } });
-                CacheHelper.Remove(userId.ToUpper());
-                CacheHelper.Remove("CHAT_" + userId.ToUpper());
+                CacheHelper.Remove(Constants.Redis_Chat_Prefix + userId.ToUpper());
                 return "登出成功";
             }
             catch (Exception ex)
@@ -397,6 +397,7 @@ namespace Blog.Core.Common
             }
             catch (Exception ex)
             {
+                _log.Error(ex.Message, ex);
                 throw ex;
             }
         }

@@ -144,7 +144,7 @@ namespace Blog.Core.Biz.User
                                 item.LoginOn = Cast.ConToDateTimeString(dtLog.Rows[0]["LoginOn"]);
                                 item.LoginClientIp = Cast.ConToString(dtLog.Rows[0]["ClientIp"]);
                             }
-                            item.LoginStatus = CacheHelper.Exists("CHAT_" + item.UserInfoId.ToUpper()) ? "在线" : "离线";
+                            item.LoginStatus = CacheHelper.Exists(Constants.Redis_Chat_Prefix + item.UserInfoId.ToUpper()) ? "在线" : "离线";
                         });
                     }
                     else

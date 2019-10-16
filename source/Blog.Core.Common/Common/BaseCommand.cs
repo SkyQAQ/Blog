@@ -6,7 +6,7 @@ namespace Blog.Core.Common
     /// <summary>
     /// Command基类
     /// </summary>
-    public class BaseCommand : IDisposable
+    public abstract class BaseCommand : IDisposable
     {
         public static UserIdentity _identity;
         protected LogHelper _log = new LogHelper();

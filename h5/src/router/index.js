@@ -41,9 +41,6 @@ const router = new VueRouter({
                     path: 'home',
                     name: 'home',
                     component: Home,
-                    meta: {
-                        allowAnyone: true
-                    }
                 },
                 {
                     path: '/iframe',
@@ -70,10 +67,14 @@ router.beforeEach((to, from, next) => {
         next();
         return;
     }
+    if (from.query.redirect) {
+        var redirect = from.query.redirect;
+        from.query.redirect = '';
+        next({ name: redirect });
+        return;
+    }
     // 检查是否登录
     checkLoginstatus(to, next);
-    // 检测是否有路由权限
-    checkAccessGrant(to, next);
 });
 
 function checkLoginstatus(to, next) {
@@ -88,17 +89,22 @@ function checkLoginstatus(to, next) {
             next({
                 name: 'login',
                 query: {
-                    redirect: to.fullPath
+                    redirect: to.name
                 }
             });
             return;
         }
     }
-    next();
+    // 检测是否有路由权限
+    checkAccessGrant(to, next);
     return;
 }
 
 function checkAccessGrant(to, next) {
+    if (to.name === 'home') {
+        next();
+        return;
+    }
     var isOk = false;
     var routes = JSON.parse(localStorage.getItem(_const.Key_AccessRoute)) || [];
     if (routes.length > 0) {

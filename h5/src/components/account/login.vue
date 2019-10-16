@@ -128,7 +128,6 @@ export default {
             wy.post('api/auth/token', data).then((res) => {
                 this.$auth.storeToken(res);
                 this.getUserInfo();
-                this.getAccessRoute();
             }).catch((error) => {
                 this.loading = false;
                 this.getVerifyCode();
@@ -139,10 +138,7 @@ export default {
             wy.get('api/userinfo/getuserinfo').then((res) => {
                 this.loading = false;
                 this.$auth.storeUser(res);
-                this.$router.push({
-                    name: "home",
-                });
-                wy.showSuccessMssg('登录成功');
+                this.getAccessRoute();
             }).catch((error) => {
                 this.loading = false;
                 wy.showErrorMssg(error);
@@ -151,6 +147,10 @@ export default {
         getAccessRoute: function() {
             wy.get('api/menuinfo/accessroute').then((res) => {
                 localStorage.setItem(_const.Key_AccessRoute, JSON.stringify(res));
+                this.$router.push({
+                    name: "home",
+                });
+                wy.showSuccessMssg('登录成功');
             }).catch((error) => {
                 wy.showErrorMssg(error);
             });

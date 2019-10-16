@@ -12,6 +12,21 @@ namespace Blog.Core.Common
     public abstract class BaseJob : IJob
     {
         /// <summary>
+        /// SqlHelper
+        /// </summary>
+        protected SqlHelper sql;
+        /// <summary>
+        /// LogHelper
+        /// </summary>
+        protected LogHelper log;
+
+        public BaseJob()
+        {
+            sql = new SqlHelper();
+            log = new LogHelper();
+        }
+
+        /// <summary>
         /// Job运行结果
         /// </summary>
         protected StringBuilder JobResult = new StringBuilder("");
@@ -39,7 +54,7 @@ namespace Blog.Core.Common
         /// <summary>
         /// Job运行内容
         /// </summary>
-        public abstract void JobRun();
+        protected abstract void JobRun();
 
         /// <summary>
         /// 记录Job运行日志

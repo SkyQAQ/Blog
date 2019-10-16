@@ -65,6 +65,8 @@ namespace Blog.Core.Common
         /// <returns></returns>
         public static string BuildEncodeUrl(IDictionary<string, string> dict, string charSet = _charset)
         {
+            if (dict == null)
+                return string.Empty;
             StringBuilder sb = new StringBuilder();
             foreach (var param in dict.OrderBy(t => t.Key))
             {

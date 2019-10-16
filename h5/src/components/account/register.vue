@@ -1,6 +1,6 @@
 <template>
 <div id="register">
-    <el-dialog title="账号注册" :visible.sync="visible" :before-close="beforeClose" width="50%">
+    <el-dialog title="账号注册" :visible.sync="visible" :before-close="beforeClose" :close-on-click-modal="false" width="50%">
         <div class="div_input">
             <el-form ref="registerform" :rules="rules" :model="model">
                 <el-form-item prop="receive">
@@ -69,6 +69,7 @@ export default {
         sendVerifyCode: function () {
             if (!this.model.receive) {
                 wy.showErrorMssg('请输入电子邮箱！');
+                return;
             }
             this.loading1 = true;
             var api = 'api/auth/receiveverifycode';

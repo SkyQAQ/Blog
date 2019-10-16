@@ -1,6 +1,6 @@
 <template>
 <div id="quartzlog">
-    <el-dialog title="运行日志" :visible.sync="visible" :before-close="close" width="60%">
+    <el-dialog title="运行日志" :visible.sync="visible" :before-close="close" :close-on-click-modal="false" width="60%">
         <div slot="title">
             <span>运行日志--[{{group}}][{{name}}]</span>
             <span style="font-size:14px;margin-right:5px;margin-left:20px;">只看异常</span>

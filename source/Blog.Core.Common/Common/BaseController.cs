@@ -17,7 +17,7 @@ namespace Blog.Core.Common
     /// Controller基类
     /// </summary>
     [Authorize]
-    public class BaseController : Controller
+    public abstract class BaseController : Controller
     {
         /// <summary>
         /// HttpContext

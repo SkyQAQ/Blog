@@ -1,48 +1,42 @@
 <template>
 <div id="testpage1">
-    testpage1
+    <wy-header :titles="titles">
+    </wy-header>
+    <wy-content>
+        <el-button @click="play">播放</el-button>
+    </wy-content>
+    <VedioPlayerDialog ref="vedio" />
 </div>
 </template>
 
 <script>
+import VedioPlayerDialog from './vedioplayer'
+
 export default {
     data() {
         return {
-            editForm: {
-
-            },
-            rules: {
-                username: [{
-                    required: true,
-                    message: '请输入账号',
-                    trigger: 'blur'
-                }],
-                password: [{
-                        required: true,
-                        message: '请输入密码',
-                        trigger: 'blur'
-                    },
-                    // { min: 8, max: 16, message: '长度在 8 到 16 个字符', trigger: 'blur' }
-                ],
-                verifycode: [{
-                    required: true,
-                    message: '请输入验证码',
-                    trigger: 'blur'
-                }]
-            }
+            titles: ['阳哥', '妈的还有谁'],
+            urlPrefix: '',
         }
     },
     props: {
 
     },
+    components: {
+        VedioPlayerDialog
+    },
     mounted: function () {
-
+        var comfig = JSON.parse(localStorage.getItem(_const.Key_CommonConfig)) || { Url: ''};
+        this.urlPrefix = comfig.Url === '' ? wy.getBaseUrl() : comfig.Url;
     },
     computed: {
 
     },
     methods: {
-
+        play: function () {
+            var src = 'http://47.101.137.248:8080/test';
+            this.$refs.vedio.open('video/mp4', src);
+        }
     }
 }
 </script>

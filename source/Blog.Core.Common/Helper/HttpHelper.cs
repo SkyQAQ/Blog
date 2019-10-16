@@ -20,12 +20,13 @@ namespace Blog.Core.Common
     /// </summary>
     public static class HttpHelper
     {
+        #region HTTP请求
+
         /// <summary>
         /// 日志帮助类
         /// </summary>
         private static readonly LogHelper _log = new LogHelper();
 
-        #region HTTP请求
         /// <summary>
         /// HttpGet方法
         /// </summary>
@@ -36,8 +37,8 @@ namespace Blog.Core.Common
         /// <param name="headers">头部数据</param>
         /// <param name="isHttps">是否Https请求</param>
         /// <returns>string</returns>
-        public static string Get(string url, string requestString, Encoding encoding, int seconds = 30, IDictionary<string, string> headers = null, bool isHttps = false)
-            => Request("Get", url, requestString, encoding, seconds, headers, isHttps);
+        public static string Get(string url, IDictionary<string, string> param = null, Encoding encoding = null, int seconds = 30, IDictionary<string, string> headers = null)
+            => Request("Get", url + "?" + BuildParams(param), "", "", encoding, seconds, headers);
 
         /// <summary>
         /// HttpPost方法
@@ -49,8 +50,8 @@ namespace Blog.Core.Common
         /// <param name="headers">头部数据</param>
         /// <param name="isHttps">是否Https请求</param>
         /// <returns>string</returns>
-        public static string Post(string url, string requestString, Encoding encoding, int seconds = 30, IDictionary<string, string> headers = null, bool isHttps = false)
-            => Request("Post", url, requestString, encoding, seconds, headers, isHttps);
+        public static string Post(string url, IDictionary<string, string> param, string contentType = Constants.ContentType1, Encoding encoding = null, int seconds = 30, IDictionary<string, string> headers = null)
+            => Request("Post", url, BuildParams(param), contentType, encoding, seconds, headers);
 
         /// <summary>
         /// 请求方法
@@ -58,18 +59,26 @@ namespace Blog.Core.Common
         /// <param name="method"></param>
         /// <param name="url"></param>
         /// <param name="requestString"></param>
+        /// <param name="contentType"></param>
         /// <param name="encoding"></param>
         /// <param name="seconds"></param>
         /// <param name="headers"></param>
         /// <param name="isHttps"></param>
         /// <returns></returns>
-        private static string Request(string method, string url, string requestString, Encoding encoding, int seconds = 30, IDictionary<string,string> headers = null, bool isHttps = false)
+        private static string Request(string method, string url, string requestString, string contentType, Encoding encoding, int seconds = 30, IDictionary<string,string> headers = null)
         {
             try
             {
+                if (string.IsNullOrEmpty(method))
+                    throw new Exception("请求方式不能为空！");
+                if (string.IsNullOrEmpty(url))
+                    throw new Exception("请求地址不能为空！");
                 string result = string.Empty;
-                if (isHttps)
-                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                if (url.ToLower().StartsWith("https"))
+                {
+                    ServicePointManager.ServerCertificateValidationCallback += (s, cert, chain, sslPolicyErrors) => true;
+                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+                }
                 if (encoding == null)
                     encoding = Encoding.UTF8;
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
@@ -93,7 +102,6 @@ namespace Blog.Core.Common
                 // request.Credentials = new NetworkCredential("username", "password", "domain");
                 // request.ConnectionGroupName = secureGroupName;
                 #endregion
-                request.Headers.Add("ContentType ", Constants.ContentType1);
                 request.Credentials = CredentialCache.DefaultCredentials;
                 request.ReadWriteTimeout = seconds * 1000;
                 request.Timeout = seconds * 1000;
@@ -116,6 +124,7 @@ namespace Blog.Core.Common
                 {
                     byte[] data = encoding.GetBytes(requestString);
                     request.ContentLength = data.Length;
+                    request.ContentType = contentType;
                     using (Stream stream = request.GetRequestStream())
                     {
                         stream.Write(data, 0, data.Length);
@@ -135,6 +144,164 @@ namespace Blog.Core.Common
                 throw ex;
             }
         }
+
+        #endregion
+
+        #region 获取云收订签名
+
+        /// <summary>
+        /// 签名-云收订
+        /// </summary>
+        /// <param name="method">GET | POST</param>
+        /// <param name="path">/path/to/method</param>
+        /// <param name="header">EncodeRFC3986(HeaderKey1 + HeaderValue1 + HeaderKey2 + HeaderValue2 ...)</param>
+        /// <param name="getParam">EncodeRFC3986(GetKey1=GetValue1&GetKey2=GetValue2 ...)</param>
+        /// <param name="postParam">EncodeRFC3986(GetKey1=GetValue1&GetKey2=GetValue2 ...)</param>
+        /// <param name="secret">秘钥</param>
+        /// <returns></returns>
+        public static string SignCloudSales(string method, string path, IDictionary<string, string> header, IDictionary<string, string> getParam, IDictionary<string, string> postParam, string secret)
+        {
+            try
+            {
+                List<string> d = new List<string>();
+                d.Add(secret);
+                d.Add(method);
+                d.Add(WebUtility.UrlEncode(path));
+                d.Add(EncodeRFC3986(BuildHeaders(header)));
+                d.Add(EncodeRFC3986(BuildParams(getParam)));
+                d.Add(EncodeRFC3986(BuildParams(postParam)));
+                d.Add(secret);
+                string plainText = string.Join("&", d);
+                return GetMd5(plainText).ToUpper();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// MD5加密
+        /// </summary>
+        /// <param name="plainText">明文</param>
+        /// <returns>string</returns>
+        public static string GetMd5(string plainText)
+        {
+            if (string.IsNullOrEmpty(plainText))
+                return string.Empty;
+            var buffer = new StringBuilder();
+            using (var md5 = MD5.Create())
+            {
+                var md5Bytes = md5.ComputeHash(Encoding.UTF8.GetBytes(plainText));
+                for (var i = 0; i < md5Bytes.Length; i++)
+                {
+                    var val = Convert.ToInt32(md5Bytes[i] & 0xff);
+                    if (val < 16)
+                    {
+                        buffer.Append("0");
+                    }
+                    buffer.Append(string.Format("{0:X}", val));
+                }
+            }
+            return buffer.ToString();
+        }
+
+        /// <summary>
+        /// 构建请求参数
+        /// </summary>
+        /// <param name="dict"></param>
+        /// <returns></returns>
+        public static string BuildParams(IDictionary<string, string> dict)
+        {
+            if (dict == null)
+                return string.Empty;
+            StringBuilder sb = new StringBuilder();
+            foreach (var param in dict.OrderBy(t => t.Key))
+            {
+                sb.Append(param.Key).Append("=").Append(param.Value).Append("&");
+            }
+            return sb.ToString().Substring(0, sb.ToString().LastIndexOf("&"));
+        }
+
+        /// <summary>
+        /// 构建请求头
+        /// </summary>
+        /// <param name="dict"></param>
+        /// <returns></returns>
+        private static string BuildHeaders(IDictionary<string, string> dict)
+        {
+            if (dict == null)
+                return string.Empty;
+            StringBuilder sb = new StringBuilder();
+            foreach (var param in dict.OrderBy(t => t.Key))
+            {
+                sb.Append(param.Key).Append("+").Append(param.Value).Append("+");
+            }
+            return sb.ToString().Substring(0, sb.ToString().LastIndexOf("+"));
+        }
+
+        #endregion
+
+        #region RFC3986编码
+
+        /// <summary>
+        /// RFC3986编码
+        /// 有效字符 = 字母 / 数字 / "-" / "." / "_" / "~"
+        /// "!" -> %21
+        /// "*" -> %2A
+        /// "(" -> %28
+        /// ")" -> %29
+        /// " " -> %20
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        private static string EncodeRFC3986(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+                return input;
+            StringBuilder newBytes = new StringBuilder();
+            var urf8Bytes = Encoding.UTF8.GetBytes(input);
+            foreach (var item in urf8Bytes)
+            {
+                if (IsReverseChar((char)item))
+                {
+                    newBytes.Append('%');
+                    newBytes.Append(item.ToString("X2"));
+                }
+                else
+                {
+                    newBytes.Append((char)item);
+                }
+            }
+            return newBytes.ToString();
+        }
+
+        /// <summary>
+        /// 是否需要转换字符    
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        private static bool IsReverseChar(char c)
+        {
+            return !((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9')
+                    || c == '-' || c == '_' || c == '.' || c == '~');
+        }
+
+        /// 读取队列订单获取SIGN例子
+        /// Dictionary<string, string> param = new Dictionary<string, string>
+        /// {
+        ///     { "method", _config.CLOUDSALES_METHOD_READQUEUE
+        ///
+        ///     { "app_key", _config.CLOUDSALES_APP_KEY
+        ///
+        ///     { "sign_time", HttpHelper.ConvertTimeStamp(DateTime.UtcNow.AddHours(8)) },
+        ///     { "sign_method", "md5" },
+        ///     { "topic", _config.CLOUDSALES_QUEUE_ORDERS },
+        ///     { "drop", _config.CLOUDSALES_IS_DROP },
+        ///     { "num", _config.CLOUDSALES_ORDERS_NUM },
+        /// };
+        /// string sign = HttpHelper.SignCloudSales("POST", "/router", null, null, param, _config.CLOUDSALES_CLIENT_SECRET);
+
         #endregion
     }
 }

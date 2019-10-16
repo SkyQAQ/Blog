@@ -78,8 +78,8 @@ export default {
         UploadDialog
     },
     mounted: function () {
-        var limit = JSON.parse(localStorage.getItem(_const.Key_CommonConfig)) || { Url: ''};
-        this.urlPrefix = limit.Url === '' ? wy.getBaseUrl() : limit.Url;
+        var comfig = JSON.parse(localStorage.getItem(_const.Key_CommonConfig)) || { Url: ''};
+        this.urlPrefix = comfig.Url === '' ? wy.getBaseUrl() : comfig.Url;
         this.searchData();
     },
     computed: {

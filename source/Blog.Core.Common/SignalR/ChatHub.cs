@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Blog.Core.Common.SignalR
@@ -19,7 +20,7 @@ namespace Blog.Core.Common.SignalR
                 throw new UnauthorizedAccessException("Unauthenticated");
             string connectId = Context.ConnectionId;
             var claims = Context.User.Claims.ToArray();
-            string cacheKey = Constants.Redis_Chat_Prefix + claims[0].Value.ToUpper();
+            string cacheKey = Constants.Redis_Chat_Prefix + claims.Where<Claim>(claim => claim.Type == ClaimTypes.NameIdentifier).FirstOrDefault().Value.ToUpper();
             if (CacheHelper.Exists(cacheKey))
             {
                 CacheHelper.Remove(cacheKey);
@@ -38,7 +39,7 @@ namespace Blog.Core.Common.SignalR
             if (!Context.User.Identity.IsAuthenticated)
                 throw new UnauthorizedAccessException("Unauthenticated");
             var claims = Context.User.Claims.ToArray();
-            string cacheKey = Constants.Redis_Chat_Prefix + claims[0].Value.ToUpper();
+            string cacheKey = Constants.Redis_Chat_Prefix + claims.Where<Claim>(claim => claim.Type == ClaimTypes.NameIdentifier).FirstOrDefault().Value.ToUpper();
             CacheHelper.Remove(cacheKey);
             return base.OnDisconnectedAsync(exception);
         }

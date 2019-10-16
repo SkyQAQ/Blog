@@ -107,7 +107,7 @@ namespace Blog.Core.Model
     /// MenuInRole列表模型
     /// </summary>
     [Serializable]
-    public class MenuInRoleListModel
+    public partial class MenuInRoleListModel
     {
 
         /// <summary>
@@ -276,7 +276,7 @@ namespace Blog.Core.Model
     /// JobInfo列表模型
     /// </summary>
     [Serializable]
-    public class JobInfoListModel
+    public partial class JobInfoListModel
     {
 
         /// <summary>
@@ -318,180 +318,6 @@ namespace Blog.Core.Model
         /// Cron描述
         /// </summary>
         public string CronDesc { get; set; }
-
-        /// <summary>
-        /// 创建时间
-        /// </summary>
-        public string CreatedOn { get; set; }
-
-        /// <summary>
-        /// 创建人账号
-        /// </summary>
-        public string CreatedBy { get; set; }
-
-        /// <summary>
-        /// 修改时间
-        /// </summary>
-        public string ModifiedOn { get; set; }
-
-        /// <summary>
-        /// 更改人账号
-        /// </summary>
-        public string ModifiedBy { get; set; }
-    }
-    #endregion
-
-    #region Attachment
-    /// <summary>
-    /// Attachment模型
-    /// </summary>
-    [Serializable]
-    public class Attachment : BaseModel
-    {
-        /// <summary>
-        /// 表名
-        /// </summary>
-        public static readonly string TableName = "Attachment";
-
-        /// <summary>
-        /// 构造函数
-        /// </summary>
-        public Attachment() : base(TableName) { }
-        private Guid Id = Guid.Empty;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public Guid AttachmentId
-        {
-            get { return Id; }
-            set
-            {
-                Id = value;
-                if (value != null)
-                {
-                    base.BaseId = value;
-                }
-            }
-        }
-
-        /// <summary>
-        /// 文件路径
-        /// </summary>
-        public string FilePath { get; set; } 
-
-        /// <summary>
-        /// 文件名称
-        /// </summary>
-        public string FileName { get; set; } 
-
-        /// <summary>
-        /// 文件大小
-        /// </summary>
-        public decimal FileSize { get; set; } 
-
-        /// <summary>
-        /// 文件类型
-        /// </summary>
-        public string MimeType { get; set; } 
-
-        /// <summary>
-        /// 模块类型
-        /// </summary>
-        public string ModuleType { get; set; } 
-
-        /// <summary>
-        /// 模块Id
-        /// </summary>
-        public string ModuleId { get; set; } 
-
-        /// <summary>
-        /// 创建时间
-        /// </summary>
-        public DateTime CreatedOn { get; set; } 
-
-        /// <summary>
-        /// 创建人账号
-        /// </summary>
-        public string CreatedBy { get; set; } 
-
-        /// <summary>
-        /// 修改时间
-        /// </summary>
-        public DateTime ModifiedOn { get; set; } 
-
-        /// <summary>
-        /// 更改人账号
-        /// </summary>
-        public string ModifiedBy { get; set; } 
-
-        /// <summary>
-        /// 是否删除：0-否；1-是；
-        /// </summary>
-        public int IsDeleted { get; set; } = 0;
-    }
-    /// <summary>
-    /// Attachment数据模型
-    /// </summary>
-    [Serializable]
-    public class AttachmentListData
-    {
-        /// <summary>
-        /// 总记录数
-        /// </summary>
-        public int RecordCount { get; set; }
-
-        /// <summary>
-        /// 数据列表
-        /// </summary>
-        public List<AttachmentListModel> RecordList { get; set; }
-
-        /// <summary>
-        /// 导出数据
-        /// </summary>
-        public string ExportBuffString { get; set; } = string.Empty;
-    }
-    /// <summary>
-    /// Attachment列表模型
-    /// </summary>
-    [Serializable]
-    public class AttachmentListModel
-    {
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public string AttachmentId { get; set; }
-
-        /// <summary>
-        /// 文件路径
-        /// </summary>
-        public string FilePath { get; set; }
-
-        /// <summary>
-        /// 文件名称
-        /// </summary>
-        public string FileName { get; set; }
-
-        /// <summary>
-        /// 文件大小
-        /// </summary>
-        public decimal FileSize { get; set; }
-
-        /// <summary>
-        /// 文件类型
-        /// </summary>
-        public string MimeType { get; set; }
-
-        /// <summary>
-        /// 模块类型
-        /// </summary>
-        public string ModuleType { get; set; }
-
-        /// <summary>
-        /// 模块Id
-        /// </summary>
-        public string ModuleId { get; set; }
 
         /// <summary>
         /// 创建时间
@@ -654,7 +480,7 @@ namespace Blog.Core.Model
     /// UserInfo列表模型
     /// </summary>
     [Serializable]
-    public class UserInfoListModel
+    public partial class UserInfoListModel
     {
 
         /// <summary>
@@ -716,6 +542,180 @@ namespace Blog.Core.Model
         /// 登录状态：0-未登录；1-已登录
         /// </summary>
         public int IsLogin { get; set; }
+
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public string CreatedOn { get; set; }
+
+        /// <summary>
+        /// 创建人账号
+        /// </summary>
+        public string CreatedBy { get; set; }
+
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public string ModifiedOn { get; set; }
+
+        /// <summary>
+        /// 更改人账号
+        /// </summary>
+        public string ModifiedBy { get; set; }
+    }
+    #endregion
+
+    #region Attachment
+    /// <summary>
+    /// Attachment模型
+    /// </summary>
+    [Serializable]
+    public class Attachment : BaseModel
+    {
+        /// <summary>
+        /// 表名
+        /// </summary>
+        public static readonly string TableName = "Attachment";
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        public Attachment() : base(TableName) { }
+        private Guid Id = Guid.Empty;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Guid AttachmentId
+        {
+            get { return Id; }
+            set
+            {
+                Id = value;
+                if (value != null)
+                {
+                    base.BaseId = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 文件路径
+        /// </summary>
+        public string FilePath { get; set; } 
+
+        /// <summary>
+        /// 文件名称
+        /// </summary>
+        public string FileName { get; set; } 
+
+        /// <summary>
+        /// 文件大小
+        /// </summary>
+        public decimal FileSize { get; set; } 
+
+        /// <summary>
+        /// 文件类型
+        /// </summary>
+        public string MimeType { get; set; } 
+
+        /// <summary>
+        /// 模块类型
+        /// </summary>
+        public string ModuleType { get; set; } 
+
+        /// <summary>
+        /// 模块Id
+        /// </summary>
+        public string ModuleId { get; set; } 
+
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime CreatedOn { get; set; } 
+
+        /// <summary>
+        /// 创建人账号
+        /// </summary>
+        public string CreatedBy { get; set; } 
+
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public DateTime ModifiedOn { get; set; } 
+
+        /// <summary>
+        /// 更改人账号
+        /// </summary>
+        public string ModifiedBy { get; set; } 
+
+        /// <summary>
+        /// 是否删除：0-否；1-是；
+        /// </summary>
+        public int IsDeleted { get; set; } = 0;
+    }
+    /// <summary>
+    /// Attachment数据模型
+    /// </summary>
+    [Serializable]
+    public class AttachmentListData
+    {
+        /// <summary>
+        /// 总记录数
+        /// </summary>
+        public int RecordCount { get; set; }
+
+        /// <summary>
+        /// 数据列表
+        /// </summary>
+        public List<AttachmentListModel> RecordList { get; set; }
+
+        /// <summary>
+        /// 导出数据
+        /// </summary>
+        public string ExportBuffString { get; set; } = string.Empty;
+    }
+    /// <summary>
+    /// Attachment列表模型
+    /// </summary>
+    [Serializable]
+    public partial class AttachmentListModel
+    {
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string AttachmentId { get; set; }
+
+        /// <summary>
+        /// 文件路径
+        /// </summary>
+        public string FilePath { get; set; }
+
+        /// <summary>
+        /// 文件名称
+        /// </summary>
+        public string FileName { get; set; }
+
+        /// <summary>
+        /// 文件大小
+        /// </summary>
+        public decimal FileSize { get; set; }
+
+        /// <summary>
+        /// 文件类型
+        /// </summary>
+        public string MimeType { get; set; }
+
+        /// <summary>
+        /// 模块类型
+        /// </summary>
+        public string ModuleType { get; set; }
+
+        /// <summary>
+        /// 模块Id
+        /// </summary>
+        public string ModuleId { get; set; }
 
         /// <summary>
         /// 创建时间
@@ -833,7 +833,7 @@ namespace Blog.Core.Model
     /// RoleInfo列表模型
     /// </summary>
     [Serializable]
-    public class RoleInfoListModel
+    public partial class RoleInfoListModel
     {
 
         /// <summary>
@@ -977,7 +977,7 @@ namespace Blog.Core.Model
     /// UserInRole列表模型
     /// </summary>
     [Serializable]
-    public class UserInRoleListModel
+    public partial class UserInRoleListModel
     {
 
         /// <summary>
@@ -1004,6 +1004,170 @@ namespace Blog.Core.Model
         /// 角色编码
         /// </summary>
         public string RoleCode { get; set; }
+
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public string CreatedOn { get; set; }
+
+        /// <summary>
+        /// 创建人账号
+        /// </summary>
+        public string CreatedBy { get; set; }
+
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public string ModifiedOn { get; set; }
+
+        /// <summary>
+        /// 更改人账号
+        /// </summary>
+        public string ModifiedBy { get; set; }
+    }
+    #endregion
+
+    #region DreamInfo
+    /// <summary>
+    /// DreamInfo模型
+    /// </summary>
+    [Serializable]
+    public class DreamInfo : BaseModel
+    {
+        /// <summary>
+        /// 表名
+        /// </summary>
+        public static readonly string TableName = "DreamInfo";
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        public DreamInfo() : base(TableName) { }
+        private Guid Id = Guid.Empty;
+
+        /// <summary>
+        /// 彩票Id
+        /// </summary>
+        public Guid DreamInfoId
+        {
+            get { return Id; }
+            set
+            {
+                Id = value;
+                if (value != null)
+                {
+                    base.BaseId = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 用户Id
+        /// </summary>
+        public Guid UserInfoId { get; set; } 
+
+        /// <summary>
+        /// 彩票号码
+        /// </summary>
+        public string DreamCode { get; set; } 
+
+        /// <summary>
+        /// 起始期数
+        /// </summary>
+        public int StartStage { get; set; } 
+
+        /// <summary>
+        /// 截止期数
+        /// </summary>
+        public int EndStage { get; set; } 
+
+        /// <summary>
+        /// 彩票类型
+        /// </summary>
+        public int Type { get; set; } 
+
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime CreatedOn { get; set; } 
+
+        /// <summary>
+        /// 创建人账号
+        /// </summary>
+        public string CreatedBy { get; set; } 
+
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public DateTime ModifiedOn { get; set; } 
+
+        /// <summary>
+        /// 更改人账号
+        /// </summary>
+        public string ModifiedBy { get; set; } 
+
+        /// <summary>
+        /// 是否删除：0-否；1-是；
+        /// </summary>
+        public int IsDeleted { get; set; } = 0;
+    }
+    /// <summary>
+    /// DreamInfo数据模型
+    /// </summary>
+    [Serializable]
+    public class DreamInfoListData
+    {
+        /// <summary>
+        /// 总记录数
+        /// </summary>
+        public int RecordCount { get; set; }
+
+        /// <summary>
+        /// 数据列表
+        /// </summary>
+        public List<DreamInfoListModel> RecordList { get; set; }
+
+        /// <summary>
+        /// 导出数据
+        /// </summary>
+        public string ExportBuffString { get; set; } = string.Empty;
+    }
+    /// <summary>
+    /// DreamInfo列表模型
+    /// </summary>
+    [Serializable]
+    public partial class DreamInfoListModel
+    {
+
+        /// <summary>
+        /// 彩票Id
+        /// </summary>
+        public string DreamInfoId { get; set; }
+
+        /// <summary>
+        /// 用户Id
+        /// </summary>
+        public string UserInfoId { get; set; }
+
+        /// <summary>
+        /// 彩票号码
+        /// </summary>
+        public string DreamCode { get; set; }
+
+        /// <summary>
+        /// 起始期数
+        /// </summary>
+        public int StartStage { get; set; }
+
+        /// <summary>
+        /// 截止期数
+        /// </summary>
+        public int EndStage { get; set; }
+
+        /// <summary>
+        /// 彩票类型
+        /// </summary>
+        public int Type { get; set; }
 
         /// <summary>
         /// 创建时间
@@ -1136,7 +1300,7 @@ namespace Blog.Core.Model
     /// MenuInfo列表模型
     /// </summary>
     [Serializable]
-    public class MenuInfoListModel
+    public partial class MenuInfoListModel
     {
 
         /// <summary>

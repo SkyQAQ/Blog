@@ -30,8 +30,14 @@ Vue.use(Constant);
 Vue.config.debug = true;
 // 正式环境不提示
 Vue.config.productionTip = false
-// 配置是否允许vue-devtools 检查代码  默认为true
+    // 配置是否允许vue-devtools 检查代码  默认为true
 Vue.config.devtools = true;
+
+// 视频播放器
+import VideoPlayer from 'vue-video-player'
+require('video.js/dist/video-js.css')
+require('vue-video-player/src/custom-theme.css')
+Vue.use(VideoPlayer)
 
 import App from './App';
 // 全局构造函数
@@ -41,6 +47,6 @@ new Vue({
     store,
     template: '<App/>',
     components: {
-      App
+        App
     }
 });

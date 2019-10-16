@@ -1,6 +1,6 @@
 <template>
 <div id="userroleedit" class="userroleedit">
-    <el-dialog title="角色信息" :visible.sync="visible" :before-close="close">
+    <el-dialog title="角色信息" :visible.sync="visible" :before-close="close" :close-on-click-modal="false">
         <div style="margin-bottom:5px;">
             <el-transfer :titles="['角色列表', '用户角色']" filterable :filter-method="filterMethod" filter-placeholder="请输入角色名称" v-model="userroles" :data="rolesData" :loading="loading">
             </el-transfer>

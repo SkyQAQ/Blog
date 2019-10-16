@@ -18,6 +18,11 @@ namespace Blog.Core.Common
         private static string result = "";
 
         /// <summary>
+        /// 配置文件
+        /// </summary>
+        private static ConfigHelper config = new ConfigHelper();
+
+        /// <summary>
         /// 发送邮件
         /// </summary>
         /// <param name="to"></param>
@@ -30,7 +35,6 @@ namespace Blog.Core.Common
         /// <returns></returns>
         public static string SendEmailByQQ(string to, string subject, string body, string codetype = "", string code = "",  string[] copy = null, bool isSync = false)
         {
-            ConfigHelper config = new ConfigHelper();
             try
             {
                 string result = SendEmail(config.Email_QQ_Account, to, config.Email_QQ_Host, config.Email_QQ_Password, subject, body, copy, isSync);

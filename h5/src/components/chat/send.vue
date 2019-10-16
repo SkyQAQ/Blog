@@ -1,6 +1,6 @@
 <template>
 <div id="chat_send">
-    <el-dialog :title="receivename" :visible.sync="visible" :before-close="beforeClose" :modal="false" :lock-scroll="false" width="40%" :open="updateScroll">
+    <el-dialog :title="receivename" :visible.sync="visible" :close-on-click-modal="false" :before-close="beforeClose" :modal="false" :lock-scroll="false" width="40%" :open="updateScroll">
         <div id="div_message" class="div_message">
             <ul class="mssg_list">
                 <li v-for="mssg in PropMessages" :key="mssg.index" :class="mssg.source==='receive'?'li_receive':'li_send'">
@@ -93,7 +93,7 @@ export default {
 .div_message {
     margin-left: 20px;
     margin-right: 20px;
-    height: 400px;
+    height: 45%;
     border: 1px solid rgb(190, 190, 190);
     overflow-y: auto;
 }

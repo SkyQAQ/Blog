@@ -94,6 +94,74 @@
             附件目录
             </summary>
         </member>
+        <member name="T:Blog.Core.Biz.Dream.DreamInfoCommand">
+            <summary>
+            梦想Command
+            </summary>
+        </member>
+        <member name="M:Blog.Core.Biz.Dream.DreamInfoCommand.#ctor(Blog.Core.Model.UserIdentity)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="identity"></param>
+        </member>
+        <member name="M:Blog.Core.Biz.Dream.DreamInfoCommand.GetDreamInfoList(System.Collections.Generic.List{Blog.Core.Model.SearchCondition},System.Int32,System.Int32,System.String)">
+            <summary>
+            获取梦想信息List
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Dream.DreamInfoCommand.GetDreamInfoById(System.String)">
+            <summary>
+            根据梦想Id获取梦想编辑信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Dream.DreamInfoCommand.CreateOrUpdateDreamInfo(Blog.Core.Biz.Dream.DreamInfoEditModel)">
+            <summary>
+            创建或更新梦想信息
+            </summary>
+            <param name="info">梦想编辑信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Dream.DreamInfoCommand.DeleteDreamInfo(System.String[])">
+            <summary>
+            删除梦想信息
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Blog.Core.Biz.Dream.DreamInfoEditModel">
+            <summary>
+            梦想编信息辑模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.DreamInfoEditModel.DreamInfoId">
+            <summary>
+            彩票Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.DreamInfoEditModel.DreamCode">
+            <summary>
+            彩票号码
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.DreamInfoEditModel.StartStage">
+            <summary>
+            起始期数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.DreamInfoEditModel.EndStage">
+            <summary>
+            截止期数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.DreamInfoEditModel.Type">
+            <summary>
+            彩票类型
+            </summary>
+        </member>
         <member name="T:Blog.Core.Biz.Home.OnlineUserModel">
             <summary>
             在线用户信息模型

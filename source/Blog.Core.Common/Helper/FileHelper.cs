@@ -106,7 +106,7 @@ namespace Blog.Core.Common
                             ICell cell = firstRow.GetCell(i);
                             if (cell != null)
                             {
-                                string cellValue = getCellString(cell);
+                                string cellValue = GetCellString(cell);
                                 if (!string.IsNullOrEmpty(cellValue))
                                 {
                                     DataColumn column = new DataColumn(cellValue);
@@ -173,7 +173,7 @@ namespace Blog.Core.Common
         /// </summary>
         /// <param name="cell"></param>
         /// <returns></returns>
-        public static string getCellString(ICell cell)
+        public static string GetCellString(ICell cell)
         {
             string cellValue = "";
             if (null != cell)
@@ -206,6 +206,12 @@ namespace Blog.Core.Common
                 }
             }
             return cellValue;
+        }
+
+        public static string ReadTxt(string path)
+        {
+            StreamReader sr = new StreamReader(path, Encoding.UTF8);
+            return sr.ReadToEnd();
         }
     }
 }
