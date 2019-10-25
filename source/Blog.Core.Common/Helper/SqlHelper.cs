@@ -56,14 +56,16 @@ namespace Blog.Core.Common
         /// </summary>
         public void OpenDb()
         {
-            connection.Open();
+            if (connection.State == ConnectionState.Closed)
+                connection.Open();
         }
         /// <summary>
         /// 关闭连接
         /// </summary>
         public void CloseDb()
         {
-            connection.Close();
+            if (connection.State != ConnectionState.Closed)
+                connection.Close();
         }
         /// <summary>
         /// DISPOSE

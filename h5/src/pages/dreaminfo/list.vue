@@ -12,7 +12,7 @@
                 <el-row :gutter="40" type="flex">
                     <el-col :span="8">
                         <el-form-item label="彩票类型" prop="Type">
-                            <el-select placeholder="请选择" v-model="queryForm.Type">
+                            <el-select placeholder="请选择" v-model="queryForm.Type" clearable>
                                 <el-option v-for="item in DreamType" :key="item.Value" :label="item.Text" :value="item.Value">
                                 </el-option>
                             </el-select>

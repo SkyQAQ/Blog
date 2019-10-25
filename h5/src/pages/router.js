@@ -9,6 +9,7 @@ const menuinfomanage = resolve => require(['@/pages/systemmanage/menuinfo/manage
 const quartzlist = resolve => require(['@/pages/systemmanage/quartz/list.vue'], resolve);
 const attachmentlist = resolve => require(['@/pages/systemmanage/attachment/list.vue'], resolve);
 const dreaminfolist = resolve => require(['@/pages/dreaminfo/list.vue'], resolve);
+const vedioinfolist = resolve => require(['@/pages/vedioinfo/list.vue'], resolve);
 export default [{
         path: '/test',
         component: Layout,
@@ -83,6 +84,16 @@ export default [{
             path: 'list',
             name: 'dreaminfolist',
             component: dreaminfolist,
+            meta: {}
+        }, ]
+    },
+    {
+        path: '/vedioinfo',
+        component: Layout,
+        children: [{
+            path: 'list',
+            name: 'vedioinfolist',
+            component: vedioinfolist,
             meta: {}
         }, ]
     }

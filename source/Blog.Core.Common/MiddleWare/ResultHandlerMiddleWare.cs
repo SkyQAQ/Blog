@@ -17,10 +17,10 @@ public class ResultHandlerMiddleWare : ActionFilterAttribute
                 context.Result = new ObjectResult(new { code = 1, mssg = "", data = objectResult.Value });
             }
         }
-        else if (context.Result is EmptyResult)
-        {
-            context.Result = new ObjectResult(new { code = 404, mssg = "未找到资源", data = "" });
-        }
+        //else if (context.Result is EmptyResult)
+        //{
+        //    context.Result = new ObjectResult(new { code = 404, mssg = "未找到资源", data = "" });
+        //}
         else if (context.Result is ContentResult)
         {
             context.Result = new ObjectResult(new { code = 200, mssg = "", data = (context.Result as ContentResult).Content });

@@ -460,7 +460,7 @@ namespace Blog.Core.Biz.User
                 {
                     helper.DeleteFile(new string[] { user.Avatar });
                 }
-                string attachMentId = helper.UploadFile(UserInfo.TableName, _identity.UserId, file, Constants.AvatarPath);
+                string attachMentId = helper.UploadFile(UserInfo.TableName, _identity.UserId, file, Constants.AvatarPath).AttachmentId.ToString();
                 _sql.OpenDb();
                 _sql.Execute("UPDATE UserInfo SET Avatar = @avatar WHERE UserInfoId = @uid", new Dictionary<string, object> { { "@avatar", attachMentId }, { "@uid", _identity.UserId } });
                 return attachMentId;

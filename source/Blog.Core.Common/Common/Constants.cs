@@ -33,6 +33,11 @@ namespace Blog.Core.Common
         public const string AvatarPath = "app_data\\files\\avatar\\";
 
         /// <summary>
+        /// 上传视频路径
+        /// </summary>
+        public const string VedioPath = "wwwroot\\vedio\\";
+
+        /// <summary>
         /// 日志记录Repository名称
         /// </summary>
         public const string LogRepositoryName = "NETCoreRepository";

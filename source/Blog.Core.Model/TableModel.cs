@@ -3,6 +3,180 @@ using System.Collections.Generic;
 
 namespace Blog.Core.Model
 {
+    #region VedioInfo
+    /// <summary>
+    /// VedioInfo模型
+    /// </summary>
+    [Serializable]
+    public class VedioInfo : BaseModel
+    {
+        /// <summary>
+        /// 表名
+        /// </summary>
+        public static readonly string TableName = "VedioInfo";
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        public VedioInfo() : base(TableName) { }
+        private Guid Id = Guid.Empty;
+
+        /// <summary>
+        /// 视频Id
+        /// </summary>
+        public Guid VedioInfoId
+        {
+            get { return Id; }
+            set
+            {
+                Id = value;
+                if (value != null)
+                {
+                    base.BaseId = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 视频描述
+        /// </summary>
+        public string Description { get; set; } 
+
+        /// <summary>
+        /// 视频源地址
+        /// </summary>
+        public string SourceUrl { get; set; } 
+
+        /// <summary>
+        /// 视频源类型
+        /// </summary>
+        public string SourceType { get; set; } 
+
+        /// <summary>
+        /// 视频封面
+        /// </summary>
+        public string Poster { get; set; } 
+
+        /// <summary>
+        /// 视频大小
+        /// </summary>
+        public string Size { get; set; } 
+
+        /// <summary>
+        /// 是否公开
+        /// </summary>
+        public int IsPublic { get; set; } = 0;
+
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime CreatedOn { get; set; } 
+
+        /// <summary>
+        /// 创建人账号
+        /// </summary>
+        public string CreatedBy { get; set; } 
+
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public DateTime ModifiedOn { get; set; } 
+
+        /// <summary>
+        /// 更改人账号
+        /// </summary>
+        public string ModifiedBy { get; set; } 
+
+        /// <summary>
+        /// 是否删除：0-否；1-是；
+        /// </summary>
+        public int IsDeleted { get; set; } = 0;
+    }
+    /// <summary>
+    /// VedioInfo数据模型
+    /// </summary>
+    [Serializable]
+    public class VedioInfoListData
+    {
+        /// <summary>
+        /// 总记录数
+        /// </summary>
+        public int RecordCount { get; set; }
+
+        /// <summary>
+        /// 数据列表
+        /// </summary>
+        public List<VedioInfoListModel> RecordList { get; set; }
+
+        /// <summary>
+        /// 导出数据
+        /// </summary>
+        public string ExportBuffString { get; set; } = string.Empty;
+    }
+    /// <summary>
+    /// VedioInfo列表模型
+    /// </summary>
+    [Serializable]
+    public partial class VedioInfoListModel
+    {
+
+        /// <summary>
+        /// 视频Id
+        /// </summary>
+        public string VedioInfoId { get; set; }
+
+        /// <summary>
+        /// 视频描述
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
+        /// 视频源地址
+        /// </summary>
+        public string SourceUrl { get; set; }
+
+        /// <summary>
+        /// 视频源类型
+        /// </summary>
+        public string SourceType { get; set; }
+
+        /// <summary>
+        /// 视频封面
+        /// </summary>
+        public string Poster { get; set; }
+
+        /// <summary>
+        /// 视频大小
+        /// </summary>
+        public string Size { get; set; }
+
+        /// <summary>
+        /// 是否公开
+        /// </summary>
+        public int IsPublic { get; set; }
+
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public string CreatedOn { get; set; }
+
+        /// <summary>
+        /// 创建人账号
+        /// </summary>
+        public string CreatedBy { get; set; }
+
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public string ModifiedOn { get; set; }
+
+        /// <summary>
+        /// 更改人账号
+        /// </summary>
+        public string ModifiedBy { get; set; }
+    }
+    #endregion
+
     #region MenuInRole
     /// <summary>
     /// MenuInRole模型

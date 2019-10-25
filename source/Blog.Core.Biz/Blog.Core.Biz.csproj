@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Dream\" />
     <Folder Include="Quartz\" />
   </ItemGroup>
 

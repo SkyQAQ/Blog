@@ -74,8 +74,8 @@ namespace Blog.Core.Job
                     dreamcode_pre[3] = dreamcode[3];
                     dreamcode_pre[4] = dreamcode[4];
                     string[] dreamcode_suf = new string[2];
-                    dreamcode_suf[0] = dreamcode[0];
-                    dreamcode_suf[1] = dreamcode[1];
+                    dreamcode_suf[0] = dreamcode[5];
+                    dreamcode_suf[1] = dreamcode[6];
                     string[] same_pre = nicecode_pre.Intersect(dreamcode_pre).OrderBy(item => item).ToArray();
                     string[] same_suf = nicecode_suf.Intersect(dreamcode_suf).OrderBy(item => item).ToArray();
                     int count_pre = same_pre.Length;
@@ -130,14 +130,14 @@ namespace Blog.Core.Job
                     {
                         sb.AppendFormat("恭喜你中得八等奖，奖金15元，给自己点个黄焖鸡吧！");
                     }
-                    /// 九等奖：投注号码与当期开奖号码中的任意三个前区号码相同，或者任意一个前区号码及两个后区号码相同，或者任意两个前区号码及任意一个后区号码相同，或者两个后区号码相同，即中奖。
+                    /// 九等奖：投注号码与当期开奖号码中的任意三个前区号码相同，或者任意一个前区号码及两个后区号码相同，
+                    /// 或者任意两个前区号码及任意一个后区号码相同，或者两个后区号码相同，即中奖。
                     else if ((count_pre == 3 && count_suf == 0) || (count_pre == 1 && count_suf == 2) || (count_pre == 2 && count_suf == 1) || (count_pre == 0 && count_suf == 2))
                     {
                         sb.AppendFormat("恭喜你中得九等奖，奖金5元，建议加一元再买三张！");
                     }
                     else
                     {
-                        sb.AppendLine();
                         sb.Append("别看了，这期你没中奖！");
                     }
                     EmailHelper.SendEmailByQQ(email, "圆梦大使带你走上人生巅峰", sb.ToString());

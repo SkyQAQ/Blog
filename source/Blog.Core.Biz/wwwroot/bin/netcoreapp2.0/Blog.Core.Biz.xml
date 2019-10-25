@@ -768,5 +768,61 @@
             用户角色
             </summary>
         </member>
+        <member name="T:Blog.Core.Biz.Vedio.VedioInfoCommand">
+            <summary>
+            视频Command
+            </summary>
+        </member>
+        <member name="M:Blog.Core.Biz.Vedio.VedioInfoCommand.#ctor(Blog.Core.Model.UserIdentity)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="identity"></param>
+        </member>
+        <member name="M:Blog.Core.Biz.Vedio.VedioInfoCommand.GetVedioInfoList(System.Collections.Generic.List{Blog.Core.Model.SearchCondition},System.Int32,System.Int32,System.String,System.Int32)">
+            <summary>
+            获取视频信息List
+            </summary>
+            <param name="searchList"></param>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="orderBy"></param>
+            <param name="type">1-所有；2-最新；3-最热；4-我的；</param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Vedio.VedioInfoCommand.DeleteVedioInfo(System.String[])">
+            <summary>
+            删除视频信息
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Blog.Core.Biz.Vedio.VedioInfoCommand.Upload(Blog.Core.Biz.Vedio.VedioEditModel,System.Collections.Generic.List{Microsoft.AspNetCore.Http.IFormFile})">
+            <summary>
+            上传视频信息
+            </summary>
+            <param name="vedioinfo"></param>
+            <param name="files"></param>
+        </member>
+        <member name="T:Blog.Core.Biz.Vedio.VedioEditModel">
+            <summary>
+            视频编信息辑模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Vedio.VedioEditModel.VedioInfoId">
+            <summary>
+            视频Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Vedio.VedioEditModel.Description">
+            <summary>
+            视频描述
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Vedio.VedioEditModel.IsPublic">
+            <summary>
+            是否公开
+            </summary>
+        </member>
     </members>
 </doc>

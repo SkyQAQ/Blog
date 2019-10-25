@@ -34,7 +34,7 @@ export default {
     },
     methods: {
         play: function () {
-            var src = 'http://47.101.137.248:8080/test';
+            var src = this.urlPrefix + 'vedio/test.mp4';
             this.$refs.vedio.open('video/mp4', src);
         }
     }

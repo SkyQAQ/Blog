@@ -85,7 +85,7 @@ export default {
     },
     mounted: function () {
         this.load();
-        this.this.getPublicKey();
+        this.getPublicKey();
     },
     methods: {
         load: function () {

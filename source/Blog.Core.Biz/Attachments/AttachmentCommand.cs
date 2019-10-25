@@ -129,7 +129,7 @@ namespace Blog.Core.Biz.Attachments
         /// <param name="file">文件</param>
         /// <param name="fileDir">文件目录</param>
         /// <returns></returns>
-        public string UploadFile(string moduleType, string moduleId, IFormFile file, string fileDir = Constants.AttachmentPath)
+        public Attachment UploadFile(string moduleType, string moduleId, IFormFile file, string fileDir = Constants.AttachmentPath)
         {
             return UploadFile(moduleType, moduleId, new List<IFormFile> { { file } }, fileDir)[0];
         }
@@ -142,7 +142,7 @@ namespace Blog.Core.Biz.Attachments
         /// <param name="files">文件</param>
         /// <param name="fileDir">文件目录</param>
         /// <returns></returns>
-        public List<string> UploadFile(string moduleType, string moduleId, List<IFormFile> files, string fileDir = Constants.AttachmentPath)
+        public List<Attachment> UploadFile(string moduleType, string moduleId, List<IFormFile> files, string fileDir = Constants.AttachmentPath)
         {
             try
             {
@@ -160,7 +160,7 @@ namespace Blog.Core.Biz.Attachments
                     Directory.CreateDirectory(fileDir);
                 }
                 _sql.OpenDb();
-                List<string> result = new List<string>();
+                List<Attachment> result = new List<Attachment>();
                 foreach (IFormFile file in files)
                 {
                     string fileName = DateTimeUtils.NowBeijing().ToString("yyyyMMdd") + "_" + moduleType + "_" + Guid.NewGuid();
@@ -179,7 +179,8 @@ namespace Blog.Core.Biz.Attachments
                     attachment.MimeType = file.ContentType;
                     attachment.ModuleType = moduleType;
                     attachment.ModuleId = moduleId;
-                    result.Add(_sql.Create(attachment).ToString());
+                    attachment.AttachmentId = _sql.Create(attachment);
+                    result.Add(attachment);
                 }
                 return result;
             }

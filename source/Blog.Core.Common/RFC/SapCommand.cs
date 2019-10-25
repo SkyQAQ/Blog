@@ -94,9 +94,9 @@ namespace Blog.Core.Common
                 });
                 return result;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
         }
 

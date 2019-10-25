@@ -34,7 +34,7 @@ namespace Blog.Core.Controllers
         [HttpPost, Route("upload")]
         public string UploadFile(FileInfo file)
         {
-            return new AttachmentCommand(UserIdentity).UploadFile(file.ModuleType, file.ModuleId, GetFile());
+            return new AttachmentCommand(UserIdentity).UploadFile(file.ModuleType, file.ModuleId, GetFile()).AttachmentId.ToString();
         }
 
         /// <summary>
