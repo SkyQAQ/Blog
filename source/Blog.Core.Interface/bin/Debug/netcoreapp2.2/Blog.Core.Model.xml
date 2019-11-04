@@ -1,0 +1,1707 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Blog.Core.Model</name>
+    </assembly>
+    <members>
+        <member name="T:Blog.Core.Model.BaseModel">
+            <summary>
+            Model基类
+            </summary>
+        </member>
+        <member name="M:Blog.Core.Model.BaseModel.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="TableName"></param>
+        </member>
+        <member name="P:Blog.Core.Model.BaseModel.ModelName">
+            <summary>
+            表名
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.BaseModel.BaseId">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.Result">
+            <summary>
+            返回结果
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Result.code">
+            <summary>
+            结果代码
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Result.mssg">
+            <summary>
+            结果信息
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Result.data">
+            <summary>
+            结果数据
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.LookUpModel">
+            <summary>
+            LookUp
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.LookUpModel.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.LookUpModel.Name">
+            <summary>
+            name
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.LoginCredit">
+            <summary>
+            登录认证信息
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.LoginCredit.grant_type">
+            <summary>
+            验证类型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.LoginCredit.username">
+            <summary>
+            账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.LoginCredit.password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.LoginCredit.verifycode1">
+            <summary>
+            验证码1
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.LoginCredit.verifycode2">
+            <summary>
+            验证码2
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.LoginCredit.mac">
+            <summary>
+            mac地址
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.LoginCredit.refresh_token">
+            <summary>
+            刷新Token
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.LoginCredit.client_ip">
+            <summary>
+            客户端Ip
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.AuthToken">
+            <summary>
+            Token模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.AuthToken.access_token">
+            <summary>
+            请求token
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.AuthToken.refresh_token">
+            <summary>
+            刷新token
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.AuthToken.token_type">
+            <summary>
+            token类型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.AuthToken.expires_in">
+            <summary>
+            有效期
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.UserIdentity">
+            <summary>
+            用户身份模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserIdentity.UserId">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserIdentity.UserAccount">
+            <summary>
+            用户账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserIdentity.UserRoles">
+            <summary>
+            用户角色
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.ClientInfo">
+            <summary>
+            客户端信息模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.ClientInfo.Ip">
+            <summary>
+            客户端Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.ClientInfo.Host">
+            <summary>
+            客户端主机名
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.ClientInfo.Browser">
+            <summary>
+            客户端浏览器
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.ClientInfo.Version">
+            <summary>
+            客户端浏览器版本
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.ClientInfo.PlatForm">
+            <summary>
+            客户端操作系统
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.VerifyCode">
+            <summary>
+            验证码
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VerifyCode.VerifyCodeString">
+            <summary>
+            验证码
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VerifyCode.VerifyCodeBaseString">
+            <summary>
+            验证码图片String
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.SearchCondition">
+            <summary>
+            查询条件
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.SearchCondition.Type">
+            <summary>
+            查询类型  1-equal查询；2-like查询；3-coustmer自定义；4-range区间查询（用于时间查询）；
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.SearchCondition.Table">
+            <summary>
+            表名  例如role.RoleName = '基础角色'中的【role.】
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.SearchCondition.Key">
+            <summary>
+            查询字段  例如role.RoleName = '基础角色'中的【RoleName】
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.SearchCondition.Value">
+            <summary>
+            查询字段值  例如site.new_name = '基础角色'中的【基础角色】
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.TreeNode">
+            <summary>
+            Elment树形结构
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.TreeNode.id">
+            <summary>
+            节点ID
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.TreeNode.pid">
+            <summary>
+            父节点ID
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.TreeNode.label">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.TreeNode.label1">
+            <summary>
+            标签1
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.TreeNode.label2">
+            <summary>
+            标签2
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.TreeNode.children">
+            <summary>
+            子节点
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.TransferModel">
+            <summary>
+            穿梭框Model
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.TransferModel.key">
+            <summary>
+            Key
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.TransferModel.label">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.TransferModel.search">
+            <summary>
+            搜索字段
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.OptionModel">
+            <summary>
+            下拉框Model
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.OptionModel.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.OptionModel.Text">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.CommanCoinfg">
+            <summary>
+            公共配置
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.CommanCoinfg.Url">
+            <summary>
+            请求地址
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.CommanCoinfg.MaxCount">
+            <summary>
+            每次最多上传条数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.CommanCoinfg.MaxLength">
+            <summary>
+            单个文件最大长度 (M)
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.CommanCoinfg.Type">
+            <summary>
+            限制类型
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.LoveModel">
+            <summary>
+            这是爱
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.LoveModel.Id">
+            <summary>
+            id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.LoveModel.Name">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.LoveModel.Age">
+            <summary>
+            年龄
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.LoveModel.Phone">
+            <summary>
+            手机号码
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.DreamInfoListModel">
+            <summary>
+            梦想信息列表模型
+            </summary>
+            <summary>
+            DreamInfo列表模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.DreamInfoListModel.TypeText">
+            <summary>
+            类型描述
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.DreamInfoListModel.DreamInfoId">
+            <summary>
+            彩票Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.DreamInfoListModel.UserInfoId">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.DreamInfoListModel.DreamCode">
+            <summary>
+            彩票号码
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.DreamInfoListModel.StartStage">
+            <summary>
+            起始期数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.DreamInfoListModel.EndStage">
+            <summary>
+            截止期数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.DreamInfoListModel.Type">
+            <summary>
+            彩票类型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.DreamInfoListModel.CreatedOn">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.DreamInfoListModel.CreatedBy">
+            <summary>
+            创建人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.DreamInfoListModel.ModifiedOn">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.DreamInfoListModel.ModifiedBy">
+            <summary>
+            更改人账号
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.VedioInfo">
+            <summary>
+            VedioInfo模型
+            </summary>
+        </member>
+        <member name="F:Blog.Core.Model.VedioInfo.TableName">
+            <summary>
+            表名
+            </summary>
+        </member>
+        <member name="M:Blog.Core.Model.VedioInfo.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VedioInfo.VedioInfoId">
+            <summary>
+            视频Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VedioInfo.Description">
+            <summary>
+            视频描述
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VedioInfo.SourceUrl">
+            <summary>
+            视频源地址
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VedioInfo.SourceType">
+            <summary>
+            视频源类型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VedioInfo.Poster">
+            <summary>
+            视频封面
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VedioInfo.Size">
+            <summary>
+            视频大小
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VedioInfo.IsPublic">
+            <summary>
+            是否公开
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VedioInfo.CreatedOn">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VedioInfo.CreatedBy">
+            <summary>
+            创建人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VedioInfo.ModifiedOn">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VedioInfo.ModifiedBy">
+            <summary>
+            更改人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VedioInfo.IsDeleted">
+            <summary>
+            是否删除：0-否；1-是；
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.VedioInfoListData">
+            <summary>
+            VedioInfo数据模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VedioInfoListData.RecordCount">
+            <summary>
+            总记录数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VedioInfoListData.RecordList">
+            <summary>
+            数据列表
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VedioInfoListData.ExportBuffString">
+            <summary>
+            导出数据
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.VedioInfoListModel">
+            <summary>
+            VedioInfo列表模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VedioInfoListModel.VedioInfoId">
+            <summary>
+            视频Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VedioInfoListModel.Description">
+            <summary>
+            视频描述
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VedioInfoListModel.SourceUrl">
+            <summary>
+            视频源地址
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VedioInfoListModel.SourceType">
+            <summary>
+            视频源类型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VedioInfoListModel.Poster">
+            <summary>
+            视频封面
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VedioInfoListModel.Size">
+            <summary>
+            视频大小
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VedioInfoListModel.IsPublic">
+            <summary>
+            是否公开
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VedioInfoListModel.CreatedOn">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VedioInfoListModel.CreatedBy">
+            <summary>
+            创建人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VedioInfoListModel.ModifiedOn">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.VedioInfoListModel.ModifiedBy">
+            <summary>
+            更改人账号
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.MenuInRole">
+            <summary>
+            MenuInRole模型
+            </summary>
+        </member>
+        <member name="F:Blog.Core.Model.MenuInRole.TableName">
+            <summary>
+            表名
+            </summary>
+        </member>
+        <member name="M:Blog.Core.Model.MenuInRole.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInRole.MenuInRoleId">
+            <summary>
+            菜单角色关系Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInRole.MenuInfoId">
+            <summary>
+            菜单Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInRole.MenuCode">
+            <summary>
+            菜单编码
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInRole.RoleInfoId">
+            <summary>
+            角色Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInRole.RoleCode">
+            <summary>
+            角色编码
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInRole.CreatedOn">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInRole.CreatedBy">
+            <summary>
+            创建人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInRole.ModifiedOn">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInRole.ModifiedBy">
+            <summary>
+            更改人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInRole.IsDeleted">
+            <summary>
+            是否删除：0-否；1-是；
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.MenuInRoleListData">
+            <summary>
+            MenuInRole数据模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInRoleListData.RecordCount">
+            <summary>
+            总记录数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInRoleListData.RecordList">
+            <summary>
+            数据列表
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInRoleListData.ExportBuffString">
+            <summary>
+            导出数据
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.MenuInRoleListModel">
+            <summary>
+            MenuInRole列表模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInRoleListModel.MenuInRoleId">
+            <summary>
+            菜单角色关系Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInRoleListModel.MenuInfoId">
+            <summary>
+            菜单Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInRoleListModel.MenuCode">
+            <summary>
+            菜单编码
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInRoleListModel.RoleInfoId">
+            <summary>
+            角色Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInRoleListModel.RoleCode">
+            <summary>
+            角色编码
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInRoleListModel.CreatedOn">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInRoleListModel.CreatedBy">
+            <summary>
+            创建人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInRoleListModel.ModifiedOn">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInRoleListModel.ModifiedBy">
+            <summary>
+            更改人账号
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.JobInfo">
+            <summary>
+            JobInfo模型
+            </summary>
+        </member>
+        <member name="F:Blog.Core.Model.JobInfo.TableName">
+            <summary>
+            表名
+            </summary>
+        </member>
+        <member name="M:Blog.Core.Model.JobInfo.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfo.JobInfoId">
+            <summary>
+            JobInfoId
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfo.JobStatus">
+            <summary>
+            定时任务状态
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfo.JobGroup">
+            <summary>
+            Job组
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfo.JobName">
+            <summary>
+            Job名
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfo.JobDesc">
+            <summary>
+            Job描述
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfo.JobClass">
+            <summary>
+            Job类
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfo.Cron">
+            <summary>
+            Cron表达式
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfo.CronDesc">
+            <summary>
+            Cron描述
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfo.CreatedOn">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfo.CreatedBy">
+            <summary>
+            创建人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfo.ModifiedOn">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfo.ModifiedBy">
+            <summary>
+            更改人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfo.IsDeleted">
+            <summary>
+            是否删除：0-否；1-是；
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.JobInfoListData">
+            <summary>
+            JobInfo数据模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfoListData.RecordCount">
+            <summary>
+            总记录数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfoListData.RecordList">
+            <summary>
+            数据列表
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfoListData.ExportBuffString">
+            <summary>
+            导出数据
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.JobInfoListModel">
+            <summary>
+            JobInfo列表模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfoListModel.JobInfoId">
+            <summary>
+            JobInfoId
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfoListModel.JobStatus">
+            <summary>
+            定时任务状态
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfoListModel.JobGroup">
+            <summary>
+            Job组
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfoListModel.JobName">
+            <summary>
+            Job名
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfoListModel.JobDesc">
+            <summary>
+            Job描述
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfoListModel.JobClass">
+            <summary>
+            Job类
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfoListModel.Cron">
+            <summary>
+            Cron表达式
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfoListModel.CronDesc">
+            <summary>
+            Cron描述
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfoListModel.CreatedOn">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfoListModel.CreatedBy">
+            <summary>
+            创建人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfoListModel.ModifiedOn">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.JobInfoListModel.ModifiedBy">
+            <summary>
+            更改人账号
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.UserInfo">
+            <summary>
+            UserInfo模型
+            </summary>
+        </member>
+        <member name="F:Blog.Core.Model.UserInfo.TableName">
+            <summary>
+            表名
+            </summary>
+        </member>
+        <member name="M:Blog.Core.Model.UserInfo.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfo.UserInfoId">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfo.Name">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfo.Account">
+            <summary>
+            账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfo.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfo.Email">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfo.Avatar">
+            <summary>
+            头像
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfo.PwdState">
+            <summary>
+            密码状态：0-正常；1-半年没修改密码；2-首次登陆；
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfo.PwdModifiedOn">
+            <summary>
+            密码修改时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfo.LoginFiledOn">
+            <summary>
+            登录失败时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfo.LoginFiledTimes">
+            <summary>
+            登录失败次数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfo.DepartmentId">
+            <summary>
+            部门Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfo.IsLogin">
+            <summary>
+            登录状态：0-未登录；1-已登录
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfo.CreatedOn">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfo.CreatedBy">
+            <summary>
+            创建人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfo.ModifiedOn">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfo.ModifiedBy">
+            <summary>
+            更改人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfo.IsDeleted">
+            <summary>
+            是否删除：0-否；1-是；
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.UserInfoListData">
+            <summary>
+            UserInfo数据模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfoListData.RecordCount">
+            <summary>
+            总记录数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfoListData.RecordList">
+            <summary>
+            数据列表
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfoListData.ExportBuffString">
+            <summary>
+            导出数据
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.UserInfoListModel">
+            <summary>
+            UserInfo列表模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfoListModel.UserInfoId">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfoListModel.Name">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfoListModel.Account">
+            <summary>
+            账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfoListModel.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfoListModel.Email">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfoListModel.Avatar">
+            <summary>
+            头像
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfoListModel.PwdState">
+            <summary>
+            密码状态：0-正常；1-半年没修改密码；2-首次登陆；
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfoListModel.PwdModifiedOn">
+            <summary>
+            密码修改时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfoListModel.LoginFiledOn">
+            <summary>
+            登录失败时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfoListModel.LoginFiledTimes">
+            <summary>
+            登录失败次数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfoListModel.DepartmentId">
+            <summary>
+            部门Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfoListModel.IsLogin">
+            <summary>
+            登录状态：0-未登录；1-已登录
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfoListModel.CreatedOn">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfoListModel.CreatedBy">
+            <summary>
+            创建人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfoListModel.ModifiedOn">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInfoListModel.ModifiedBy">
+            <summary>
+            更改人账号
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.Attachment">
+            <summary>
+            Attachment模型
+            </summary>
+        </member>
+        <member name="F:Blog.Core.Model.Attachment.TableName">
+            <summary>
+            表名
+            </summary>
+        </member>
+        <member name="M:Blog.Core.Model.Attachment.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Attachment.AttachmentId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Attachment.FilePath">
+            <summary>
+            文件路径
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Attachment.FileName">
+            <summary>
+            文件名称
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Attachment.FileSize">
+            <summary>
+            文件大小
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Attachment.MimeType">
+            <summary>
+            文件类型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Attachment.ModuleType">
+            <summary>
+            模块类型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Attachment.ModuleId">
+            <summary>
+            模块Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Attachment.CreatedOn">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Attachment.CreatedBy">
+            <summary>
+            创建人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Attachment.ModifiedOn">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Attachment.ModifiedBy">
+            <summary>
+            更改人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.Attachment.IsDeleted">
+            <summary>
+            是否删除：0-否；1-是；
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.AttachmentListData">
+            <summary>
+            Attachment数据模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.AttachmentListData.RecordCount">
+            <summary>
+            总记录数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.AttachmentListData.RecordList">
+            <summary>
+            数据列表
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.AttachmentListData.ExportBuffString">
+            <summary>
+            导出数据
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.AttachmentListModel">
+            <summary>
+            Attachment列表模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.AttachmentListModel.AttachmentId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.AttachmentListModel.FilePath">
+            <summary>
+            文件路径
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.AttachmentListModel.FileName">
+            <summary>
+            文件名称
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.AttachmentListModel.FileSize">
+            <summary>
+            文件大小
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.AttachmentListModel.MimeType">
+            <summary>
+            文件类型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.AttachmentListModel.ModuleType">
+            <summary>
+            模块类型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.AttachmentListModel.ModuleId">
+            <summary>
+            模块Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.AttachmentListModel.CreatedOn">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.AttachmentListModel.CreatedBy">
+            <summary>
+            创建人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.AttachmentListModel.ModifiedOn">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.AttachmentListModel.ModifiedBy">
+            <summary>
+            更改人账号
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.RoleInfo">
+            <summary>
+            RoleInfo模型
+            </summary>
+        </member>
+        <member name="F:Blog.Core.Model.RoleInfo.TableName">
+            <summary>
+            表名
+            </summary>
+        </member>
+        <member name="M:Blog.Core.Model.RoleInfo.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.RoleInfo.RoleInfoId">
+            <summary>
+            角色Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.RoleInfo.RoleName">
+            <summary>
+            角色名称
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.RoleInfo.RoleCode">
+            <summary>
+            角色编码
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.RoleInfo.CreatedOn">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.RoleInfo.CreatedBy">
+            <summary>
+            创建人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.RoleInfo.ModifiedOn">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.RoleInfo.ModifiedBy">
+            <summary>
+            更改人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.RoleInfo.IsDeleted">
+            <summary>
+            是否删除：0-否；1-是；
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.RoleInfoListData">
+            <summary>
+            RoleInfo数据模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.RoleInfoListData.RecordCount">
+            <summary>
+            总记录数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.RoleInfoListData.RecordList">
+            <summary>
+            数据列表
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.RoleInfoListData.ExportBuffString">
+            <summary>
+            导出数据
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.RoleInfoListModel">
+            <summary>
+            RoleInfo列表模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.RoleInfoListModel.RoleInfoId">
+            <summary>
+            角色Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.RoleInfoListModel.RoleName">
+            <summary>
+            角色名称
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.RoleInfoListModel.RoleCode">
+            <summary>
+            角色编码
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.RoleInfoListModel.CreatedOn">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.RoleInfoListModel.CreatedBy">
+            <summary>
+            创建人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.RoleInfoListModel.ModifiedOn">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.RoleInfoListModel.ModifiedBy">
+            <summary>
+            更改人账号
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.UserInRole">
+            <summary>
+            UserInRole模型
+            </summary>
+        </member>
+        <member name="F:Blog.Core.Model.UserInRole.TableName">
+            <summary>
+            表名
+            </summary>
+        </member>
+        <member name="M:Blog.Core.Model.UserInRole.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInRole.UserInRoleId">
+            <summary>
+            用户角色关系Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInRole.UserInfoId">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInRole.UserCode">
+            <summary>
+            用户账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInRole.RoleInfoId">
+            <summary>
+            角色Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInRole.RoleCode">
+            <summary>
+            角色编码
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInRole.CreatedOn">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInRole.CreatedBy">
+            <summary>
+            创建人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInRole.ModifiedOn">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInRole.ModifiedBy">
+            <summary>
+            更改人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInRole.IsDeleted">
+            <summary>
+            是否删除：0-否；1-是；
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.UserInRoleListData">
+            <summary>
+            UserInRole数据模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInRoleListData.RecordCount">
+            <summary>
+            总记录数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInRoleListData.RecordList">
+            <summary>
+            数据列表
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInRoleListData.ExportBuffString">
+            <summary>
+            导出数据
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.UserInRoleListModel">
+            <summary>
+            UserInRole列表模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInRoleListModel.UserInRoleId">
+            <summary>
+            用户角色关系Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInRoleListModel.UserInfoId">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInRoleListModel.UserCode">
+            <summary>
+            用户账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInRoleListModel.RoleInfoId">
+            <summary>
+            角色Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInRoleListModel.RoleCode">
+            <summary>
+            角色编码
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInRoleListModel.CreatedOn">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInRoleListModel.CreatedBy">
+            <summary>
+            创建人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInRoleListModel.ModifiedOn">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.UserInRoleListModel.ModifiedBy">
+            <summary>
+            更改人账号
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.DreamInfo">
+            <summary>
+            DreamInfo模型
+            </summary>
+        </member>
+        <member name="F:Blog.Core.Model.DreamInfo.TableName">
+            <summary>
+            表名
+            </summary>
+        </member>
+        <member name="M:Blog.Core.Model.DreamInfo.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.DreamInfo.DreamInfoId">
+            <summary>
+            彩票Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.DreamInfo.UserInfoId">
+            <summary>
+            用户Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.DreamInfo.DreamCode">
+            <summary>
+            彩票号码
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.DreamInfo.StartStage">
+            <summary>
+            起始期数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.DreamInfo.EndStage">
+            <summary>
+            截止期数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.DreamInfo.Type">
+            <summary>
+            彩票类型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.DreamInfo.CreatedOn">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.DreamInfo.CreatedBy">
+            <summary>
+            创建人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.DreamInfo.ModifiedOn">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.DreamInfo.ModifiedBy">
+            <summary>
+            更改人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.DreamInfo.IsDeleted">
+            <summary>
+            是否删除：0-否；1-是；
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.DreamInfoListData">
+            <summary>
+            DreamInfo数据模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.DreamInfoListData.RecordCount">
+            <summary>
+            总记录数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.DreamInfoListData.RecordList">
+            <summary>
+            数据列表
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.DreamInfoListData.ExportBuffString">
+            <summary>
+            导出数据
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.MenuInfo">
+            <summary>
+            MenuInfo模型
+            </summary>
+        </member>
+        <member name="F:Blog.Core.Model.MenuInfo.TableName">
+            <summary>
+            表名
+            </summary>
+        </member>
+        <member name="M:Blog.Core.Model.MenuInfo.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInfo.MenuInfoId">
+            <summary>
+            菜单Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInfo.MenuName">
+            <summary>
+            菜单名称
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInfo.MenuCode">
+            <summary>
+            菜单编码
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInfo.MenuPath">
+            <summary>
+            菜单路径
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInfo.MenuSeq">
+            <summary>
+            菜单排序
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInfo.PMenuId">
+            <summary>
+            上级菜单Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInfo.CreatedOn">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInfo.CreatedBy">
+            <summary>
+            创建人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInfo.ModifiedOn">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInfo.ModifiedBy">
+            <summary>
+            更改人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInfo.IsDeleted">
+            <summary>
+            是否删除：0-否；1-是；
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.MenuInfoListData">
+            <summary>
+            MenuInfo数据模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInfoListData.RecordCount">
+            <summary>
+            总记录数
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInfoListData.RecordList">
+            <summary>
+            数据列表
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInfoListData.ExportBuffString">
+            <summary>
+            导出数据
+            </summary>
+        </member>
+        <member name="T:Blog.Core.Model.MenuInfoListModel">
+            <summary>
+            MenuInfo列表模型
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInfoListModel.MenuInfoId">
+            <summary>
+            菜单Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInfoListModel.MenuName">
+            <summary>
+            菜单名称
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInfoListModel.MenuCode">
+            <summary>
+            菜单编码
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInfoListModel.MenuPath">
+            <summary>
+            菜单路径
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInfoListModel.MenuSeq">
+            <summary>
+            菜单排序
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInfoListModel.PMenuId">
+            <summary>
+            上级菜单Id
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInfoListModel.CreatedOn">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInfoListModel.CreatedBy">
+            <summary>
+            创建人账号
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInfoListModel.ModifiedOn">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Model.MenuInfoListModel.ModifiedBy">
+            <summary>
+            更改人账号
+            </summary>
+        </member>
+    </members>
+</doc>

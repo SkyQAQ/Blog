@@ -1,0 +1,118 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\GitHub\\Blog\\source\\Blog.Core.Interface\\Blog.Core.Interface.csproj": {}
+  },
+  "projects": {
+    "E:\\GitHub\\Blog\\source\\Blog.Core.Interface\\Blog.Core.Interface.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\GitHub\\Blog\\source\\Blog.Core.Interface\\Blog.Core.Interface.csproj",
+        "projectName": "Blog.Core.Interface",
+        "projectPath": "E:\\GitHub\\Blog\\source\\Blog.Core.Interface\\Blog.Core.Interface.csproj",
+        "packagesPath": "C:\\Users\\96592\\.nuget\\packages\\",
+        "outputPath": "E:\\GitHub\\Blog\\source\\Blog.Core.Interface\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\96592\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://nuget.recloud.com.cn/nuget": {},
+          "https://www.nuget.org/api/v2/": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "E:\\GitHub\\Blog\\source\\Blog.Core.Model\\Blog.Core.Model.csproj": {
+                "projectPath": "E:\\GitHub\\Blog\\source\\Blog.Core.Model\\Blog.Core.Model.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "E:\\GitHub\\Blog\\source\\Blog.Core.Model\\Blog.Core.Model.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\GitHub\\Blog\\source\\Blog.Core.Model\\Blog.Core.Model.csproj",
+        "projectName": "Blog.Core.Model",
+        "projectPath": "E:\\GitHub\\Blog\\source\\Blog.Core.Model\\Blog.Core.Model.csproj",
+        "packagesPath": "C:\\Users\\96592\\.nuget\\packages\\",
+        "outputPath": "E:\\GitHub\\Blog\\source\\Blog.Core.Model\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\96592\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://nuget.recloud.com.cn/nuget": {},
+          "https://www.nuget.org/api/v2/": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}

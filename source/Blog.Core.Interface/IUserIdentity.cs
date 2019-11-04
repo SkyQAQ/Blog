@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Blog.Core.Common.Interface
+namespace Blog.Core.Interface
 {
     public interface IUserIdentity
     {

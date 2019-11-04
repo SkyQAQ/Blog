@@ -30,8 +30,8 @@ namespace Blog.Core.Job
                 nicecode_pre[3] = nicecode[3];
                 nicecode_pre[4] = nicecode[4];
                 string[] nicecode_suf = new string[2];
-                nicecode_suf[0] = nicecode[0];
-                nicecode_suf[1] = nicecode[1];
+                nicecode_suf[0] = nicecode[5];
+                nicecode_suf[1] = nicecode[6];
 
                 if (result[0].eventName == null)
                     throw new Exception("获取中奖期数失败！");

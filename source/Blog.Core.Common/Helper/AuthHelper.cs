@@ -5,6 +5,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using Blog.Core.Interface;
 using Blog.Core.Model;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;

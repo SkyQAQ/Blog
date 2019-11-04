@@ -6,6 +6,7 @@ using Blog.Core.Common;
 using System.IO;
 using Microsoft.AspNetCore.Http;
 using System.Net.Http.Headers;
+using Blog.Core.Interface;
 
 namespace Blog.Core.Biz.User
 {
