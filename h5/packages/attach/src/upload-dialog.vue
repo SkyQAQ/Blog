@@ -108,6 +108,7 @@ export default {
         },
         onSuccess: function (response, file, fileList) {},
         onError: function (error, file, fileList) {
+            console.log(error);
             this.uploadResult = JSON.parse(error.message).mssg;
         },
         onExceed: function (files, fileList) {

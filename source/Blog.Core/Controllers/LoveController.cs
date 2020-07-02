@@ -13,6 +13,15 @@ namespace Blog.Core.Controllers
     [Route("api/love")]
     public class LoveController : Controller
     {
-
+        /// <summary>
+        /// 获取系统参数值
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        [HttpGet("getsystemparamvalue/{name}")]
+        public string GetSystemParamValue(string name)
+        {
+            return new LoveCommand(null).GetSystemParamValue(name);
+        }
     }
 }

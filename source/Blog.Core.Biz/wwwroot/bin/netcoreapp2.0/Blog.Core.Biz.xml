@@ -67,6 +67,14 @@
             <param name="fileName"></param>
             <returns></returns>
         </member>
+        <member name="M:Blog.Core.Biz.Attachments.AttachmentCommand.DownloadFile(System.String,System.String@)">
+            <summary>
+            下载附件
+            </summary>
+            <param name="id"></param>
+            <param name="mimeType"></param>
+            <returns></returns>
+        </member>
         <member name="M:Blog.Core.Biz.Attachments.AttachmentCommand.DownloadZip(System.String[])">
             <summary>
             打包附件下载
@@ -186,6 +194,19 @@
             <summary>
             LoveCommand
             </summary>
+        </member>
+        <member name="M:Blog.Core.Biz.LoveCommand.#ctor(Blog.Core.Model.UserIdentity)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="identity"></param>
+        </member>
+        <member name="M:Blog.Core.Biz.LoveCommand.GetSystemParamValue(System.String)">
+            <summary>
+            获取系统参数值
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
         </member>
         <member name="T:Blog.Core.Biz.Menu.MenuInfoCommand">
             <summary>

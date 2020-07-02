@@ -70,8 +70,10 @@ namespace Blog.Core.Biz.User
                                               ELSE '禁用'
                                             END       UserStatus
                                      FROM   UserInfo u
-                                            LEFT JOIN UserInRole uir
-                                                   ON u.UserInfoId = uir.UserInfoId
+                                            LEFT JOIN UserInRole r
+                                                   ON u.UserInfoId = r.UserInfoId
+                                            LEFT JOIN RoleInfo uir
+                                                   ON r.RoleInfoId = uir.RoleInfoId
                                      WHERE  1 = 1 
                                      ";
                 Dictionary<string, object> paramList = new Dictionary<string, object>();

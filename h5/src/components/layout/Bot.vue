@@ -1,6 +1,6 @@
 <template>
 <div id="bot">
-    淮阴工学院Blog Copyright © TitanChen
+    淮阴工学院Blog | 苏ICP备19075275号-1 | Copyright © TitanChen
     <el-badge :value="mssgCount" class="message" type="primary">
         <el-button type="primary" icon="el-icon-message" @click="openSendDialog" style="height:33px;"></el-button>
     </el-badge>

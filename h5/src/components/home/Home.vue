@@ -12,7 +12,7 @@
 export default {
     data() {
         return {
-            titles: ['首页'],
+            titles: ['首页', '世界名著'],
         }
     },
     mounted: function () {

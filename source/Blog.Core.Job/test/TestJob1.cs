@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json.Linq;
+using Blog.Core.Model;
 
 namespace Blog.Core.Job
 {
@@ -41,7 +42,8 @@ namespace Blog.Core.Job
                                             di.Type,
                                             di.DreamCode,
                                             di.StartStage,
-                                            di.EndStage
+                                            di.EndStage,
+                                            di.UserInfoId
                                      FROM   DreamInfo di WITH(nolock)
                                             INNER JOIN UserInfo ui WITH(nolock)
                                               ON di.UserInfoId = ui.UserInfoId
@@ -56,6 +58,7 @@ namespace Blog.Core.Job
                     JobResult.Append("暂未查询到待开奖大乐透！");
                     return;
                 }
+                sql.OpenDb();
                 foreach (DataRow row in dt.Rows)
                 {
                     string email = Cast.ConToString(row["Email"]);
@@ -93,47 +96,110 @@ namespace Blog.Core.Job
                     /// 一等奖：投注号码与当期开奖号码全部相同(顺序不限，下同)，即中奖；
                     if (count_pre == 5 && count_suf == 2)
                     {
+                        DreamRecord record = new DreamRecord();
+                        record.UserInfoId = Guid.Parse(Cast.ConToString(row["UserInfoId"]));
+                        record.DreamType = Cast.ConToString(row["Type"]);
+                        record.DreamStage = currentStage;
+                        record.DreamNumber = Cast.ConToString(row["DreamCode"]);
+                        record.DreamAmount = "10000000";
+                        sql.Create(record);
                         sb.AppendFormat("恭喜你中得一等奖，从此走上人生巅峰，请登录中国体彩官网 http://www.lottery.gov.cn 获取奖金信息！");
                     }
                     /// 二等奖：投注号码与当期开奖号码中的五个前区号码及任意一个后区号码相同，即中奖；
                     else if (count_pre == 5 && count_suf == 1)
                     {
+                        DreamRecord record = new DreamRecord();
+                        record.UserInfoId = Guid.Parse(Cast.ConToString(row["UserInfoId"]));
+                        record.DreamType = Cast.ConToString(row["Type"]);
+                        record.DreamStage = currentStage;
+                        record.DreamNumber = Cast.ConToString(row["DreamCode"]);
+                        record.DreamAmount = "5000000";
+                        sql.Create(record);
                         sb.AppendFormat("恭喜你中得二等奖，西藏心灵之旅可以来一波，请登录中国体彩官网 http://www.lottery.gov.cn 获取奖金信息！");
                     }
                     /// 三等奖：投注号码与当期开奖号码中的五个前区号码相同，即中奖；
                     else if (count_pre == 5 && count_suf == 0)
                     {
+                        DreamRecord record = new DreamRecord();
+                        record.UserInfoId = Guid.Parse(Cast.ConToString(row["UserInfoId"]));
+                        record.DreamType = Cast.ConToString(row["Type"]);
+                        record.DreamStage = currentStage;
+                        record.DreamNumber = Cast.ConToString(row["DreamCode"]);
+                        record.DreamAmount = "10000";
+                        sql.Create(record);
                         sb.AppendFormat("恭喜你中得三等奖，奖金10000元，可以买台电脑打LOL了！");
                     }
                     /// 四等奖：投注号码与当期开奖号码中的任意四个前区号码及两个后区号码相同，即中奖；
                     else if (count_pre == 4 && count_suf == 2)
                     {
+                        DreamRecord record = new DreamRecord();
+                        record.UserInfoId = Guid.Parse(Cast.ConToString(row["UserInfoId"]));
+                        record.DreamType = Cast.ConToString(row["Type"]);
+                        record.DreamStage = currentStage;
+                        record.DreamNumber = Cast.ConToString(row["DreamCode"]);
+                        record.DreamAmount = "3000";
+                        sql.Create(record);
                         sb.AppendFormat("恭喜你中得四等奖，奖金3000元，Oppo Reno Ace了解一下！");
                     }
                     /// 五等奖：投注号码与当期开奖号码中的任意四个前区号码及任意一个后区号码相同，即中奖；
                     else if (count_pre == 4 && count_suf == 1)
                     {
+                        DreamRecord record = new DreamRecord();
+                        record.UserInfoId = Guid.Parse(Cast.ConToString(row["UserInfoId"]));
+                        record.DreamType = Cast.ConToString(row["Type"]);
+                        record.DreamStage = currentStage;
+                        record.DreamNumber = Cast.ConToString(row["DreamCode"]);
+                        record.DreamAmount = "300";
+                        sql.Create(record);
                         sb.AppendFormat("恭喜你中得五等奖，奖金300元，买支口红给女朋友吧....没有？就算了！");
                     }
                     /// 六等奖：投注号码与当期开奖号码中的任意三个前区号码及两个后区号码相同，即中奖；
                     else if (count_pre == 3 && count_suf == 2)
                     {
+                        DreamRecord record = new DreamRecord();
+                        record.UserInfoId = Guid.Parse(Cast.ConToString(row["UserInfoId"]));
+                        record.DreamType = Cast.ConToString(row["Type"]);
+                        record.DreamStage = currentStage;
+                        record.DreamNumber = Cast.ConToString(row["DreamCode"]);
+                        record.DreamAmount = "200";
+                        sql.Create(record);
                         sb.AppendFormat("恭喜你中得六等奖，奖金200元，楼下网吧充值200送500！");
                     }
                     /// 七等奖：投注号码与当期开奖号码中的任意四个前区号码相同，即中奖；
                     else if (count_pre == 4 && count_suf == 0)
                     {
+                        DreamRecord record = new DreamRecord();
+                        record.UserInfoId = Guid.Parse(Cast.ConToString(row["UserInfoId"]));
+                        record.DreamType = Cast.ConToString(row["Type"]);
+                        record.DreamStage = currentStage;
+                        record.DreamNumber = Cast.ConToString(row["DreamCode"]);
+                        record.DreamAmount = "100";
+                        sql.Create(record);
                         sb.AppendFormat("恭喜你中得七等奖，奖金100元，该干嘛干嘛吧！");
                     }
                     /// 八等奖：投注号码与当期开奖号码中的任意三个前区号码及任意一个后区号码相同，或者任意两个前区号码及两个后区号码相同，即中奖；
                     else if ((count_pre == 3 && count_suf == 1) || (count_pre == 2 && count_suf == 2))
                     {
+                        DreamRecord record = new DreamRecord();
+                        record.UserInfoId = Guid.Parse(Cast.ConToString(row["UserInfoId"]));
+                        record.DreamType = Cast.ConToString(row["Type"]);
+                        record.DreamStage = currentStage;
+                        record.DreamNumber = Cast.ConToString(row["DreamCode"]);
+                        record.DreamAmount = "15";
+                        sql.Create(record);
                         sb.AppendFormat("恭喜你中得八等奖，奖金15元，给自己点个黄焖鸡吧！");
                     }
                     /// 九等奖：投注号码与当期开奖号码中的任意三个前区号码相同，或者任意一个前区号码及两个后区号码相同，
                     /// 或者任意两个前区号码及任意一个后区号码相同，或者两个后区号码相同，即中奖。
                     else if ((count_pre == 3 && count_suf == 0) || (count_pre == 1 && count_suf == 2) || (count_pre == 2 && count_suf == 1) || (count_pre == 0 && count_suf == 2))
                     {
+                        DreamRecord record = new DreamRecord();
+                        record.UserInfoId = Guid.Parse(Cast.ConToString(row["UserInfoId"]));
+                        record.DreamType = Cast.ConToString(row["Type"]);
+                        record.DreamStage = currentStage;
+                        record.DreamNumber = Cast.ConToString(row["DreamCode"]);
+                        record.DreamAmount = "5";
+                        sql.Create(record);
                         sb.AppendFormat("恭喜你中得九等奖，奖金5元，建议加一元再买三张！");
                     }
                     else
@@ -149,6 +215,10 @@ namespace Blog.Core.Job
             {
                 log.Error(ex);
                 throw ex;
+            }
+            finally
+            {
+                sql.CloseDb();
             }
         }
     }

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <configuration>
-  <!-- 缓存服务器地址、密码 -->
-  <set name="RS_ConnectString" value="47.101.137.248:6379,password=1qaz@WSX"></set>
+  <!-- 缓存服务器地址、密码 原端口 6379-->
+  <set name="RS_ConnectString" value="121.42.12.156:6937,password=EhrK6U3bX262p0MCVzg85uz1ncGQFaFXB6WgL8WBBbEkqugsakFTnFlRy9xarm222"></set>
   
   <!-- AES加密 -->
   <set name="AES_Key" value="9aks@k30*!sjidgl@iemvnx12(1923)a"></set>
@@ -27,9 +27,9 @@ tEqnHjPBRKtfVR8RtRjIammkmR/LZ15mXKeHZIAOXKbc708Xuk9+gblcaGkCQFlQ
 2bWAMPNiH0D14WUMqqwVUZXBchmABrYa6engC1aiJNs="></set>
   
   <!-- 数据库连接字符串 -->
-  <set name="MSSQL" value="Data Source=47.101.137.248;Initial Catalog=WY_IMS;User Id=sa;Password=P@ssw0rd888;MultipleActiveResultSets=true"></set>
-  <set name="MSSQL_Readonly" value="Data Source=47.101.137.248;Initial Catalog=WY_IMS;User Id=sa;Password=P@ssw0rd888;MultipleActiveResultSets=true"></set>
-  <set name="MYSQL" value="Data Source=47.101.137.248;Database=WY_IMS;User Id=sa;Password=P@ssw0rd"></set>
+  <set name="MSSQL" value="Data Source=121.42.12.156;Initial Catalog=WY_IMS;User Id=sa;Password=k$sOpgd8l61SLXpZEue;MultipleActiveResultSets=true"></set>
+  <set name="MSSQL_Readonly" value="Data Source=121.42.12.156;Initial Catalog=WY_IMS;User Id=sa;Password=P@ssw0rd888;MultipleActiveResultSets=true"></set>
+  <set name="MYSQL" value="Data Source=121.42.12.156;Database=WY_IMS;User Id=sa;Password=P@ssw0rd"></set>
   <set name="ORICLE" value="User ID=IFSAPP;Password=IFSAPP;Data Source=RACE;"></set>
   
   <!-- 系统账号 -->
@@ -41,14 +41,14 @@ tEqnHjPBRKtfVR8RtRjIammkmR/LZ15mXKeHZIAOXKbc708Xuk9+gblcaGkCQFlQ
   <set name="Email_QQ_Host" value="smtp.qq.com"></set>
   <set name="Email_QQ_Account" value="965929770@qq.com"></set>
   <!-- POP3/SMTP 授权码 ceqjpwuayjdjbejc -->
-  <!-- IMAP/SMTP 授权码 foqpqmwsaukvbcjb -->
-  <set name="Email_QQ_Password" value="foqpqmwsaukvbcjb"></set>
+  <!-- IMAP/SMTP 授权码 fxchhqadruurbcag -->
+  <set name="Email_QQ_Password" value="btynqgmngwfwbdcd"></set>
 
   <!-- 定时任务命名空间 -->
   <set name="Job_Assembly" value="Blog.Core.Job.dll"/>
 
   <!-- 附件上传 请求地址 -->
-  <set name="Upload_Url" value="http://47.101.137.248/"></set>
+  <set name="Upload_Url" value="http://121.42.12.156/"></set>
   <!-- 附件上传 类型 -->
   <set name="Upload_Type" value="*"></set>
   <!-- 附件上传 每次最多上传数量 -->

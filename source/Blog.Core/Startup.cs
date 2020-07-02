@@ -109,8 +109,7 @@ namespace Blog.Core
                             var accessToken = context.Request.Query["access_token"];
                             // If the request is for our hub...
                             var path = context.HttpContext.Request.Path;
-                            if (!string.IsNullOrEmpty(accessToken) &&
-                                (path.StartsWithSegments("/chatHub")))
+                            if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/chatHub"))
                             {
                                 // Read the token out of the query string
                                 context.Token = accessToken;
@@ -127,7 +126,7 @@ namespace Blog.Core
             builder =>
             {
                 builder.AllowAnyMethod().AllowAnyHeader()
-                       .WithOrigins(_config.OriginServer.Split(';'))
+                       .AllowAnyOrigin()
                        .AllowCredentials();
             }));
             services.AddSignalR(options =>

@@ -60,12 +60,12 @@ namespace Blog.Core.Model
         /// <summary>
         /// 视频大小
         /// </summary>
-        public string Size { get; set; } 
+        public string Size { get; set; } = string.Empty;
 
         /// <summary>
         /// 是否公开
         /// </summary>
-        public int IsPublic { get; set; } = 0;
+        public int IsPublic { get; set; } 
 
         /// <summary>
         /// 创建时间
@@ -331,6 +331,160 @@ namespace Blog.Core.Model
     }
     #endregion
 
+    #region SystemParam
+    /// <summary>
+    /// SystemParam模型
+    /// </summary>
+    [Serializable]
+    public class SystemParam : BaseModel
+    {
+        /// <summary>
+        /// 表名
+        /// </summary>
+        public static readonly string TableName = "SystemParam";
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        public SystemParam() : base(TableName) { }
+        private Guid Id = Guid.Empty;
+
+        /// <summary>
+        /// 系统参数Id
+        /// </summary>
+        public Guid SystemParamId
+        {
+            get { return Id; }
+            set
+            {
+                Id = value;
+                if (value != null)
+                {
+                    base.BaseId = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 系统参数名称
+        /// </summary>
+        public string ParamName { get; set; } 
+
+        /// <summary>
+        /// 系统参数值
+        /// </summary>
+        public string ParamValue { get; set; } 
+
+        /// <summary>
+        /// 系统参数类型
+        /// </summary>
+        public string ParamType { get; set; } 
+
+        /// <summary>
+        /// 系统参数描述
+        /// </summary>
+        public string ParamDesc { get; set; } 
+
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime CreatedOn { get; set; } 
+
+        /// <summary>
+        /// 创建人账号
+        /// </summary>
+        public string CreatedBy { get; set; } 
+
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public DateTime ModifiedOn { get; set; } 
+
+        /// <summary>
+        /// 更改人账号
+        /// </summary>
+        public string ModifiedBy { get; set; } 
+
+        /// <summary>
+        /// 是否删除：0-否；1-是；
+        /// </summary>
+        public int IsDeleted { get; set; } = 0;
+    }
+    /// <summary>
+    /// SystemParam数据模型
+    /// </summary>
+    [Serializable]
+    public class SystemParamListData
+    {
+        /// <summary>
+        /// 总记录数
+        /// </summary>
+        public int RecordCount { get; set; }
+
+        /// <summary>
+        /// 数据列表
+        /// </summary>
+        public List<SystemParamListModel> RecordList { get; set; }
+
+        /// <summary>
+        /// 导出数据
+        /// </summary>
+        public string ExportBuffString { get; set; } = string.Empty;
+    }
+    /// <summary>
+    /// SystemParam列表模型
+    /// </summary>
+    [Serializable]
+    public partial class SystemParamListModel
+    {
+
+        /// <summary>
+        /// 系统参数Id
+        /// </summary>
+        public string SystemParamId { get; set; }
+
+        /// <summary>
+        /// 系统参数名称
+        /// </summary>
+        public string ParamName { get; set; }
+
+        /// <summary>
+        /// 系统参数值
+        /// </summary>
+        public string ParamValue { get; set; }
+
+        /// <summary>
+        /// 系统参数类型
+        /// </summary>
+        public string ParamType { get; set; }
+
+        /// <summary>
+        /// 系统参数描述
+        /// </summary>
+        public string ParamDesc { get; set; }
+
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public string CreatedOn { get; set; }
+
+        /// <summary>
+        /// 创建人账号
+        /// </summary>
+        public string CreatedBy { get; set; }
+
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public string ModifiedOn { get; set; }
+
+        /// <summary>
+        /// 更改人账号
+        /// </summary>
+        public string ModifiedBy { get; set; }
+    }
+    #endregion
+
     #region JobInfo
     /// <summary>
     /// JobInfo模型
@@ -492,6 +646,170 @@ namespace Blog.Core.Model
         /// Cron描述
         /// </summary>
         public string CronDesc { get; set; }
+
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public string CreatedOn { get; set; }
+
+        /// <summary>
+        /// 创建人账号
+        /// </summary>
+        public string CreatedBy { get; set; }
+
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public string ModifiedOn { get; set; }
+
+        /// <summary>
+        /// 更改人账号
+        /// </summary>
+        public string ModifiedBy { get; set; }
+    }
+    #endregion
+
+    #region DreamRecord
+    /// <summary>
+    /// DreamRecord模型
+    /// </summary>
+    [Serializable]
+    public class DreamRecord : BaseModel
+    {
+        /// <summary>
+        /// 表名
+        /// </summary>
+        public static readonly string TableName = "DreamRecord";
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        public DreamRecord() : base(TableName) { }
+        private Guid Id = Guid.Empty;
+
+        /// <summary>
+        /// 中奖纪录Id
+        /// </summary>
+        public Guid DreamRecordId
+        {
+            get { return Id; }
+            set
+            {
+                Id = value;
+                if (value != null)
+                {
+                    base.BaseId = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 用户Id
+        /// </summary>
+        public Guid UserInfoId { get; set; } 
+
+        /// <summary>
+        /// 中奖类型
+        /// </summary>
+        public string DreamType { get; set; } 
+
+        /// <summary>
+        /// 中奖号码
+        /// </summary>
+        public string DreamNumber { get; set; } 
+
+        /// <summary>
+        /// 中奖期数
+        /// </summary>
+        public string DreamStage { get; set; } 
+
+        /// <summary>
+        /// 中奖金额
+        /// </summary>
+        public string DreamAmount { get; set; } 
+
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime CreatedOn { get; set; } 
+
+        /// <summary>
+        /// 创建人账号
+        /// </summary>
+        public string CreatedBy { get; set; } 
+
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public DateTime ModifiedOn { get; set; } 
+
+        /// <summary>
+        /// 更改人账号
+        /// </summary>
+        public string ModifiedBy { get; set; } 
+
+        /// <summary>
+        /// 是否删除：0-否；1-是；
+        /// </summary>
+        public int IsDeleted { get; set; } = 0;
+    }
+    /// <summary>
+    /// DreamRecord数据模型
+    /// </summary>
+    [Serializable]
+    public class DreamRecordListData
+    {
+        /// <summary>
+        /// 总记录数
+        /// </summary>
+        public int RecordCount { get; set; }
+
+        /// <summary>
+        /// 数据列表
+        /// </summary>
+        public List<DreamRecordListModel> RecordList { get; set; }
+
+        /// <summary>
+        /// 导出数据
+        /// </summary>
+        public string ExportBuffString { get; set; } = string.Empty;
+    }
+    /// <summary>
+    /// DreamRecord列表模型
+    /// </summary>
+    [Serializable]
+    public partial class DreamRecordListModel
+    {
+
+        /// <summary>
+        /// 中奖纪录Id
+        /// </summary>
+        public string DreamRecordId { get; set; }
+
+        /// <summary>
+        /// 用户Id
+        /// </summary>
+        public string UserInfoId { get; set; }
+
+        /// <summary>
+        /// 中奖类型
+        /// </summary>
+        public string DreamType { get; set; }
+
+        /// <summary>
+        /// 中奖号码
+        /// </summary>
+        public string DreamNumber { get; set; }
+
+        /// <summary>
+        /// 中奖期数
+        /// </summary>
+        public string DreamStage { get; set; }
+
+        /// <summary>
+        /// 中奖金额
+        /// </summary>
+        public string DreamAmount { get; set; }
 
         /// <summary>
         /// 创建时间
@@ -758,22 +1076,6 @@ namespace Blog.Core.Model
         private Guid Id = Guid.Empty;
 
         /// <summary>
-        /// 
-        /// </summary>
-        public Guid AttachmentId
-        {
-            get { return Id; }
-            set
-            {
-                Id = value;
-                if (value != null)
-                {
-                    base.BaseId = value;
-                }
-            }
-        }
-
-        /// <summary>
         /// 文件路径
         /// </summary>
         public string FilePath { get; set; } 
@@ -827,6 +1129,22 @@ namespace Blog.Core.Model
         /// 是否删除：0-否；1-是；
         /// </summary>
         public int IsDeleted { get; set; } = 0;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Guid AttachmentId
+        {
+            get { return Id; }
+            set
+            {
+                Id = value;
+                if (value != null)
+                {
+                    base.BaseId = value;
+                }
+            }
+        }
     }
     /// <summary>
     /// Attachment数据模型
@@ -855,11 +1173,6 @@ namespace Blog.Core.Model
     [Serializable]
     public partial class AttachmentListModel
     {
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public string AttachmentId { get; set; }
 
         /// <summary>
         /// 文件路径
@@ -910,6 +1223,11 @@ namespace Blog.Core.Model
         /// 更改人账号
         /// </summary>
         public string ModifiedBy { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string AttachmentId { get; set; }
     }
     #endregion
 

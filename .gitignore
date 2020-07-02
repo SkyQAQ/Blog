@@ -19,6 +19,12 @@
 /source/Blog.Core.Job/wwwroot
 /source/Blog.Core/log
 /source/Blog.Core.Test
+/source/Blog.Core.Interface/obj
+/source/Blog.Core.Interface/bin
+/source/Blog.Core.Interface/wwwroot
+/source/Blog.Helper/obj
+/source/Blog.Helper/bin
+/source/Blog.Helper/wwwroot
 /h5/node_modules
 /h5/build
 /source/.vs

@@ -253,6 +253,27 @@ namespace Blog.Core.Biz.Attachments
         }
 
         /// <summary>
+        /// 下载附件
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="mimeType"></param>
+        /// <returns></returns>
+        public FileStream DownloadFile(string id, out string mimeType)
+        {
+            try
+            {
+                Attachment attachment = _sql.Search<Attachment>(id);
+                mimeType = attachment.MimeType;
+                return File.OpenRead(attachment.FilePath);
+            }
+            catch (Exception ex)
+            {
+                _log.Error(ex);
+                throw;
+            }
+        }
+
+        /// <summary>
         /// 打包附件下载
         /// </summary>
         /// <param name="ids"></param>

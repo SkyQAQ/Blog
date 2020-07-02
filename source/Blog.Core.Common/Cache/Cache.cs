@@ -32,7 +32,7 @@ namespace Blog.Core.Common
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message, ex);
+                throw new Exception(ex.Message + "连接字符串：" + config.RS_ConnectString, ex);
             }
         }
 

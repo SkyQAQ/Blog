@@ -5,7 +5,11 @@ public class ResultHandlerMiddleWare : ActionFilterAttribute
 {
     public override void OnResultExecuting(ResultExecutingContext context)
     {
-        if (context.Result is ObjectResult)
+        if (context.Result is FileContentResult)
+        {
+
+        }
+        else if (context.Result is ObjectResult)
         {
             var objectResult = context.Result as ObjectResult;
             if (objectResult.Value == null)

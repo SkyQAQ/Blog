@@ -1,1 +1,1 @@
-dotnet publish -o E:\BlogClient
+dotnet publish -o E:\BlogClientPackage

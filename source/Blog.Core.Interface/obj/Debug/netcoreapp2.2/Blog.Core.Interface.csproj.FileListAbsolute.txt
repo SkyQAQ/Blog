@@ -8,9 +8,9 @@ E:\GitHub\Blog\source\bin\netcoreapp2.2\Blog.Core.Interface.deps.json
 E:\GitHub\Blog\source\bin\netcoreapp2.2\Blog.Core.Interface.dll
 E:\GitHub\Blog\source\bin\netcoreapp2.2\Blog.Core.Interface.pdb
 E:\GitHub\Blog\source\Blog.Core.Interface\obj\Debug\netcoreapp2.2\Blog.Core.Interface.csprojAssemblyReference.cache
-E:\GitHub\Blog\source\Blog.Core.Interface\obj\Debug\netcoreapp2.2\Blog.Core.Interface.csproj.CoreCompileInputs.cache
 E:\GitHub\Blog\source\Blog.Core.Interface\obj\Debug\netcoreapp2.2\Blog.Core.Interface.AssemblyInfoInputs.cache
 E:\GitHub\Blog\source\Blog.Core.Interface\obj\Debug\netcoreapp2.2\Blog.Core.Interface.AssemblyInfo.cs
 E:\GitHub\Blog\source\Blog.Core.Interface\obj\Debug\netcoreapp2.2\Blog.Core.Interface.csproj.CopyComplete
 E:\GitHub\Blog\source\Blog.Core.Interface\obj\Debug\netcoreapp2.2\Blog.Core.Interface.dll
 E:\GitHub\Blog\source\Blog.Core.Interface\obj\Debug\netcoreapp2.2\Blog.Core.Interface.pdb
+E:\GitHub\Blog\source\Blog.Core.Interface\obj\Debug\netcoreapp2.2\Blog.Core.Interface.csproj.CoreCompileInputs.cache

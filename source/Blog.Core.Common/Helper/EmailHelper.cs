@@ -48,7 +48,7 @@ namespace Blog.Core.Common
             catch (Exception ex)
             {
                 RecodeVerifyCodeLog(to, Constants.ReceiveTypeEmail, body, ex.Message, code, codetype);
-                throw new Exception("发送失败！"); 
+                throw new Exception("发送失败：" + ex.Message); 
             }
         }
 
@@ -182,7 +182,7 @@ namespace Blog.Core.Common
                 message.Subject = subject;
                 message.Body = body;
                 message.BodyEncoding = Encoding.Default;
-                SmtpClient client = new SmtpClient { Host = host };
+                SmtpClient client = new SmtpClient();
                 client.EnableSsl = true;
                 client.Port = 587;
                 client.UseDefaultCredentials = false;
