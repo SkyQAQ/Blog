@@ -59,6 +59,7 @@ namespace Blog.Core.Job
                     return;
                 }
                 sql.OpenDb();
+                sql.Execute("INSERT INTO tbl_wincode(Type, Period, Code) VALUES('大乐透', @p, @code)", new Dictionary<string, object> { { "@p", currentStage }, { "@code", string.Join(' ', nicecode)} });
                 foreach (DataRow row in dt.Rows)
                 {
                     string email = Cast.ConToString(row["Email"]);
