@@ -12,6 +12,7 @@ using System.Web;
 using System.IO;
 using Microsoft.AspNetCore.Session;
 using Microsoft.AspNetCore.Http;
+using System.Threading.Tasks;
 
 namespace Blog.Core.Common
 {
@@ -38,7 +39,7 @@ namespace Blog.Core.Common
         /// <param name="isHttps">是否Https请求</param>
         /// <returns>string</returns>
         public static string Get(string url, IDictionary<string, string> param = null, Encoding encoding = null, int seconds = 30, IDictionary<string, string> headers = null)
-            => Request("Get", url + "?" + BuildParams(param), "", "", encoding, seconds, headers);
+            => Request("Get", url + "?" + BuildParams(param), "", Constants.ContentType4, encoding, seconds, headers);
 
         /// <summary>
         /// HttpPost方法
@@ -140,9 +141,17 @@ namespace Blog.Core.Common
             }
             catch (WebException ex)
             {
-                _log.Error(string.Format("[{0}]<{1}>{2}", url, requestString, ex.Message, ex));
+                //_log.Error(string.Format("[{0}]<{1}>{2}", url, requestString, ex.Message, ex));
                 throw ex;
             }
+        }
+
+        public async static Task<string> GetAsync(string url)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync(url);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
         }
 
         #endregion

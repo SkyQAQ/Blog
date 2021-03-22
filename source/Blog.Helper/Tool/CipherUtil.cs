@@ -20,7 +20,7 @@ namespace Blog.Helper.Tool
             {
                 if (plaintext.IsNullOrWhiteSpace())
                     return string.Empty;
-
+                return string.Empty;
             }
             catch (Exception ex)
             {

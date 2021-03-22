@@ -170,6 +170,236 @@
             彩票类型
             </summary>
         </member>
+        <member name="P:Blog.Core.Biz.Dream.PrizeLevelListItem.awardType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.PrizeLevelListItem.prizeLevel">
+            <summary>
+            一等奖
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.PrizeLevelListItem.sort">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.PrizeLevelListItem.stakeAmount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.PrizeLevelListItem.stakeCount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.PrizeLevelListItem.totalPrizeamount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.drawFlowFund">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.drawFlowFundRj">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.estimateDrawTime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.isGetKjpdf">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.isGetXlpdf">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.lotteryDrawNum">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.lotteryDrawResult">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.lotteryDrawStatus">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.lotteryDrawTime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.lotteryEquipmentCount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.lotteryGameName">
+            <summary>
+            超级大乐透
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.lotteryGameNum">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.lotteryGamePronum">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.lotteryPromotionFlag">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.lotterySaleBeginTime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.lotterySaleEndtime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.lotterySuspendedFlag">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.lotteryUnsortDrawresult">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.matchList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.pdfType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.poolBalanceAfterdraw">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.poolBalanceAfterdrawRj">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.prizeLevelList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.prizeLevelListRj">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.ruleType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.termList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.totalSaleAmount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.totalSaleAmountRj">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.ListItem.verify">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.Value.list">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.Value.pageNo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.Value.pageSize">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.Value.pages">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.Value.total">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.Root.dataFrom">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.Root.emptyFlag">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.Root.errorCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.Root.errorMessage">
+            <summary>
+            处理成功
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.Root.success">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Blog.Core.Biz.Dream.Root.value">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:Blog.Core.Biz.Home.OnlineUserModel">
             <summary>
             在线用户信息模型

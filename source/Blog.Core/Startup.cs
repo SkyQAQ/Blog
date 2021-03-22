@@ -126,7 +126,7 @@ namespace Blog.Core
             builder =>
             {
                 builder.AllowAnyMethod().AllowAnyHeader()
-                       .AllowAnyOrigin()
+                       .SetIsOriginAllowed(origin => true)
                        .AllowCredentials();
             }));
             services.AddSignalR(options =>
